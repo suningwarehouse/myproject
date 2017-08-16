@@ -1,0 +1,51 @@
+<section class="content-header" style="position:relative;">
+    <sn-breadcrumb datalist="crumbBaseData"></sn-breadcrumb>
+    <div style="position:absolute;background:#11B983;width:6px;height:28px;left:0px;top:63px;"></div>
+    <a ui-sref="topHead.leftColumn.appReport()" style="color:#000;font-weight:normal;font-size:18px;">{{appName}}应用报告</a>
+
+</section>
+<p style="border-top:5px solid #E3E7EF;margin-top:20px;margin-bottom:40px;"></p>
+<section class="content">
+
+    <div class="main">
+        <div>
+            <div class="demo">
+
+                <div class="mainmove" ng-click="goleft()">
+                    <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
+                </div>
+                <div class="container" style="position:relative;">
+                    <div class="nodate" ng-show="nodate">   
+                        暂无版本数据
+                    </div>
+                    <ul class="time-horizontal">
+                        <li ng-repeat="version in versionListshow">
+                            <div class="boll" style="" ng-click="ckickBoll(version.id)" ng-class="{active:version.topInfo}">
+                                <div style="color:#fff;font-weight:bold;"><span class="span1" ng-class="{active:version.topInfo}" style="color:#fff;"></span>
+                                    <span
+                                        class="span2" ng-class="{active:version.topInfo}" style="color:#fff;" title="{{version.name}}">{{version.name}}</span>
+                                </div>
+                            </div>
+                            <span ng-class="{active:version.topInfo}" style="color:#777;">{{version.createTime |date:"yyyy-MM-dd"}}</span><br>
+                            <!--<span ng-class="{active:version.topInfo}" style="color:#777;">{{version.createTime |date:" HH:mm:ss"}}</span>-->
+                            <div class="topInfo" ng-show="version.topInfo">
+                                <div style="color:#8E8E8E;padding-bottom:3px;" class="text_overflow" title="{{version.name}}">版本：{{version.name}}</div>
+                                <div style="color:#8E8E8E;padding-bottom:3px;">状态：{{version.status |versionStatusFilter}}</div>
+                                <div><a href="javascript:void();" ng-click="changeReport(version.id)" style="color:#1EBD8A;">查看版本报告</a></div>
+                                <i class="topInfo-down"></i>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="mainmove" ng-click="goright()">
+                    <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+                </div>
+            </div>
+        </div>
+        <div style="margin-left:-15px;">
+            <cd-iframe src="{{versionReport}}"></cd-iframe>
+            <!--<iframe src="{{versionReport}}" width="100%" scrolling="no" onload="resizeIframe(this)" style="border: 0 ;"></iframe>-->
+        </div>
+    </div>
+
+</section>

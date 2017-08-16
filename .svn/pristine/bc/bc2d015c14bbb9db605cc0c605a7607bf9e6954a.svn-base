@@ -1,0 +1,74 @@
+<div class="nav-content">
+	<div class="nav-title">
+		<sn-breadcrumb datalist="crumbBaseData"></sn-breadcrumb>
+		<div class="nav-title-decoration-color"></div>
+    	<div class="nav-title-name">新增流水线</div>
+	</div>		
+</div>
+    <!-- 新建代码库BEGIN-->
+    <div ng-include="'business/components/flow/create/flowGroup.html'">
+    </div>
+
+    <div ng-show="initNum == 1" class="top-div">
+        <form name="flowForm" class="form-horizontal" novalidate>
+            <div class="form-group">
+                <label class="col-sm-2 control-label name-style"><span style="color: #F5560A">*</span>流水线名称</label>
+                <div class="inputselect">
+                    <input type="input" ng-model="flow.flowName" class="form-control input-style" name="flowName"
+                           ng-maxlength="50" placeholder="请输入流水线名称，最多50位" required ng-change="isFlowNameRepeat()" ng-pattern="/^[\u4E00-\u9FA5A-Za-z0-9\-_]{3,50}$/"/>
+                </div>
+                <div class="col-sm-5">
+                    <p class="form-control-static error"
+                       ng-if="(flowForm.flowName.$error.maxlength) && flowForm.flowName.$touched && !flowForm.flowName.$error.required">
+                        <i class="fu fu-info-circle" aria-hidden="true"><span style="color: #000000">最多50位</span></i>
+                    </p>
+                    <p class="form-control-static error"
+                       ng-if="flowForm.flowName.$error.required && flowForm.flowName.$touched">
+                        <i class="fu fu-info-circle" aria-hidden="true">不能为空</i>
+                    </p>
+                    <p class="form-control-static error" ng-show="flowForm.flowName.$error.pattern && flowForm.flowName.$touched && !flowForm.flowName.$error.required">
+                        <i class="fu fu-cross-circle small-i" aria-hidden="true"></i>仅能输入中英文数字连接符`-`及下划线`_`长度介于3-50之间
+                    </p>
+                    <p class="form-control-static success"
+                       ng-if="!flowNameRepeat && flowForm.flowName.$valid && flowForm.flowName.$touched">
+                        <i class="fu fu-check-circle" aria-hidden="true"></i>
+                    </p>
+                    <p class="form-control-static error" ng-if="flowNameRepeat && !flowForm.flowName.$error.required && !flowForm.flowName.$error.maxlength && !flowForm.flowName.$error.pattern">
+                        <i class="fu fu-info-circle small-i" aria-hidden="true"></i>该流水线名称已存在
+                    </p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label name-style"><span style="color: #F5560A">*</span>所属系统</label>
+                <div  class="inputselect">
+                    <select ng-disabled="sysIdCombboxDisabled" select2="sysIdSelect2" class="form-control input-style" ng-model="flow.sysId" name="sysId" required
+                            ng-options="option.projectId as option.projectName for option in sysList"
+                            ng-change="sysIdChange()">
+                        <option value="">请选择所属系统</option>
+                    </select>
+                </div>
+                <div class="col-sm-5">
+                    <p class="form-control-static error"
+                       ng-if="flowForm.sysId.$error.required && flowForm.sysId.$invalid && flowForm.sysId.$dirty">
+                        <i class="fu fu-info-circle" aria-hidden="true"><span style="color: #000000">所属系统不能为空</span></i>
+                    </p>
+                    <p class="form-control-static success"
+                       ng-if="flowForm.sysId.$valid && flowForm.sysId.$dirty">
+                        <i class="fu fu-check-circle" aria-hidden="true"></i>
+                    </p>
+                </div>
+            </div>
+
+        </form>
+    </div>
+<div class="form-horizontal">
+<div class="form-group">
+     <label class="col-sm-2 control-label name-style"></label>
+    <div class="button-style">
+        <button type="button" class="btn btn-default cancelbutton" ng-click="cancel()">取消</button>
+        <button type="button" class="btn btn-primary nextupbutton" ng-click="nextStep()" ng-disabled="flowForm.$invalid || flowNameRepeat" ng-show="initNum == 1">下一步</button>
+        <button type="button" class="btn btn-default nextupbutton" ng-click="previousStep()" ng-show="initNum == 2">上一步</button>
+        <button type="button" class="btn btn-primary nextupbutton" ng-click="save()" ng-show="initNum == 2">提交</button>
+    </div>
+</div>
+</div>

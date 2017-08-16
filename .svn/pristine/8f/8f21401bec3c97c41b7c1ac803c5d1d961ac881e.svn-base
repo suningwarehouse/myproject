@@ -1,0 +1,91 @@
+<div>
+	<div class="nav-content">
+		<div class="nav-title">
+			<div class="nav-title-decoration-color"></div>
+			<div class="nav-title-name">应用管理</div>
+			<p>以应用为中心的一站式管控软件生命周期的平台，高效稳定，架构开放，集成端到端的交付过程中主流自动化工具。下面开始体验应用管理吧。</p>
+			<div class="linkName">
+				<div class="button-div" style="margin-left: 0px;" ng-click="showDialog()"><a href="javascript:void(0)" perm-code="phoebus_application_create">创建应用</a></div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+	<div class="mainContent">
+		<div class="table-header" style="margin-top: 13px;">
+				   <form class="form-inline">
+						<div class="form-group select2height">
+							<select class="form-control" select2="select2Status" ng-model="thestatus" 
+								ng-options="thestatus.value for thestatus in statusList"
+								type="text" class="form-control"
+								ng-change="onChangeSlelectStatus(thestatus)"
+								style="width: 175px">
+								<option value="">请选择状态</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="请输入应用名称" ng-model="appName">
+						</div>
+				
+						<div class="form-group">
+							<div class="search-div marginL" ng-click="doSearch()">查询</div>
+						
+						</div>
+						<!-- <input ng-click="reset()" type="reset"/> -->
+						<!-- <a type="reset" href="javascript:void(0)" ng-click="reset()" 
+								style="vertical-align: bottom;">重置</a> -->
+					</form>
+				</div>
+				<!--表格主体 -->
+				<div class="table-body">
+					<table class="sn-table" style="table-layout: fixed">
+						<tr>
+							<th width="15%"><span class="tr-style">应用名称</span></th>
+							<th width="15%"><span class="tr-style">运行状态</span></th>
+							<th width="10%"><span class="tr-style">进行中需求</span></th>
+			                <th width="10%"><span class="tr-style">进行中任务</span></th>
+			                <th width="10%"><span class="tr-style">进行中缺陷</span></th>
+			                <th width="10%"><span class="tr-style">进行中版本数</span></th>
+			                <th width="20%"><span class="tr-style">应用管理员</span></th>
+			                <th width="10%"><span class="tr-style">操作</span></th>
+						</tr>
+						<tr ng-repeat="app in appList">
+							<td class="text_overflow" title="{{app.appName}}"><a href="javascript:void(0)"  ui-sref="topHead.leftColumn.appProcess" ng-click="setSession(app.appId,app.appName)">{{app.appName}}</a></td>
+							<td ng-if="app.status == 0">已注销</td>
+							<td ng-if="app.status == 1">运行中</td>
+							<td ng-if="app.status != 1 && app.status != 0">状态未知</td>
+							<td>
+								<a ng-href="{{jiraUrl}}/issues/?jql=project={{app.appName | appNameFilter}} AND issuetype in (原始业务需求,需求)" target="_blank"> {{app.requireMents}} </a>
+							</td>
+							<td>
+								<a ng-href="{{jiraUrl}}/issues/?jql=project={{app.appName | appNameFilter}} AND issuetype in (任务,子任务)" target="_blank"> {{app.tasks}}</a>
+							</td>
+							<td>
+								<a ng-href="{{jiraUrl}}/issues/?jql=project={{app.appName| appNameFilter}} AND issuetype=缺陷" target="_blank"> {{app.bugs}}</a>
+							</td>
+							<td>{{app.versions}}</td>
+							<td>{{app.appAdmin}}</td>
+							<td>
+			                    <a href="javascript:;" 
+			                    ui-sref="topHead.leftColumn.editFlow({flowId:flowItem.id,sysId:flowItem.sysId})"
+			                    ng-click="showDialog()" target="_blank" perm-code="phoebus_application_modify">
+			                                                                            修改应用
+			                    </a>
+			                </td>
+						</tr>
+						<tr ng-if="!appList||appList.length<1">
+							<td colspan="8">暂无数据</td>
+						</tr>
+						
+					</table>
+				</div>
+				<div class="table-footer" style="overflow: hidden;">
+					<div class="pull-right sn-table-pager text-right">
+						<cd-pager page="pageIndex" page-size="pageSize" total="totalCount"
+							page-action="paging1(page, pageSize, total)"></cd-pager>
+					</div>
+				</div>
+		</div>
+

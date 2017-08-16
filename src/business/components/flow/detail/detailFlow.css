@@ -1,0 +1,393 @@
+li {list-style-type:none;}
+.oneLine{
+    float:left;
+    margin-bottom: 20px;
+   
+}
+.oneLineFirst{
+    float:left;
+    margin-bottom: 20px;
+    margin-left: 15px;  
+}
+
+.linetop{
+    overflow: hidden;
+}
+.linetopleft1{
+    width: 190px!important;
+    float: left;
+    overflow: hidden;
+    height: 32px;
+    width: 175px;
+    /* border: 1px black solid; */
+    margin-bottom: 10px;
+    padding-left: 22px;
+    background-image: url(/business/images/navigation1.png);
+    background-repeat:no-repeat;
+    background-size: 100% 100%;
+    /* background-color: #595757; */
+    color: white;
+}
+.linetopleftFirst{
+    width: 190px!important;
+    float: left;
+    overflow: hidden;
+    height: 32px;
+    width: 175px;
+    /* border: 1px black solid; */
+    margin-bottom: 10px;
+    padding-left: 22px;
+    background-image: url(/business/images/navigation.png);
+    background-repeat:no-repeat;
+    background-size: 100% 100%;
+    /* background-color: #595757; */
+    color: white;
+}
+
+.linetopright{
+    float:left;
+    margin-left: 10px;
+    margin-top: 20px;
+}
+.linecontent{
+    min-height: 200px;
+    width: 177px;
+    border: 1px #E2E5EB solid;
+ 
+}
+.topleft{
+    float:left;
+    margin-right: 10px;
+    font-size: 24px;
+}
+.topmiddle{
+    float:left;
+    margin-right: 10px;
+    font-size: 12px;
+}
+.topimg{
+    float: left;
+    margin-left: 0px;
+    margin-top: 3px;
+}
+.topright{
+    float:left;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+.listStyle{
+    margin-left: 10px;
+    margin-top: 5px;
+}
+.iconStyle{
+    margin-top: 3px;
+}
+.circle {
+    width: 10px;
+    height: 10px;
+    background: #d09e9e;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    display: inline-block;
+    margin-left: 8px;
+}
+.deleteStyle{
+    margin-top: 3px;
+    margin-left: 25px;
+}
+.mytabs {
+    float: left;
+    width: 100%;
+    margin: -15px 10px 12px 12px;
+}
+.myTab ul
+{
+    list-style: none outside none;
+    margin: 0;
+    padding: 0;
+    color: #666666;
+}
+.myTab ul li {
+    float: left;
+    line-height: 51px;
+    width: 131px;
+    font-size: 14px;
+    height: 51px;
+    text-align: center;
+    color: #000;
+
+}
+.mytab-nav{
+    background-color: white;
+    cursor:pointer;
+}
+.mytab-nav-action{
+    background-color: #EFEFF0;
+    color: #fff;
+    cursor:pointer;
+}
+.square{
+    width:3px;
+    height:13px;
+    background-color:black;
+    display:inline-block;
+    margin-right:10px;
+}
+.circleBig {
+    width: 12px;
+    height: 12px;
+    background: black;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 6px;
+    display: inline-block;
+    margin-left: 1px;
+}
+.circleTop {
+    width: 16px;
+    height: 16px;
+    background: #d09e9e;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 10px;
+    display: inline-block;
+    margin-left: 1px;
+    margin-top: 3px;
+}
+.stateCode2{
+    color:#009900;
+    margin-top: 8px;
+}
+.circleState2{
+    width: 10px;
+    height: 10px;
+    background:#009900;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    display: inline-block;
+    margin-left: 8px;
+
+}
+.begindo{
+    margin: 10px 0px 0px 30px;
+}
+
+
+.table-border-mine {
+    border: 1px solid lightgray;
+    text-align: center;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.table-border-mine th,
+td {
+    border: 1px solid lightgray;
+    text-align: center;
+    padding: 7px !important;
+}
+
+.info {
+    background-color: #D9EDF7;
+}
+
+.margin-right-20 {
+    margin-right: 20px
+}
+
+.margin-right-10 {
+    margin-right: 10px
+}
+
+.width-180 {
+    width: 180px
+}
+
+.table-body {
+    padding: 10px 0
+}
+
+.sn-table {
+    border: 1px solid #e0e0e0;
+    width: 100%;
+    border-collapse: collapse
+}
+
+.sn-table th {
+    font-size: 14px;
+    color: #000;
+    font-weight: 700
+}
+
+.sn-table td,
+.sn-table th {
+    border: 1px solid #e0e0e0;
+    height: 38px;
+    text-align: center
+}
+
+.sn-table td {
+    /*font-size: 12px;*/
+    color: #333;
+    padding: 6px 0
+}
+
+.sn-table td a {
+    color: #3a8cbb;
+    margin: 0 10px;
+    cursor: pointer
+}
+
+.sn-table th:nth-child(3) {
+    width: 200px
+}
+
+.sn-table tr:nth-child(odd) {
+    background-color: #f0f2f5
+}
+
+.sn-table tr:first-child {
+    background-color: #eaedf1
+}
+
+.sn-table-btn-group {
+    width: 35%
+}
+
+.sn-table-pager {
+    width: 65%
+}
+
+.sn-table-pager ul {
+    margin: 0
+}
+
+.table-text {
+    margin-top: 10px;
+    font-size: 12px;
+    color: #333
+}
+
+.table-text a {
+    margin-left: 20px;
+    color: #3a8cbb;
+    cursor: pointer
+}
+
+.clear {
+    clear: both
+}
+
+.btn{
+    padding: 6px 12px!important;
+}
+
+.h3-inline{
+    display: inline;
+}
+.text_overflow {
+    width: 70%;
+    vertical-align: top;
+    display: inline-block;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.text_process_overflow {
+    width:87px;
+    vertical-align: top;
+    display: inline-block;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    margin-top: 10px;
+}
+
+/***
+reset css for navbar start
+***/
+
+.content-wrapper,
+.right-side,
+.main-footer {
+	margin-left: 215px;
+}
+
+.nav-content {
+	background: #FFFFFF;
+    margin-top: 20px;
+	/*box-shadow: 0 2px 4px 0 #D8DDE9;*/
+}
+
+sn-breadcrumb>ul>li>a {
+	font-family: MicrosoftYaHeiUILight;
+	font-size: 12px;
+	color: #686868;
+}
+
+sn-breadcrumb>ul>li>a:hover {
+	font-family: MicrosoftYaHeiUILight;
+	font-size: 12px;
+	color: #11B983;
+}
+
+sn-breadcrumb>ul>li>span {
+	font-family: MicrosoftYaHeiUILight;
+	font-size: 12px;
+	color: #11B983;
+}
+
+.nav-title-decoration-color {
+	display: inline-block;
+	height: 28px;
+	width: 6px;
+	background-color: #11B983;
+	float: left;
+	margin-right: 18px;
+}
+
+.nav-title {
+	padding: 13px 0 15px 0;
+	margin-top: -15px;
+	
+}
+
+.nav-title p {
+	margin: 6px 0 0 24px;
+}
+
+.nav-title-name {
+	font-family: MicrosoftYaHeiUILight;
+	font-size: 18px;
+	color: #000000;
+}
+
+.myTab{
+    overflow: hidden;
+    height: 50px;
+    border-top: 1px solid #dee3ec;
+    border-bottom: 5px solid #dee3ec;
+}
+
+.toptext{
+    color: #283342;
+    margin-left: 30px;
+}
+.nextupbutton{
+    margin-left: 30px;
+    margin-top: 20px;
+    width: 80px;
+    height: 28px;
+    background-color: #11B983;
+    color: #fff;
+    font-size: 12px;
+}
+
+
+
+/***
+reset css for navbar end
+***/

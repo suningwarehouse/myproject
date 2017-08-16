@@ -1,0 +1,43 @@
+<div class="modal fade in" ng-controller="taskRecordDetailCtrl" style="text-align:center;">
+    <div class="modal-dialog" style="display:inline-block;width:auto !important;">
+        <div class="modal-content" style="max-height:800px !important;min-width:640px;">
+            <div class="modal-header" style="width:100%;">
+                <button type="button" class="close" ng-click="close()"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+        		</button>
+                <h4 class="modal-title">任务执行结果</h4>
+            </div>
+            
+    <!-- 蛙测-->
+	<div class="table-body" style="text-align:center;" ng-if="taskSubRecordMap">
+		<div class="pop-main">	
+			<p class="pop-p"></p>
+				<div ng-repeat="(key,value) in taskSubRecordMap">
+					<div class="pop-body-left">
+						{{key}}
+					</div>
+					<div class="pop-body-right">
+					<ul>
+						<li ng-repeat="task in value" ><a>{{task.testType | testTypeFilter}}{{task.paramKey | paramKeyFilter}}</a>
+						<span>{{task.paramValue}}</span></li>
+					</ul>
+				</div>
+				</div>
+
+				
+
+				
+
+
+
+				<p class="pop-p1"></p>
+		</div>
+	</div>
+          <p class="results-detial" style="text-align:left;padding-left: 24px;">结果详情：<a href="{{reportUrl}}" target="_blank">{{reportUrl}}</a></p>
+            <div class="modal-footer" style="width:100%;">
+               <div class="text-right">
+                   <button class="btn btn-primary reverse" ng-click="close()"> 关闭</button>
+               </div>
+           </div>
+        </div>
+    </div>
+</div>

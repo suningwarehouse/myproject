@@ -1,0 +1,8 @@
+<div class="nav-content">
+	<div class="nav-title">
+		<div class="nav-title-decoration-color"></div>
+    	<div class="nav-title-name">{{title}}</div>
+		<p>{{description}}</p>
+	</div>	
+</div>
+<div ui-view style="width: 98%;padding-left: 10px;padding-top: 10px;"></div>

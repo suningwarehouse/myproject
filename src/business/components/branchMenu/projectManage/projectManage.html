@@ -1,0 +1,11 @@
+<div class="main-sidebar verticalMenu">
+	<div class="sidebar">
+		<sn-menu class="vertical" main-menu="main-menu"> <sn-menu-item
+			ng-repeat="menu in menus track by $index" ui-state="{{menu.state}}"
+			relations="menu1.relation" class="open"> <t>
+		<i class="{{menu.clazz}}"></i>{{menu.name}}</t> <sn-menu-item2
+			ng-repeat="menu2 in menu.children" ui-state="{{menu2.state}}"
+			relations="menu2.relation"> <t>{{menu2.name}}</t> </sn-menu-item2> </sn-menu-item> </sn-menu>
+	</div>
+</div>
+<div ui-view class="rightContent"></div>

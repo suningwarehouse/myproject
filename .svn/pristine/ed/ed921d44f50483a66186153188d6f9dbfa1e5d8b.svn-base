@@ -1,0 +1,70 @@
+<section class="content-header" style="margin-top: 50px">   
+   <sn-breadcrumb datalist="crumbBaseData"></sn-breadcrumb>
+      <h4><div ></div><strong>{{title}}:执行历史({{taskName}})</strong></h4>
+   <div style="height: 5px"></div>
+</section>
+
+<section class="content" >
+  
+   
+    <!-- 安全扫描-->
+	<div class="table-body" ng-if="taskType==4">
+		<table class="sn-table" style="table-layout: fixed">
+			<tr>
+				<th  width="13%">序列</th>
+				<th  width="13%">任务名称</th>
+				<th  width="13%">来源</th>
+				<th width="7%">任务状态</th>
+				<th width="15%">高危漏洞</th>
+				<th width="15%">中危漏洞</th>
+				<th width="20%">低危漏洞</th>
+				<th width="15%">执行时间</th>
+				<th width="15%">扫描url</th>
+			</tr>
+			<tr ng-repeat="task in taskRecordList">
+				<td>{{$index+1}}</td>
+				<td class="text_overflow" title="{{task.taskName}}">{{task.taskName}}</td>
+				<td>{{task.flowName}}</td>
+				<td>{{task.status  |taskStatusFilter}}</td>
+				<td>{{task.high}}</td>
+				<td>{{task.medium}}</td>
+				<td>{{task.low}}</td>
+				<td>{{task.createTime |date:"yyyy-MM-dd HH:mm:ss"}}</td>
+				<td class="text_overflow" title="{{task.url}}">{{task.url }}</td>
+<!-- 				<td ng-if="task.reportUrl"><a href="{{task.reportUrl}}" target="_blank">详情</a></td> -->
+<!-- 				<td ng-if="!task.reportUrl"></td> -->
+			</tr>
+		</table>
+	</div>
+	
+	  <!-- 蛙测-->
+	<div class="table-body" ng-if="taskType==3">
+		<table class="sn-table" style="table-layout: fixed">
+			<tr>
+				<th  width="13%">序列</th>
+				<th  width="13%">任务名称</th>
+				<th  width="13%">来源</th>
+				<th width="7%">任务状态</th>
+				<th width="15%">执行时间</th>
+				<th width="15%">执行结果</th>
+			</tr>
+			<tr ng-repeat="task in taskRecordList">
+				<td>{{$index+1}}</td>
+				<td class="text_overflow" title="{{task.taskName}}">{{task.taskName}}</td>
+				<td>{{task.flowName}}</td>
+				<td>{{task.status |taskStatusFilter}}</td>
+				<td>{{task.createTime |date:"yyyy-MM-dd HH:mm:ss"}}</td>
+				<td>
+					<a  ng-click="showDetail(task)">查看</a>
+				</td>
+			</tr>
+		</table>
+	</div>
+	
+<!-- 	<div style="float:right;" ><button class="btn btn-primary reverse" ng-click="close()"> 返回</button></div> -->
+	    <cd-pager style="float: right;margin-top: 50px" page="pageIndex" page-size="pageSize"
+         total="totalCount" page-action="paging1(page, pageSize, total)"></cd-pager>
+</section>
+
+
+

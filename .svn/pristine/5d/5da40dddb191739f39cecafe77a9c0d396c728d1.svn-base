@@ -1,0 +1,94 @@
+<div class="modal fade in" ng-controller="taskDataCtrl">
+    <div class="modal-dialog">
+        <div class="modal-content addmain">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="close()"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+        		</button>
+                <h4 class="modal-title">检查项</h4>
+            </div>
+            <div class="main">
+                  <div >
+                    <div class="widpercent">
+                       <div class="head">webshell后门检测</div>
+                       <div class="maincontent" ng-repeat="one in webshell">
+                           <label class="checkbox-inline " >
+                                <input type="checkbox"ng-model="one.checked" ng-disabled="true">
+                                    <span>{{one.name}}</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="widpercent">
+                        <div class="head">注入检测</div>
+                        <div class="maincontent" ng-repeat="one in injection">
+                           <label class="checkbox-inline " >
+                                <input type="checkbox" ng-model="one.checked" ng-disabled="true">{{one.name}}
+                            </label>
+                        </div>
+                    </div>
+                    <div class="widpercent">
+                        <div class="head">xss跨站检测</div>
+                         <div class="maincontent" ng-repeat="one in xss">
+                           <label class="checkbox-inline " >
+                                <input type="checkbox" ng-model="one.checked" ng-disabled="true">{{one.name}}
+                            </label>
+                        </div>
+                    </div>
+                    <div class="widpercent">
+                        <div class="head">目录/文件检测</div>
+                         <div class="maincontent" ng-repeat="one in directoryFile">
+                           <label class="checkbox-inline " >
+                                <input type="checkbox" ng-model="one.checked" ng-disabled="true">{{one.name}}
+                            </label>
+                        </div>
+                    </div>
+                    <div class="widpercent">
+                        <div class="head">访问策略检测</div>
+                         <div class="maincontent" ng-repeat="one in accessPolicy" >
+                           <label class="checkbox-inline " >
+                                <input type="checkbox"  ng-model="one.checked" ng-disabled="true">{{one.name}}
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+               <div class="text-right"  >
+                   <button class="btn btn-primary" ng-click="close()"> 取 消</button>
+               </div>
+           </div>
+        </div>
+    </div>
+</div>
+<style type="text/css">
+.addmain{
+    min-width: 1000px;
+
+}
+ 
+.main{
+    margin: 0px 5px 0px 5px;
+    min-height: 400px;
+    min-width: 560px;
+    border: 1px solid #ccc;
+}
+.widpercent{
+    margin-left: 5px;
+    width: 19%;
+    display: inline-block;
+    vertical-align: top;
+}
+.head{
+    background-color: #ccc;
+    color: black;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    margin-top: 10px;
+}
+.maincontent{
+    min-height: 28px;
+    line-height: 21px;
+    padding-left: 10px;
+    border: 1px solid #ccc;
+}
+</style>

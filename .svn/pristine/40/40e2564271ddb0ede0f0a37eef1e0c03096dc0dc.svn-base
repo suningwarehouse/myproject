@@ -1,0 +1,70 @@
+<div class="modal fade in" ng-controller="FlowNotifyUserCtrl">
+    <div class="modal-dialog" style="width:700px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="close()"><span aria-hidden="true">&times;</span><span
+                        class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title">通知人员</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" name="notifyUserForm">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label"><span style="color: #F5560A">*</span>发送</label>
+                        <div class="col-sm-6">
+                            <select select2='sendUserselect2option' style="width:300px" select-model="sendUserList" multiple>
+                                <option value="{{d.id}}" ng-repeat="d in sendUserRepeat" ng-if="sendUserRepeat"
+                                        selected="selected">{{d.name}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label  class="col-sm-2 control-label">抄送</label>
+                        <div class="col-sm-6">
+                            <select select2='sendCcselect2option' style="width:300px" select-model="sendCcList" multiple>
+                                <option value="{{d.id}}" ng-repeat="d in sendCcRepeat" ng-if="sendCcRepeat" selected="selected">{{d.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="button" class="btn btn-primary" ng-disabled="notifyUserForm.$invalid" ng-click="save()">确定
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<style type="text/css">
+    .clear {
+        clear: both
+    }
+
+    .btn {
+        padding: 6px 12px !important;
+    }
+
+    .h3-inline {
+        display: inline;
+    }
+
+    .red {
+        color: red;
+        padding-right: 5px;
+    }
+
+    .error {
+        color: #f60;
+    }
+
+    .success {
+        color: #78be25;
+    }
+
+    .small-i {
+        margin-top: 3px;
+    }
+</style>

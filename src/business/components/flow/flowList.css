@@ -1,0 +1,239 @@
+.table-border-mine {
+    border: 1px solid lightgray;
+    text-align: center;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.table-border-mine th,
+td {
+    border: 1px solid lightgray;
+    text-align: center;
+    padding: 7px !important;
+}
+
+.info {
+    background-color: #D9EDF7;
+}
+
+.margin-right-20 {
+    margin-right: 20px
+}
+
+.margin-right-10 {
+    margin-right: 10px
+}
+
+.width-180 {
+    width: 180px
+}
+
+.table-body {
+    padding: 10px 0
+}
+
+.tr-style {
+    font-size: 14px;
+    color: #687B93;
+    line-height: 18px;
+    height: 18px;
+    font-weight: normal;
+    font-family: 'MicrosoftYaHeiUILight';
+}
+
+.sn-table a{
+    color: #11B983;
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+.sn-table {
+    border: 1px solid #e0e0e0;
+    width: 100%;
+    border-collapse: collapse
+}
+
+.sn-table th {
+    font-size: 14px;
+    color: #000;
+    font-weight: 700
+}
+
+.sn-table td,
+.sn-table th {
+    border: 0;
+    height: 38px;
+    text-align: center
+}
+
+.sn-table td {
+    /*font-size: 12px;*/
+    color: #333;
+    padding: 6px 0
+}
+
+.sn-table tr:nth-child(odd) {
+    background-color: #f0f2f5
+}
+
+.sn-table tr:first-child {
+    background-color: #eaedf1
+}
+
+.sn-table-btn-group {
+    width: 35%
+}
+
+.sn-table-pager {
+    width: 65%
+}
+
+.sn-table-pager ul {
+    margin: 0
+}
+
+.table-text {
+    margin-top: 10px;
+    font-size: 12px;
+    color: #333
+}
+
+
+
+.clear {
+    clear: both
+}
+
+.btn{
+    padding: 6px 12px!important;
+}
+
+.h3-inline{
+    display: inline;
+}
+
+.red{
+    color: red;
+    padding-right: 5px;
+}
+
+.error {
+    color: #f60;
+}
+
+.success {
+    color: #78be25;
+}
+
+.small-i {
+    margin-top: 3px;
+}
+
+
+.search-div{
+    background-color:#11B983;
+    color: #fff;
+    min-width: 60px;
+    font-size: 14px;
+    padding: 4px 12px;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+    vertical-align: middle;
+    font-size: 12px;
+
+}
+
+.marginL {
+    margin-left: 6px;
+}
+.relative-div{
+    position: relative;
+    min-width: 150px;
+    border: 1px solid #E0E3EA;
+    margin: 10px;
+}
+.absolute-div{
+    left: 40px;
+    position: absolute;
+    top: -10px;
+    background-color: white;
+    border-left: 10px solid white;
+    border-right: 10px solid white;
+    padding-left: 2px;
+    padding-right: 2px;
+    color: #5A5C80;
+    font-size: 14;
+}
+.content-div{
+    padding: 6px 6px 0px 6px;
+    min-height: 76px;
+
+}  
+.button-div{
+    float: left;
+    margin-left: 35px;
+    margin-bottom: 15px;
+    margin-top: 10px;
+}
+.button-div a{
+    color: #11B983;
+}
+.promanage{
+    font-size: 18px;
+   
+}
+.tr-style {
+    font-size: 14px;
+    color: #687B93;
+    line-height: 18px;
+    height: 18px;
+    font-weight: normal;
+    font-family: 'MicrosoftYaHeiUILight';
+}
+.lookMore{
+    float: right;
+    margin: 8px 6px;
+    color: #11B983;
+    font-size: 12px;
+    cursor: pointer;
+}
+.system-div{
+    display: inline-block;
+    margin-left: 15px;
+    padding-top: 7px;
+    font-size: 14px;
+}
+.relative-div-top{
+    position: relative;
+    min-width: 150px;
+    border: 1px solid #E0E3EA;
+    margin: 10px;
+    padding-left: 25px;
+    overflow: hidden;
+}
+.reset-div{
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+    vertical-align: middle;
+    color: #11B983;
+    font-size: 12px;
+}
+
+.main-div{
+    min-width: 825px;
+    min-height: 468px;
+}
+.sn-table a{
+    color: #11B983;
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+.text_overflow {
+   text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100px;
+}

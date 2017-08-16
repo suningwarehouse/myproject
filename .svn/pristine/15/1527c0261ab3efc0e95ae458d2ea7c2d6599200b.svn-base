@@ -1,0 +1,50 @@
+<div class="this-header" style="padding-left:20px;">	
+	<p class="header-p1"><a href="#/overview/homePage" style="color:#686868;">首页</a> > <a style="color:#11B983;">部署单元</a></p>
+	<div>
+		<a></a>
+		部署单元
+	</div>
+	<p class="header-p0">部署单元（DU）：可被部署的应用组件集合，通常是依据组件依赖关系、非功能性需求等方面进行组合成可独立部署的软件包。其中Java程序中的部署单元就是war包。</p>
+	<p class="header-p2">为保证您可以使用持续部署功能，你的构件支持生命周期关联，请您在管理部署单元时引入代码库关联，如您无需部署，请忽略！</p>
+</div>
+<div style="border-top:5px solid #dee3ec;"></div>
+<section class="content" style="padding-top:0;padding-right:37px;">
+			<a class="btn buttonRight" ng-click="editAppPackage('create',appId)"><i class="fu fu-plus"></i>创建部署包</a>
+	<div class="table-body" style="min-height:20px;">
+		<table class="sn-table" style="table-layout: fixed">
+			<tr>
+				<th width="16%">部署包名称</th>
+				<th width="16%">业务类型名称</th>
+				<th width="16%">已关联代码库</th>
+				<th width="16%">未关联代码库原因</th>
+				<th width="16%">应用包功能简述</th>
+				<th width="16%">操作</th>
+			</tr>
+			<tr ng-repeat="package in packageList">
+				<td class="text_overflow" cd-tip>
+					{{package.packageName}}
+				</td>
+				<td class="text_overflow" cd-tip>
+					{{package.packageCnName}}
+				</td>
+				<td class="text_overflow" cd-tip>
+					{{package.reposName}}
+				</td>
+				
+				<td class="text_overflow" cd-tip>
+					{{package.reason}}
+				</td>
+				<td class="text_overflow" cd-tip>
+					{{package.description}}
+				</td>
+				<td>
+					<a  ng-click="editAppPackage('edit',appId,package.packageId)" >编辑</a>
+					<a  ng-click="delAppPackage(appId,package.packageId,$index)" >删除</a>
+				</td>
+			</tr>
+		</table>
+	</div>
+</section>
+
+
+

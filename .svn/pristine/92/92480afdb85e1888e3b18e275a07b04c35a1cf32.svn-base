@@ -1,0 +1,9 @@
+<div class="iframe-wrap" ng-if="selectView==='version'">
+    <cd-iframe src="{{url}}"></cd-iframe>
+</div>
+<div class="iframe-wrap" ng-if="selectView==='versioDetail'">
+    <cd-iframe src="{{url}}"></cd-iframe>
+</div>
+<div class="iframe-wrap" ng-if="selectView==='versionReport'">
+    <cd-iframe src="{{url}}"></cd-iframe>
+</div>

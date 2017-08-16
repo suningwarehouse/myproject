@@ -1,0 +1,133 @@
+<div>
+
+	<div class="nav-content">
+		<div class="nav-title">
+			<div class="nav-title-decoration-color"></div>
+			<div class="nav-title-name">代码托管</div>
+			<p>代码托管服务提供 git/svn 代码托管，支持多人协作/权限分配/私人项目，拥有完善的权限控制以及异地多活让你数据稳如泰山。</p>
+			<div class="linkName">
+				<!-- <div class="button-div" style="margin-left: 0px;" ng-click="showDialog()"><a ng-href="{{saturnUrl}}/#/overview" target="_blank">进入代码托管</a></div> -->
+				<div class="button-div" style="margin-left: 0px;" perm-code="phoebus_repository_create"><a href="javascript:;" ui-sref="topHead.overview.codeCreate">创建代码库</a></div>
+			</div>
+		</div>
+	</div>
+	<div class="mainContent">
+		<div class="table-header" style="margin-top: 13px;">
+					<form class="form-inline">
+						<div class="pull-left margin-right-10">
+						<input ng-model="search.reposName" placeholder="输入代码库名称" />
+						<input ng-model="search.projectName" placeholder="输入应用名称" />
+					<!--  <input ng-model="search.reposType" placeholder="托管类型"/> -->
+						</div>
+						<div class="pull-left margin-right-10 marginL select2height">
+							<select class="form-control" select2="select2RepositoryStatus" ng-model="repositoryStatus"
+								ng-options="repositoryStatus.value for repositoryStatus in repositoryStatusList"
+								type="text" class="form-control"
+								ng-change="onChangeSlelectRepertoryStatus(repositoryStatus)"
+								style="width: 175px">
+								<option value="">请选择状态</option>
+							</select>
+						</div>
+						<div class="pull-left margin-right-10 marginL select2height">
+							<select class="form-control" select2="select2RepositoryType" ng-model="search.reposType"
+								ng-options="repositoryType for repositoryType in repositoryTypeList"
+								type="text" class="form-control"
+								style="width: 175px">
+								<option value="">请选择托管类型</option>
+							</select>
+						</div>
+						<div class="search-div marginL" ng-click="doSearch()"
+							>查询</div>
+						<!-- <a type="reset" href="javascript:void(0)" ng-click="doReset()" 
+							style="vertical-align: bottom;">重置</a> -->
+					</form>
+				</div>
+				<!--表格主体 -->
+				<div class="table-body">
+					<table class="sn-table" style="table-layout: fixed">
+						<tr>
+							<th width="15%"><span class="tr-style">代码库中文名称</span></th>
+							<th width="15%"><span class="tr-style">代码库英文名称</span></th>
+							<th width="15%"><span class="tr-style">所属应用</span></th>
+							<th width="10%"><span class="tr-style">状态</span></th>
+							<th width="15%"><span class="tr-style">托管类型</span></th>
+							<th width="20%"><span class="tr-style">管理员</span></th>
+							<th width="20%"><span class="tr-style">创建时间</span></th>
+						</tr>
+						<tr ng-repeat="repositoryBO in repositoryBOListRespVO">
+							<td class="text_overflow" title="{{repositoryBO.reposChineseName}}">
+								<div ng-if="repositoryBO.status != 'D' " ng-click="setSession(repositoryBO.projectId,repositoryBO.projectName)">
+                                    <a ng-if="repositoryBO.reposType=='GIT'" href="/#/repositoryManageById/git/{{repositoryBO.gitlabProjectId}}">
+                                        <div class="text_overflow" title="{{repositoryBO.reposChineseName}}" >{{repositoryBO.reposChineseName}}</div>
+                                    </a>
+                                    <a ng-if="repositoryBO.reposType=='SVN'" href="/#/repositoryManageById/svn/{{repositoryBO.id}}">
+                                        <div class="text_overflow" title="{{repositoryBO.reposChineseName}}" >{{repositoryBO.reposChineseName}}</div>
+                                    </a>
+                                </div>
+                                <div ng-if="repositoryBO.status == 'D' " >
+                                    {{repositoryBO.reposChineseName}}
+                                </div>
+							</td>
+							<!-- <td class="text_overflow" style="padding: 10px 20px;" title="{{repositoryBO.reposName}}">
+								<a ng-href="/#/repositoryManageById/{{repositoryBO.id}}" target="_blank"  ng-click="setSession(repositoryBO.projectId,repositoryBO.projectName)">
+								{{repositoryBO.reposName}}
+								</a>
+							</td> -->
+							<td class="text_overflow" title="{{repositoryBO.reposName}}">
+                                <div ng-if="repositoryBO.status != 'D' " ng-click="setSession(repositoryBO.projectId,repositoryBO.projectName)">
+                                    <a ng-if="repositoryBO.reposType=='GIT'" href="/#/repositoryManageById/git/{{repositoryBO.gitlabProjectId}}">
+                                        <div class="text_overflow" title="{{repositoryBO.reposName}}" >{{repositoryBO.reposName}}</div>
+                                    </a>
+                                    <a ng-if="repositoryBO.reposType=='SVN'" href="/#/repositoryManageById/svn/{{repositoryBO.id}}">
+                                        <div class="text_overflow" title="{{repositoryBO.reposName}}" >{{repositoryBO.reposName}}</div>
+                                    </a>
+                                </div>
+                                <div ng-if="repositoryBO.status == 'D' " >
+                                    {{repositoryBO.reposName}}
+                                </div>
+                            </td>
+							<td class="text_overflow" title="{{repositoryBO.projectName}}">
+							{{repositoryBO.projectName}}
+							</td>
+							<td>
+								<div ng-show="repositoryBO.status != 'D' ">
+									<span>在使用</span>
+								</div>
+								<div ng-show="repositoryBO.status == 'D' ">
+									<span>已废弃</span>
+								</div>
+							</td>
+							<td class="text_overflow" title="{{repositoryBO.reposType}}">
+							{{repositoryBO.reposType}}
+							</td>
+							<td>{{repositoryBO.creator}}</td>
+							
+							<td>{{repositoryBO.createTime|date:'yyyy-MM-dd HH:mm:ss'}}</td>
+						</tr>
+						<tr ng-if="!repositoryBOListRespVO||repositoryBOListRespVO.length<1">
+							<td colspan="6">暂无数据</td>
+						</tr>
+					</table>
+				</div>
+				<div class="table-footer" style="overflow: hidden;">
+					<div class="pull-right sn-table-pager text-right">
+						<cd-pager page="page" page-size="pageSize" total="total"
+							page-action="paging(page, pageSize, total)"></cd-pager>
+					</div>
+				</div>
+		</div>
+	<!--<div class="relative-div">
+		<div class="absolute-div">我的项目</div>
+		<div class="content-div">
+			
+			
+			
+		</div>
+	</div>-->
+</div>
+
+
+
+
+
+

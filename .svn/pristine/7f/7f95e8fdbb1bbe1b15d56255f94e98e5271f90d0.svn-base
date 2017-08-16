@@ -1,0 +1,55 @@
+<!doctype html><html><head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <script type="text/javascript" src="../internal.js"></script>
+    <link rel="stylesheet" type="text/css" href="background.css">
+</head>
+<body sat-id="1470899323172">
+    <div id="bg_container" class="wrapper" sat-id="1470899323173">
+        <div id="tabHeads" class="tabhead" sat-id="1470899323174">
+            <span class="focus" data-content-id="normal" sat-id="1470899323175"><var id="lang_background_normal" sat-id="1470899323176"></var></span>
+            <span class="" data-content-id="imgManager" sat-id="1470899323177"><var id="lang_background_local" sat-id="1470899323178"></var></span>
+        </div>
+        <div id="tabBodys" class="tabbody" sat-id="1470899323179">
+            <div id="normal" class="panel focus" sat-id="1470899323180">
+                <fieldset class="bgarea" sat-id="1470899323181">
+                    <legend sat-id="1470899323182"><var id="lang_background_set" sat-id="1470899323183"></var></legend>
+                    <div class="content" sat-id="1470899323184">
+                        <div sat-id="1470899323185">
+                            <label sat-id="1470899323186"><input id="nocolorRadio" class="iptradio" type="radio" name="t" value="none" checked sat-id="1470899323187"><var id="lang_background_none" sat-id="1470899323188"></var></label>
+                            <label sat-id="1470899323189"><input id="coloredRadio" class="iptradio" type="radio" name="t" value="color" sat-id="1470899323190"><var id="lang_background_colored" sat-id="1470899323191"></var></label>
+                        </div>
+                        <div class="wrapcolor pl" sat-id="1470899323192">
+                            <div class="color" sat-id="1470899323193">
+                                <var id="lang_background_color" sat-id="1470899323194"></var>:
+                            </div>
+                            <div id="colorPicker" sat-id="1470899323195"></div>
+                            <div class="clear" sat-id="1470899323196"></div>
+                        </div>
+                        <div class="wrapcolor pl" sat-id="1470899323197">
+                            <label sat-id="1470899323198"><var id="lang_background_netimg" sat-id="1470899323199"></var>:</label><input class="txt" type="text" id="url" sat-id="1470899323200">
+                        </div>
+                        <div id="alignment" class="alignment" sat-id="1470899323201">
+                            <var id="lang_background_align" sat-id="1470899323202"></var>:<select id="repeatType" sat-id="1470899323203">
+                                <option value="center" sat-id="1470899323204"></option>
+                                <option value="repeat-x" sat-id="1470899323205"></option>
+                                <option value="repeat-y" sat-id="1470899323206"></option>
+                                <option value="repeat" sat-id="1470899323207"></option>
+                                <option value="self" sat-id="1470899323208"></option>
+                            </select>
+                        </div>
+                        <div id="custom" sat-id="1470899323209">
+                            <var id="lang_background_position" sat-id="1470899323210"></var>:x:<input type="text" size="1" id="x" maxlength="4" value="0" sat-id="1470899323211">px&nbsp;&nbsp;y:<input type="text" size="1" id="y" maxlength="4" value="0" sat-id="1470899323212">px
+                        </div>
+                    </div>
+                </fieldset>
+
+            </div>
+            <div id="imgManager" class="panel" sat-id="1470899323213">
+                <div id="imageList" style="" sat-id="1470899323214"></div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="background.js" sat-id="1470899323215"></script>
+
+
+</body></html>

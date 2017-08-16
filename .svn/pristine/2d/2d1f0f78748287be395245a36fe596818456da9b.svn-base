@@ -1,0 +1,49 @@
+<section class="content-header" style="margin-top: 50px">   
+   <sn-breadcrumb datalist="crumbBaseData"></sn-breadcrumb>
+      <h4><div></div><strong>部署单元管理</strong></h4>
+   <div style="height: 5px"></div>
+ 
+</section>
+
+<section class="content" >
+     <form class="form-inline">
+			<button class="btn btn-default buttonRight" ng-click="editAppPackage('create',appId)">创建部署包</button>
+     </form>
+	<div class="table-body" >
+		<table class="sn-table" style="table-layout: fixed">
+			<tr>
+				<th>部署包名称</th>
+				<th>业务类型名称</th>
+				<th>已关联代码库</th>
+				<th>未关联代码库原因</th>
+				<th>应用包功能简述</th>
+				<th>操作</th>
+			</tr>
+			<tr ng-repeat="package in packageList">
+				<td>
+					{{package.packageName}}
+				</td>
+				<td>
+					{{package.packageCnName}}
+				</td>
+				<td class="text_overflow" title="{{package.reposName}}">
+					{{package.reposName}}
+				</td>
+				
+				<td class="text_overflow" title="{{package.reason}}">
+					{{package.reason}}
+				</td>
+				<td class="text_overflow" title="{{package.description}}">
+					{{package.description}}
+				</td>
+				<td>
+					<a  ng-click="editAppPackage('edit',appId,package.packageId)" >编辑</a>
+					<a  ng-click="delAppPackage(appId,package.packageId,$index)" >删除</a>
+				</td>
+			</tr>
+		</table>
+	</div>
+</section>
+
+
+

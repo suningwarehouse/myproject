@@ -1,0 +1,146 @@
+.sn-table {
+    border: 1px solid #e0e0e0;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.sn-table tr:first-child {
+    background-color: #eaedf1;
+}
+
+.sn-table td,
+.sn-table th {
+    height: 38px;
+    padding-left: 20px;
+    text-align: left;
+    font-size: 12px;
+}
+
+.sn-table th {
+    font-size: 14px;
+    color: #000;
+    font-weight: 700;
+}
+
+.table-body {
+    padding: 10px 0;
+}
+
+ul.a {
+    list-style-type: none;
+    display: inline-block;
+    margin-top: 20px;
+    padding-right: 30px;
+    border-right: 2px solid #ccc;
+}
+
+ul.a li {
+    margin-top: 10px;
+    font-size: 16px;
+    text-align: right;
+}
+
+.rightContent { 
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    margin-left: 200px;
+    margin-top: 60px;
+    overflow-y: auto;
+    height: 100%;
+
+}
+
+/*div.leftList {
+    background-color: #f3f5f7;
+    color: #5A5C80;
+}*/
+.table-footer{
+    padding-bottom: 20px;
+}
+
+@font-face {
+  font-family: 'iconfont';
+  src:  url('fonts/iconfont.eot?pez9m2');
+  src:  url('fonts/iconfont.eot?pez9m2#iefix') format('embedded-opentype'),
+    url('fonts/iconfont.ttf?pez9m2') format('truetype'),
+    url('fonts/iconfont.woff?pez9m2') format('woff'),
+    url('fonts/iconfont.svg?pez9m2#iconfont') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'iconfont' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-过程改进:before {
+    content: "\e916";
+    display: inline-block;
+    width: 30px;
+
+}
+.icon-版本管理-copy-2:before {
+    content: "\e917";
+    display: inline-block;
+    width: 30px;
+
+}
+.icon-部署管理-copy-2:before {
+  content: "\e918";
+      display: inline-block;
+    width: 30px;
+
+}
+.icon-持续集成-copy-2:before {
+  content: "\e924";
+      display: inline-block;
+    width: 30px;
+
+}
+.icon-代码托管-copy-2:before {
+  content: "\e925";
+      display: inline-block;
+    width: 30px;
+  
+}
+.icon-概览:before {
+  content: "\e926";
+      display: inline-block;
+    width: 30px;
+  
+}
+.icon-构建中心-copy-2:before {
+  content: "\e927";
+      display: inline-block;
+    width: 30px;
+
+}
+.icon-交付流水线-copy-2:before {
+  content: "\e928";
+      display: inline-block;
+    width: 30px;
+}
+.icon-项目管理-copy-5:before {
+  content: "\e929";
+      display: inline-block;
+    width: 30px;
+
+}
+.icon-应用管理-copy-2:before {
+  content: "\e92a";
+      display: inline-block;
+    width: 30px;
+
+}

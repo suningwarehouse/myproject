@@ -1,0 +1,304 @@
+.circleCon{
+    width: 100%;
+    min-height: 340px;
+}
+.circle1 {
+    width: 130px;
+    height: 130px;
+    background: #0066ff;
+    -moz-border-radius: 75px;
+    -webkit-border-radius: 75px;
+    border-radius: 75px;
+    text-align: center;
+    color: white;
+    font-size: 18px;
+    display: inline-block;
+}
+.circle2 {
+    width: 130px;
+    height: 130px;
+    background: #0099ff;
+    -moz-border-radius: 75px;
+    -webkit-border-radius: 75px;
+    border-radius: 75px;
+    text-align: center;
+    color: white;
+    font-size: 18px;
+    display: inline-block;
+}
+.circle3 {
+    width: 130px;
+    height: 130px;
+    background: #33ccff;
+    -moz-border-radius: 75px;
+    -webkit-border-radius: 75px;
+    border-radius: 75px;
+    text-align: center;
+    color: white;
+    font-size: 18px;
+    display: inline-block;
+}
+.firstContent{
+    padding-top: 33%;
+}
+.secondContent{
+    color: blue;
+}
+.left{
+    display: inline-block;
+   
+}
+.littleRound{
+    display: inline-block;
+    position: absolute;
+    left: 58px;
+    top: 110px;
+}
+.div-relative{
+    position: relative;
+    width: 33%;
+    height: 200px;
+    float: left;
+
+}
+#main1{
+    position: absolute;
+    width:350px;
+    height:350px; 
+    display: inline-block;
+}
+#main2{
+    position: absolute;
+    width:350px;
+    height:350px; 
+    display: inline-block;
+}
+#main3{
+    position: absolute;
+    width:350px;
+    height:350px; 
+    display: inline-block;
+}
+
+.squareCon{
+    margin-left: 22px;
+    width: 230px;
+    min-height: 140px;
+    color: white;
+    display: inline-block;
+    vertical-align: top;
+}
+.squareFirst{
+    background-color: #6699ff;
+    min-height: 70px;
+    text-align: center;
+}
+.squareSecond{
+    background-color: #99ccff;
+    min-height: 70px;
+}
+.square-10{
+    font-size: 25px;
+    padding-top: 10px;
+}
+.square-4{
+    margin-left: 20px;
+    padding-top: 10px;
+    width: 85px;
+    display: inline-block;
+}
+.square-4-2{
+    color: #0066ff
+}
+
+
+.main{
+    min-width: 800px;
+    border: 1px solid #ccc;
+    overflow: hidden;
+}
+.mainleft{
+    border: 1px solid #ccc;
+    float: left;
+    padding-top: 50px;
+}
+.mainright{
+    float: left;
+}
+
+.relative-div{
+    float: left;
+    position: relative;
+    min-width: 150px;
+    border: 1px solid #E0E3EA;
+    margin-bottom: 10px;
+    width: 79%;
+}
+.absolute-div{
+    left: 40px;
+    position: absolute;
+    top: -10px;
+    background-color: white;
+    border-left: 10px solid white;
+    border-right: 10px solid white;
+    padding-left: 2px;
+    padding-right: 2px;
+    color: #5A5C80;
+    font-size: 14;
+}
+.content-div{
+    padding: 24px;
+    min-height: 76px;
+
+}  
+.contentRight{
+    margin-left: 30px;
+}
+.eventNotice{
+    position: relative;
+    border-left: 1px solid #ccc;
+    min-height: 50px;
+    margin-left: 20px;
+}
+.systemNotice{
+    margin-bottom: 15px;
+}
+    
+.circle-div{
+    left: -5px;
+    position: absolute;
+    top: -5px;
+    background-color: #666666;
+    border-radius: 50%;
+    width: 9px;
+    height: 9px;
+}
+.lookMore{
+    margin-left: 10px;
+}
+.sn-table{
+    border: 1px solid #e0e0e0;
+    width: 100%;
+    border-collapse: collapse;
+}
+.sn-table tr:first-child {
+    background-color: #eaedf1;
+}
+
+.sn-table td, .sn-table th {
+    height: 38px;
+    padding-left: 20px;
+    text-align: left;
+    font-size: 12px;
+}
+.sn-table th {
+    font-size: 14px;
+    color: #000;
+    font-weight: 700;
+}
+.table-body {
+    padding: 10px 0;
+}
+ul.a {
+    list-style-type:none;
+    display: inline-block;
+    margin-top: 20px;
+    padding-right: 30px;
+    border-right: 2px solid #ccc;
+}
+ul.a li{
+    margin-top: 10px;
+    font-size: 16px;
+    text-align: right;
+    }
+.rightContent{
+    display: inline-block;
+    margin-left: 20px;
+    vertical-align: top;
+    margin-top: 30px;
+}
+.leftList{
+    position: relative;
+    padding: 0px 0px 0px 0px;
+}
+.verticalMenu{
+    position: static;
+    display: inline-block;
+    margin-left: 15px;
+    margin-top: 30px;
+    width: 18%;
+}
+.bottom-div{
+    margin-top: 10px;
+    margin-left: 8px;
+}
+.right-div{
+    margin-left: 30px;
+}
+.button-div{
+    float: left;
+    margin-left: 35px;
+}
+.button-div a{
+    color: #11B983;
+}
+.tr-style {
+    font-size: 14px;
+    color: #687B93;
+    line-height: 18px;
+    height: 18px;
+    font-weight: normal;
+    font-family: 'MicrosoftYaHeiUILight';
+}
+.sn-table a{
+    color: #11B983;
+    margin: 0 10px;
+    cursor: pointer;
+}
+.lookMore{
+    float: right;
+    margin: 8px 6px;
+    color: #11B983;
+    font-size: 12px;
+    cursor: pointer;
+}
+.system-div{
+    display: inline-block;
+    margin-left: 15px;
+    padding-top: 7px;
+    font-size: 14px;
+}
+
+
+.relative-div-little{
+    float: left;
+    position: relative;
+    min-width: 150px;
+    border: 1px solid #E0E3EA;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    width: 20%;
+    height: 390px;
+}
+.absolute-div-little{
+    left: 40px;
+    position: absolute;
+    top: -10px;
+    background-color: white;
+    border-left: 10px solid white;
+    border-right: 10px solid white;
+    padding-left: 2px;
+    padding-right: 2px;
+    color: #5A5C80;
+    font-size: 14;
+}
+.content-div-little{
+    padding: 24px;
+    min-height: 76px;
+} 
+.systemNotice-little{
+    margin-bottom: 15px;
+}
+.lookMore-little{
+    margin-left: 10px;
+}

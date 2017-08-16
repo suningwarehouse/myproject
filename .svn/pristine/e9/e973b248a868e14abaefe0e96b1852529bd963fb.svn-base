@@ -1,0 +1,154 @@
+<div class="nav-content">
+	<div class="nav-title">
+		<sn-breadcrumb datalist="crumbBaseData"></sn-breadcrumb>
+		<div class="nav-title-decoration-color"></div>
+    	<div class="nav-title-name">流水线</div>	
+	</div>	  
+</div>
+<div class="myTab">
+        <ul id="mytabs">
+            <li class="mytab-nav" ng-class="{true: 'mytab-nav-action', false: 'mytab-nav'}[isFirst]"
+                ng-click="change(1)">详情
+            </li>
+            <li class="mytab-nav" ng-class="{true: 'mytab-nav-action', false: 'mytab-nav'}[isSecond]"
+                ng-click="change(2)">执行历史
+            </li>
+            <li class="mytab-nav" ng-class="{true: 'mytab-nav-action', false: 'mytab-nav'}[isThird]"
+                ng-click="change(3)">通知
+            </li>
+        </ul>
+</div>
+
+
+
+   
+
+
+<section class="content">
+
+    <div  ng-show="initNum == 1">
+        <div >
+            <h3 class="toptext">
+                <span style="font-size: 12px;">流水线名称：{{flow.flowName}}</span>
+                <span style="margin-left:30px;font-size: 12px;">
+                    归属项目：{{flow.sysName}}
+                </span>
+                <span style="margin-left:30px;" perm-code="flow_update" title="修改">
+                    <a href="javascript:;" ui-sref="topHead.leftColumn.editFlow({flowId: flow.id,sysId:tmpSysId})"><i class="fa fa-edit" aria-hidden="true"></i></a>
+                </span>
+                <span style="margin-left:20px;" perm-code="flow_delete" title="删除">
+                    <i class="fa fa-trash-o" aria-hidden="true" ng-click="delete(flow.id,flow.flowName)"></i>
+                </span>
+                <span style="margin-left:20px;" perm-code="flow_add" title="执行计划设置">
+                    <i class="fa fa-cog" aria-hidden="true" ng-click="showCronSet(flow)"></i>
+                </span>
+            </h3>
+        </div>
+        <div >
+            <button ng-disabled="flowExecuteStatus==1" perm-code="flow_execute" class="nextupbutton" type="button" ng-click="executeFlow()">
+                <span ng-if="flowExecuteStatus!=1">开始执行</span>
+                <span ng-if="flowExecuteStatus==1">执行中..</span>
+            </button>
+            <sapn ng-show="statusCode == 2">
+                <span style="margin-left:30px;">执行结果：</span><span style="margin-left:20px;">成功</span>
+                <span style="margin-left:30px;">执行时间：</span><span style="margin-left:20px;">{{myDate| date:"yyyy/dd/MM  h:mma"}}</span>
+            </sapn>
+        </div>
+
+        <div class="panel-body">
+            <div  ng-repeat="oneProcess in nodeGroupList"  ng-class="{oneLineFirst:0 === $index, oneLine:!(0 === $index)}">
+                <div class="linetop">
+                    <div ng-class="{linetopleftFirst:0 === $index, linetopleft1:!(0 === $index)}">
+                        <div class="topleft">{{$index+1}}</div>
+                        <div class="topmiddle">
+                            <div class="topmiddleStep text_process_overflow" title="{{oneProcess.groupName}}">{{oneProcess.groupName}}</div>
+                            <!--<div class="topmiddleNum" ng-show="oneProcess.flowNodeList.length>0"><span>{{oneProcess.flowNodeList.length}}</span>任务
+                            </div>-->
+                        </div>
+                        <div class="topimg">
+                            <!--未执行-->
+                            <span class="fu fu-ellipsis" ng-show="oneProcess.executeStatus == 1"></span>
+                            <!--成功-->
+                            <span class="fu fu-check-circle stateCode2" ng-show="oneProcess.groupType==1 && oneProcess.executeStatus == 2"></span>
+                            <!--失败-->
+                            <span class="fu fu-cross-circle stateCode2" ng-show="oneProcess.executeStatus == 3"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="linecontent">
+                    <div class="listStyle">
+                        <!--未执行-->
+                        <span class="circleBig" ng-show="oneProcess.executeStatus == 1"></span>
+                        <!--成功-->
+                        <span class="fu fu-check-circle stateCode2" ng-show="oneProcess.groupType==1 && oneProcess.executeStatus == 2"></span>
+                        <!--失败-->
+                        <span class="fu fu-cross-circle stateCode2" ng-show="oneProcess.executeStatus == 3"></span>
+                        <span ng-show="oneProcess.groupType==1" style="color: #6DD4B3;">任务列表</span>
+                        <span ng-show="oneProcess.groupType==-1" style="color: #6DD4B3;">流水线现有{{nodeGroupList.length}}个阶段</span>
+                    </div>
+
+                    <div class="listStyle" ng-repeat="oneList in oneProcess.flowNodeList">
+                        <!--未执行-->
+                        <div class="circle" ng-show="statusCode == 1" style="background-color:#11B983"></div>
+                        <!--成功-->
+                        <div class="fu fu-check-circle stateCode2" ng-show="oneProcess.executeStatus == 1" style="background-color:#11B983"></div>
+                        <!--失败-->
+                        <div class="fu fu-cross-circle stateCode2" ng-show="oneProcess.executeStatus == 3" style="background-color:#11B983"></div>
+                        <span class="text_overflow" title="{{oneList.taskAlias}}">{{oneList.taskAlias}}</span>
+                    </div>
+
+                    <!--<div class="listStyle">
+                        <progress value="{{downLoadPro}}" max="100"></progress>
+                    </div>-->
+
+                    <div class="listStyle" ng-if="oneProcess.groupType==1">
+                        <span style="color: #6DD4B3;">任务总数{{oneProcess.flowNodeList.length}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default" ng-show="initNum == 2">
+        <div class="table-body">
+            <table class="sn-table">
+                <tr>
+                    <th>编号</th>
+                    <th>执行结果</th>
+                    <th>执行时长</th>
+                    <th>执行人</th>
+                    <th>开始时间</th>
+                </tr>
+                <tr ng-repeat="history in pagination.data">
+                    <td>
+                        <a href="javascript:;" ng-click="showDetail(history.id)">{{history.id}}</a>
+                    </td>
+                    <td>
+                        <span ng-if="history.executeStatus==1">执行中</span>
+                        <span ng-if="history.executeStatus==2">成功</span>
+                        <span ng-if="history.executeStatus==4">失败</span>
+                        <span ng-if="history.executeStatus==8">停止</span>
+                    </td>
+                    <td>
+                        {{history.executeLength|ChangeCode}}
+                    </td>
+                    <td>
+                        {{history.createUser}}
+                    </td>
+                    <td>
+                        {{history.beginTime}}
+                    </td>
+                </tr>
+                <tr ng-if="!pagination.data||pagination.data.length<1">
+                    <td colspan="7">暂无数据</td>
+                </tr>
+            </table>
+        </div>
+   
+                 <cd-pager style="float: right" page="pagination.page" page-size="pagination.pageSize"
+         total="pagination.totalCount" page-action="paginationSearch(page, pageSize, total)"></cd-pager>
+    </div>
+
+    <div class="panel panel-default" ng-if="initNum == 3" ng-include="'business/components/flow/detail/flowNotify.html'">
+
+    </div>
+</section>

@@ -1,0 +1,87 @@
+<!doctype html><html><head>
+        <title>chart</title>
+        <meta chartset="utf-8">
+        <link rel="stylesheet" type="text/css" href="charts.css">
+        <script type="text/javascript" src="../internal.js"></script>
+    </head>
+    <body sat-id="1470899322710">
+        <div class="main" sat-id="1470899322711">
+            <div class="table-view" sat-id="1470899322712">
+                <h3 sat-id="1470899322713"><var id="lang_data_source" sat-id="1470899322714"></var></h3>
+                <div id="tableContainer" class="table-container" sat-id="1470899322715"></div>
+                <h3 sat-id="1470899322716"><var id="lang_chart_format" sat-id="1470899322717"></var></h3>
+                <form name="data-form" sat-id="1470899322718">
+                    <div class="charts-format" sat-id="1470899322719">
+                        <fieldset sat-id="1470899322720">
+                            <legend sat-id="1470899322721"><var id="lang_data_align" sat-id="1470899322722"></var></legend>
+                            <div class="format-item-container" sat-id="1470899322723">
+                                <label sat-id="1470899322724">
+                                    <input type="radio" class="format-ctrl not-pie-item" name="charts-format" value="1" checked sat-id="1470899322725">
+                                    <var id="lang_chart_align_same" sat-id="1470899322726"></var>
+                                </label>
+                                <label sat-id="1470899322727">
+                                    <input type="radio" class="format-ctrl not-pie-item" name="charts-format" value="-1" sat-id="1470899322728">
+                                    <var id="lang_chart_align_reverse" sat-id="1470899322729"></var>
+                                </label>
+                                <br sat-id="1470899322730">
+                            </div>
+                        </fieldset>
+                        <fieldset sat-id="1470899322731">
+                            <legend sat-id="1470899322732"><var id="lang_chart_title" sat-id="1470899322733"></var></legend>
+                            <div class="format-item-container" sat-id="1470899322734">
+                                <label sat-id="1470899322735">
+                                    <var id="lang_chart_main_title" sat-id="1470899322736"></var><input type="text" name="title" class="data-item" sat-id="1470899322737">
+                                </label>
+                                <label sat-id="1470899322738">
+                                    <var id="lang_chart_sub_title" sat-id="1470899322739"></var><input type="text" name="sub-title" class="data-item not-pie-item" sat-id="1470899322740">
+                                </label>
+                                <label sat-id="1470899322741">
+                                    <var id="lang_chart_x_title" sat-id="1470899322742"></var><input type="text" name="x-title" class="data-item not-pie-item" sat-id="1470899322743">
+                                </label>
+                                <label sat-id="1470899322744">
+                                    <var id="lang_chart_y_title" sat-id="1470899322745"></var><input type="text" name="y-title" class="data-item not-pie-item" sat-id="1470899322746">
+                                </label>
+                            </div>
+                        </fieldset>
+                        <fieldset sat-id="1470899322747">
+                            <legend sat-id="1470899322748"><var id="lang_chart_tip" sat-id="1470899322749"></var></legend>
+                            <div class="format-item-container" sat-id="1470899322750">
+                                <label sat-id="1470899322751">
+                                    <var id="lang_cahrt_tip_prefix" sat-id="1470899322752"></var>
+                                    <input type="text" id="tipInput" name="tip" class="data-item" disabled sat-id="1470899322753">
+                                </label>
+                                <p sat-id="1470899322754"><var id="lang_cahrt_tip_description" sat-id="1470899322755"></var></p>
+                            </div>
+                        </fieldset>
+                        <fieldset sat-id="1470899322756">
+                            <legend sat-id="1470899322757"><var id="lang_chart_data_unit" sat-id="1470899322758"></var></legend>
+                            <div class="format-item-container" sat-id="1470899322759">
+                                <label sat-id="1470899322760"><var id="lang_chart_data_unit_title" sat-id="1470899322761"></var><input type="text" name="unit" class="data-item" sat-id="1470899322762"></label>
+                                <p sat-id="1470899322763"><var id="lang_chart_data_unit_description" sat-id="1470899322764"></var></p>
+                            </div>
+                        </fieldset>
+                    </div>
+                </form>
+            </div>
+            <div class="charts-view" sat-id="1470899322765">
+                <div id="chartsContainer" class="charts-container" sat-id="1470899322766"></div>
+                <div id="chartsType" class="charts-type" sat-id="1470899322767">
+                    <h3 sat-id="1470899322768"><var id="lang_chart_type" sat-id="1470899322769"></var></h3>
+                    <div class="scroll-view" sat-id="1470899322770">
+                        <div class="scroll-container" sat-id="1470899322771">
+                            <div id="scrollBed" class="scroll-bed" sat-id="1470899322772"></div>
+                        </div>
+                        <div id="buttonContainer" class="button-container" sat-id="1470899322773">
+                            <a href="#" data-title="prev" sat-id="1470899322774"><var id="lang_prev_btn" sat-id="1470899322775"></var></a>
+                            <a href="#" data-title="next" sat-id="1470899322776"><var id="lang_next_btn" sat-id="1470899322777"></var></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="../../third-party/jquery-1.10.2.min.js" sat-id="1470899322778"></script>
+        <script src="../../third-party/highcharts/highcharts.js" sat-id="1470899322779"></script>
+        <script src="chart.config.js" sat-id="1470899322780"></script>
+        <script src="charts.js" sat-id="1470899322781"></script>
+    
+</body></html>

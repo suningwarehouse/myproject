@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"><html><head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <script type="text/javascript" src="../internal.js"></script>
+    <link rel="stylesheet" type="text/css" href="video.css">
+</head>
+<body sat-id="1470899323088">
+<div class="wrapper" sat-id="1470899323089">
+    <div id="videoTab" sat-id="1470899323090">
+        <div id="tabHeads" class="tabhead" sat-id="1470899323091">
+            <span tabsrc="video" class="focus" data-content-id="video" sat-id="1470899323092"><var id="lang_tab_insertV" sat-id="1470899323093"></var></span>
+            <span tabsrc="upload" data-content-id="upload" sat-id="1470899323094"><var id="lang_tab_uploadV" sat-id="1470899323095"></var></span>
+        </div>
+        <div id="tabBodys" class="tabbody" sat-id="1470899323096">
+            <div id="video" class="panel focus" sat-id="1470899323097">
+               <table sat-id="1470899323098"><tbody sat-id="1470899323099"><tr sat-id="1470899323100"><td sat-id="1470899323101"><label for="videoUrl" class="url" sat-id="1470899323102"><var id="lang_video_url" sat-id="1470899323103"></var></label></td><td sat-id="1470899323104"><input id="videoUrl" type="text" sat-id="1470899323105"></td></tr></tbody></table>
+               <div id="preview" sat-id="1470899323106"></div>
+               <div id="videoInfo" sat-id="1470899323107">
+                   <fieldset sat-id="1470899323108">
+                       <legend sat-id="1470899323109"><var id="lang_video_size" sat-id="1470899323110"></var></legend>
+                       <table sat-id="1470899323111">
+                           <tbody sat-id="1470899323112"><tr sat-id="1470899323113"><td sat-id="1470899323114"><label for="videoWidth" sat-id="1470899323115"><var id="lang_videoW" sat-id="1470899323116"></var></label></td><td sat-id="1470899323117"><input class="txt" id="videoWidth" type="text" sat-id="1470899323118"></td></tr>
+                           <tr sat-id="1470899323119"><td sat-id="1470899323120"><label for="videoHeight" sat-id="1470899323121"><var id="lang_videoH" sat-id="1470899323122"></var></label></td><td sat-id="1470899323123"><input class="txt" id="videoHeight" type="text" sat-id="1470899323124"></td></tr>
+                       </tbody></table>
+                   </fieldset>
+                   <fieldset sat-id="1470899323125">
+                      <legend sat-id="1470899323126"><var id="lang_alignment" sat-id="1470899323127"></var></legend>
+                      <div id="videoFloat" sat-id="1470899323128"></div>
+                  </fieldset>
+               </div>
+            </div>
+            <div id="upload" class="panel" sat-id="1470899323129">
+                <div id="upload_left" sat-id="1470899323130">
+                    <div id="queueList" class="queueList" sat-id="1470899323131">
+                        <div class="statusBar element-invisible" sat-id="1470899323132">
+                            <div class="progress" sat-id="1470899323133">
+                                <span class="text" sat-id="1470899323134">0%</span>
+                                <span class="percentage" sat-id="1470899323135"></span>
+                            </div><div class="info" sat-id="1470899323136"></div>
+                            <div class="btns" sat-id="1470899323137">
+                                <div id="filePickerBtn" sat-id="1470899323138"></div>
+                                <div class="uploadBtn" sat-id="1470899323139"><var id="lang_start_upload" sat-id="1470899323140"></var></div>
+                            </div>
+                        </div>
+                        <div id="dndArea" class="placeholder" sat-id="1470899323141">
+                            <div class="filePickerContainer" sat-id="1470899323142">
+                                <div id="filePickerReady" sat-id="1470899323143"></div>
+                            </div>
+                        </div>
+                        <ul class="filelist element-invisible" sat-id="1470899323144">
+                            <li id="filePickerBlock" class="filePickerBlock" sat-id="1470899323145"></li>
+                        </ul>
+                    </div>
+                </div>
+                <div id="uploadVideoInfo" sat-id="1470899323146">
+                    <fieldset sat-id="1470899323147">
+                        <legend sat-id="1470899323148"><var id="lang_upload_size" sat-id="1470899323149"></var></legend>
+                        <table sat-id="1470899323150">
+                            <tbody sat-id="1470899323151"><tr sat-id="1470899323152"><td sat-id="1470899323153"><label sat-id="1470899323154"><var id="lang_upload_width" sat-id="1470899323155"></var></label></td><td sat-id="1470899323156"><input class="txt" id="upload_width" type="text" sat-id="1470899323157"></td></tr>
+                            <tr sat-id="1470899323158"><td sat-id="1470899323159"><label sat-id="1470899323160"><var id="lang_upload_height" sat-id="1470899323161"></var></label></td><td sat-id="1470899323162"><input class="txt" id="upload_height" type="text" sat-id="1470899323163"></td></tr>
+                        </tbody></table>
+                    </fieldset>
+                    <fieldset sat-id="1470899323164">
+                        <legend sat-id="1470899323165"><var id="lang_upload_alignment" sat-id="1470899323166"></var></legend>
+                        <div id="upload_alignment" sat-id="1470899323167"></div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- jquery -->
+<script type="text/javascript" src="../../third-party/jquery-1.10.2.min.js" sat-id="1470899323168"></script>
+
+<!-- webuploader -->
+<script type="text/javascript" src="../../third-party/webuploader/webuploader.min.js" sat-id="1470899323169"></script>
+<link rel="stylesheet" type="text/css" href="../../third-party/webuploader/webuploader.css" sat-id="1470899323170">
+
+<!-- video -->
+<script type="text/javascript" src="video.js" sat-id="1470899323171"></script>
+
+</body></html>

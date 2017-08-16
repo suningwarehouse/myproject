@@ -1,0 +1,137 @@
+<div>
+
+	<div class="nav-content">
+		<div class="nav-title">
+			<div class="nav-title-decoration-color"></div>
+			<div class="nav-title-name">版本管理</div>
+			<p>版本管理服务集敏捷研发管理、需求管理、任务分解、看板管理与一体，拥有高效实用、随时跟踪等优势让你告别版本延期，快开启你的版本之旅吧。</p>
+			<div class="linkName">
+				<div class="button-div" style="margin-left: 0px;"
+							 perm-code="phoebus_version_create">
+							<a href="javascript:;" ui-sref="topHead.overview.versionCreate">创建版本</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="mainContent">
+		<div class="table-header" style="margin-top: 13px;">
+				<form class="form-inline">
+					<div class="pull-left margin-right-10">
+						<input placeholder="输入版本号" ng-model="search.version" /> <input
+							placeholder="版本名称" ng-model="search.versionName" /> <input
+							placeholder="应用简称" ng-model="search.sysName" />
+						<!-- <select class="form-control" select2 ng-model="appName"
+							ng-options="appName for appName in appNameList" type="text"
+							class="form-control" ng-change="onChangeSlelectAppName(appName)"
+							style="width: 175px">
+							<option value="">请选择所属应用</option>
+						</select> -->
+					</div>
+					<div class="pull-left margin-right-10 marginL select2height">
+						<select class="form-control" select2="select2Status"
+							ng-model="thestatus"
+							ng-options="thestatus.value for thestatus in statusList"
+							type="text" class="form-control"
+							ng-change="onChangeSlelectStatus(thestatus)" style="width: 175px">
+							<option value="">请选择状态</option>
+						</select>
+					</div>
+					<div class="search-div marginL" ng-click="doSearch()">查询</div>
+					<!--<div class="reset-div marginL" ng-click="doReset()">重置</div>-->
+
+				</form>
+			</div>
+			<!--表格主体 -->
+			<div class="table-body">
+				<table class="sn-table" style="table-layout: fixed">
+					<tr>
+						<th width="15%"><span class="tr-style">版本名称</span></th>
+						<th width="15%"><span class="tr-style">版本号</span></th>
+						<th width="10%"><span class="tr-style">状态</span></th>
+						<th width="15%"><span class="tr-style">所属应用</span></th>
+						<th width="10%"><span class="tr-style">需求</span></th>
+						<th width="10%"><span class="tr-style">任务</span></th>
+						<th width="10%"><span class="tr-style">缺陷</span></th>
+						<th width="10%"><span class="tr-style">版本报告</span></th>
+						<!-- <th width="26%">操作</th> -->
+					</tr>
+					<tr ng-repeat="versionBO in versionBOListRespVO">
+						<td class="text_overflow" title="{{versionBO.name}}"><a
+							ng-href="/#/appDetail/versioDetail/{{versionBO.sysId}}/{{versionBO.id}}"
+							ng-click="setSession(versionBO.sysId,versionBO.sysName)">
+								{{versionBO.name}} </a></td>
+						<td class="text_overflow" title="{{versionBO.version}}"><a
+							ng-href="/#/appDetail/versioDetail/{{versionBO.sysId}}/{{versionBO.id}}"
+							ng-click="setSession(versionBO.sysId,versionBO.sysName)">
+								{{versionBO.version}} </a></td>
+						<td>
+							<div ng-show="versionBO.status == 1 " style="position: relative;">
+								<sn-dot colortext="statusName[0]"></sn-dot>
+								<!--<span>开发中</span>
+								<div class="circleDev circle-position"></div>-->
+							</div>
+							<div ng-show="versionBO.status == 2 " style="position: relative;">
+								<sn-dot colortext="statusName[1]"></sn-dot>
+								<!--<span>已封版</span>
+								<div class="circleFix circle-position"></div>-->
+							</div>
+							<div ng-show="versionBO.status == 3 " style="position: relative;">
+								<sn-dot colortext="statusName[2]"></sn-dot>
+								<!--<span>已发布</span>
+								<div class="circlePub circle-position"></div>-->
+							</div>
+							<div ng-show="versionBO.status == 4 " style="position: relative;">
+								<sn-dot colortext="statusName[3]"></sn-dot>
+								<!--<span>已归档</span>
+								<div class="circleSave circle-position"></div>-->
+							</div>
+							<div ng-show="versionBO.status == 0 " style="position: relative;">
+								<sn-dot colortext="statusName[4]"></sn-dot>
+								<!--<span>已废弃</span>
+								<div class="circleDiscard circle-position"></div>-->
+							</div>
+						</td>
+						<td><a ng-href="/#/appDetail/version/{{versionBO.sysId}}/" 
+							ng-click="setSession(versionBO.sysId,versionBO.sysName)"> {{versionBO.sysName}} </a></td>
+						<td><a
+							ng-href="{{jiraUrl}}/issues/?jql=fixVersion={{versionBO.jiraId}} AND issuetype in(需求,原始业务需求)"
+							target="_blank"> {{versionBO.epicCount}} </a></td>
+						<td><a
+							ng-href="{{jiraUrl}}/issues/?jql=fixVersion={{versionBO.jiraId}} AND issuetype in(任务,子任务)"
+							target="_blank"> {{versionBO.taskCount}} </a></td>
+						<td><a
+							ng-href="{{jiraUrl}}/issues/?jql=fixVersion={{versionBO.jiraId}} AND issuetype=缺陷"
+							target="_blank"> {{versionBO.bugCount}} </a></td>
+
+						<td><a ng-click="setSession(versionBO.sysId,versionBO.sysName)"
+							ng-href="/#/appDetail/versionReport/{{versionBO.sysId}}/{{versionBO.id}}">查看</a></td>
+						<!-- <td><a href="javascript:void(0)" ng-click="doDetail(versionBO)">封板</a>
+							<a href="javascript:void(0)" ng-click="doDetail(versionBO)">构建</a>
+							<a href="javascript:void(0)" ng-click="doDetail(versionBO)">发布</a>
+							<a href="javascript:void(0)" ng-click="doDetail(versionBO)">废弃</a>
+						</td> -->
+					</tr>
+					<tr ng-if="!versionBOListRespVO||versionBOListRespVO.length<1">
+						<td colspan="8">暂无数据</td>
+					</tr>
+				</table>
+			</div>
+			<div ng-if="versionBOListRespVO" class="table-footer" style="overflow: hidden;">
+				<div class="pull-right sn-table-pager text-right">
+					<cd-pager page="page" page-size="pageSize" total="total"
+						page-action="paging(page, pageSize, total)"></cd-pager>
+				</div>
+			</div>
+		</div>
+	<!--<div class="relative-div">
+		<div class="absolute-div">我的项目</div>
+		<div class="content-div">
+			
+			
+			
+		</div>
+	</div>-->
+</div>
+
+
+

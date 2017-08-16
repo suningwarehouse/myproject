@@ -1,0 +1,191 @@
+.rightContent{
+    display: inline-block;
+    margin-left: 20px;
+    vertical-align: top;
+    margin-top: 15px;
+}
+.main-div{
+    min-width: 825px;
+    min-height: 468px;
+}
+.search-div{
+    background-color: #11B983;
+    color: #fff;
+    min-width: 60px;
+    height: 28px;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+    vertical-align: middle;
+    font-size: 12px;
+    line-height: 28px;
+
+}
+.reset-div{
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+    vertical-align: middle;
+    color: #11B983;
+    font-size: 12px;
+}
+.marginL {
+    margin-left: 6px;
+}
+.relative-div{
+    position: relative;
+    min-width: 150px;
+    border: 1px solid #E0E3EA;
+    margin: 10px;
+}
+.absolute-div{
+    left: 40px;
+    position: absolute;
+    top: -10px;
+    background-color: white;
+    border-left: 10px solid white;
+    border-right: 10px solid white;
+    padding-left: 2px;
+    padding-right: 2px;
+    color: #5A5C80;
+    font-size: 14;
+}
+.content-div{
+    padding: 6px 6px 0px 6px;
+    min-height: 76px;
+
+}  
+.button-div{
+    float: left;
+    margin-left: 35px;
+    margin-bottom: 15px;
+    margin-top: 10px;
+}
+.button-div a{
+    color: #11B983;
+}
+.promanage{
+    font-size: 18px;
+   
+}
+.tr-style {
+    font-size: 14px;
+    color: #687B93;
+    line-height: 18px;
+    height: 18px;
+    font-weight: normal;
+    font-family: 'MicrosoftYaHeiUILight';
+}
+
+.sn-table a{
+    color: #11B983;
+    margin: 0 10px;
+    cursor: pointer;
+}
+.lookMore{
+    float: right;
+    margin: 8px 6px;
+    color: #11B983;
+    font-size: 12px;
+    cursor: pointer;
+}
+.system-div{
+    display: inline-block;
+    margin-left: 15px;
+    padding-top: 7px;
+    font-size: 14px;
+}
+.relative-div-top{
+    position: relative;
+    min-width: 150px;
+    border: 1px solid #E0E3EA;
+    margin: 10px;
+    padding-left: 25px;
+    overflow: hidden;
+}
+
+
+/***
+reset css for navbar start
+***/
+
+.content-wrapper,
+.right-side,
+.main-footer {
+	margin-left: 215px;
+}
+
+.nav-content {
+	background: #FFFFFF;
+     margin-left: -10px;
+	/*box-shadow: 0 2px 4px 0 #D8DDE9;*/
+}
+
+sn-breadcrumb>ul>li>a {
+	font-family: MicrosoftYaHeiUILight;
+	font-size: 12px;
+	color: #686868;
+}
+
+sn-breadcrumb>ul>li>a:hover {
+	font-family: MicrosoftYaHeiUILight;
+	font-size: 12px;
+	color: #11B983;
+}
+
+sn-breadcrumb>ul>li>span {
+	font-family: MicrosoftYaHeiUILight;
+	font-size: 12px;
+	color: #11B983;
+}
+
+.nav-title-decoration-color {
+	display: inline-block;
+	height: 28px;
+	width: 6px;
+	background-color: #11B983;
+	float: left;
+	margin-right: 18px;
+}
+
+.nav-title {
+	padding: 13px 0px 0px 0px;
+	border-bottom: 5px solid #dee3ec;
+}
+
+.nav-title p {
+	margin: 6px 0 0 24px;
+}
+
+.nav-title-name {
+	font-family: MicrosoftYaHeiUILight;
+	font-size: 18px;
+	color: #000000;
+}
+.linkName{
+    overflow: hidden;
+    margin-left: 24px;
+}
+
+.select2height{
+    overflow: hidden;
+    height: 28px;
+    border-bottom: 1px solid #ddd;
+}
+.select2-container--default .select2-selection--single, .select2-selection .select2-selection--single {
+    padding: 4px 12px;
+}
+
+.mainContent{
+    width: 99%;
+    padding-left: 10px;
+}
+input.form-control {
+    height: 28px;
+}
+.text_overflow {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100px;
+}

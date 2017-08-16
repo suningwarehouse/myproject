@@ -1,0 +1,97 @@
+<div>
+
+	<div class="nav-content">
+		<div class="nav-title">
+			<div class="nav-title-decoration-color"></div>
+			<div class="nav-title-name">构件中心</div>
+			<p>统一的构件仓库平台，拥有清晰的构件版本管理、清晰的release notes管理、完整的版本依赖关系维护，支持多数据中心的异地灾备。</p>
+			<div class="linkName">
+			<!-- <div class="button-div" style="margin-left: 0px;"><a
+			ng-href="{{jupiterUrl}}" target="_blank">进入构建中心</a></div> -->
+			</div>
+		</div>
+	</div>
+	<div class="mainContent">
+		<div class="table-header" style="margin-top: 13px;">
+					<form class="form-inline">
+						<div class="pull-left margin-right-10">
+							
+							<input placeholder="输入应用名称" ng-model="search.applicationName"/>
+							<input placeholder="输入应用包名" ng-model="search.packageName"/>
+							<input placeholder="输入版本号或名称" ng-model="search.versionName"/>
+							<input class="form-control input-small" sn-date-range-picker
+												style="background-color:#fff;width: 300px;"
+												options="dateOption4" placeholder="起止时间" ng-model="datePicker.date"
+												readonly />
+						</div>
+							<div class="search-div marginL" ng-click="doSearch()">查询</div>
+						<!-- <a type="reset" href="javascript:void(0)" ng-click="doReset()" 
+							style="vertical-align: bottom;">重置</a> -->
+					</form>
+				</div>
+				<!--表格主体 -->
+				<div class="table-body">
+					<table class="sn-table" style="table-layout: fixed">
+						<tr>
+							
+							<th width="20%"><span class="tr-style">构建名称</span></th>
+							<th width="15%"><span class="tr-style">部署单元包名称</span></th>
+							<th width="10%"><span class="tr-style">版本号</span></th>
+							<th width="10%"><span class="tr-style">所属应用</span></th>
+							<th width="10%"><span class="tr-style">环境类型</span></th>
+							<th width="15%"><span class="tr-style">构建人</span></th>
+							<th width="20%"><span class="tr-style">构建时间</span></th>
+						</tr>
+						<tr ng-repeat="componentBO in componentBOListRespVO">
+							<td>{{componentBO.name}}</td>
+							<td class="text_overflow" style="padding: 10px 20px;" title="{{componentBO.packageName}}">
+								<!-- <a ng-href="{{jupiterUrl}}/#/buildDetail/{{componentBO.recordId}}/{{componentBO.applicationId}}" 
+										target="_blank"> -->
+									{{componentBO.packageName}} 
+								<!-- </a> -->
+							</td>
+							
+							
+							
+							<td class="text_overflow" style="padding: 10px 20px;" title="{{componentBO.versionNumber}}">{{componentBO.versionNumber}}</td>
+							<td>
+								<!-- <a ng-href="/#/componentManageSearch/{{componentBO.applicationName}}/{{componentBO.applicationId}}" 
+										target="_blank" ng-click="setSession(componentBO.applicationId,componentBO.applicationName)" > -->
+								<a ui-sref="topHead.leftColumn.componentManageSearch" 
+										ng-click="setSession(componentBO.applicationId,componentBO.applicationName)" >
+								{{componentBO.applicationName}}
+								</a>
+							</td>
+							<td>{{componentBO.environmentType}}</td>
+							<td>{{componentBO.buildMember}}</td>
+							<td>{{componentBO.buildStartTime|date:'yyyy-MM-dd HH:mm:ss'}}</td>
+						</tr>
+						<tr ng-if="!componentBOListRespVO||componentBOListRespVO.length<1">
+							<td colspan="7">暂无数据</td>
+						</tr>
+					</table>
+				</div>
+				<div class="table-footer" style="overflow: hidden;">
+					<div class="pull-right sn-table-pager text-right">
+						<cd-pager page="page" page-size="pageSize" total="total"
+							page-action="paging(page, pageSize, total)"></cd-pager>
+					</div>
+				</div>
+			
+		</div>
+	<!--<div class="relative-div">
+		<div class="absolute-div">我的项目</div>
+		<div class="content-div">
+			
+			
+			
+		</div>
+	</div>-->
+</div>
+
+
+
+
+
+
+

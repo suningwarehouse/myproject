@@ -1,0 +1,113 @@
+.h3-inline{
+    display: inline;
+}
+
+.error{
+    color: red;
+}
+.red{
+    color: red;
+    padding-right: 5px;
+}
+.line-distance{
+    margin-bottom: 10px;
+}
+.label-style{
+    vertical-align: top;
+    width: 11%;
+    text-align: right;
+}
+.square{
+    width:3px;
+    height:13px;
+    background-color:black;
+    display:inline-block;
+    margin-right:10px;
+}
+textarea{
+    resize:none;
+}
+.error {
+color: #f60;
+}
+
+
+.success {
+color: #78be25;
+}
+
+
+.small-i {
+margin-top: 3px;
+}
+.upload{
+   display: inline-block;
+   width:120px;height:32px;
+   color:#fff;
+   line-height:32px;
+   text-align:center;
+   background:#948484;
+   position:relative; 
+}
+.uploadInput{
+    display: inline-block;
+    width:120px;
+    height:32px;
+    position:absolute;
+    left:0;
+    top:0;
+    opacity:0;
+}
+
+element.style {
+    padding: 0px 0;
+}
+
+.content {
+    min-height: 0px;
+    padding: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.row{
+    margin-bottom: 10px;
+}
+
+.sel-mem {
+    width: 730px;
+}
+
+.form-horizontal .control-label {
+    text-align: left;
+}
+
+.nav-content {
+    background: #FFFFFF;
+    /*box-shadow: 0 2px 4px 0 #D8DDE9;*/
+}
+.nav-title-decoration-color {
+    display: inline-block;
+    height: 28px;
+    width: 6px;
+    background-color: #11B983;
+    float: left;
+    margin-right: 18px;
+}
+
+.nav-title {
+    padding-top: 25px;
+    border-bottom: 5px solid #dee3ec;
+}
+
+.nav-title p {
+    margin: 6px 0 17px 24px;
+}
+
+.nav-title-name {
+    font-family: MicrosoftYaHeiUILight;
+    font-size: 18px;
+    color: #000000;
+    padding-bottom: 27px;
+}

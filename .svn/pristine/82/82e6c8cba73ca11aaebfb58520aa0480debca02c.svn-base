@@ -1,0 +1,103 @@
+<div>
+	<section class="content-header" style="padding-top:0;padding-left:0;padding-right:0;">   
+	<p style="padding-top:15px;padding-left:15px;"><a style="color:#555;" href="#/">首页</a> > <a style="color:#555;" ng-href="/#/overview/appManage/">应用管理</a>><a style="color:#555;" ng-href="{{'/#/'+titleHref}}">{{title}}</a> > <a style="color: #11b983">历史记录</a></p>
+		<h4><div class="square"></div><strong style="position: relative;top: -8px;font-weight: normal;font-size: 18px;color: #000;">{{title}}:执行历史({{taskName}})</strong></h4>
+	<div style="height: 5px;background: #dee3ec;"></div>
+	</section>
+	<div class="mainContent">
+		<div class="table-header" style="margin-bottom: 14px;margin-top: 13px;">
+			
+		</div>
+			<!--表格主体 -->
+		<div class="table-body" ng-if="taskType==4">
+		<table class="sn-table" style="table-layout: fixed">
+			<tr>
+				<th  width="10%">序列</th>
+				<th  width="13%">任务名称</th>
+				<th  width="13%">来源</th>
+				<th width="10%">任务状态</th>
+				<th width="10%">高危漏洞</th>
+				<th width="10%">中危漏洞</th>
+				<th width="10%">低危漏洞</th>
+				<th width="15%">执行时间</th>
+				<th width="15%">扫描url</th>
+			</tr>
+			<tr ng-repeat="task in taskRecordList">
+				<td>{{$index+1}}</td>
+				<td class="text_overflow" title="{{task.taskName}}">{{task.taskName}}</td>
+				<td title="{{task.flowName}}">{{task.flowName}}</td>
+				<td title="{{task.status  |taskStatusFilter}}">{{task.status  |taskStatusFilter}}</td>
+				<td>{{task.high}}</td>
+				<td>{{task.medium}}</td>
+				<td>{{task.low}}</td>
+				<td>{{task.createTime |date:"yyyy-MM-dd HH:mm:ss"}}</td>
+				<td class="text_overflow" title="{{task.url}}">{{task.url }}</td>
+<!-- 				<td ng-if="task.reportUrl"><a href="{{task.reportUrl}}" target="_blank">详情</a></td> -->
+<!-- 				<td ng-if="!task.reportUrl"></td> -->
+			</tr>
+		</table>
+	</div>
+	
+	  <!-- 蛙测-->
+	<div class="table-body" ng-if="taskType==3">
+		<table class="sn-table" style="table-layout: fixed">
+			<tr>
+				<th  width="13%">序列</th>
+				<th  width="13%">任务名称</th>
+				<th  width="13%">来源</th>
+				<th width="7%">任务状态</th>
+				<th width="15%">执行时间</th>
+				<th width="15%">执行结果</th>
+			</tr>
+			<tr ng-repeat="task in taskRecordList">
+				<td>{{$index+1}}</td>
+				<td class="text_overflow" title="{{task.taskName}}">{{task.taskName}}</td>
+				<td>{{task.flowName}}</td>
+				<td>{{task.status |taskStatusFilter}}</td>
+				<td>{{task.createTime |date:"yyyy-MM-dd HH:mm:ss"}}</td>
+				<td>
+					<a  ng-click="showDetail(task)">查看</a>
+				</td>
+			</tr>
+		</table>
+	</div>
+    <div class="table-footer">
+        <div class="pull-right sn-table-pager text-right">
+            <cd-pager style="float: right;" page="pageIndex" page-size="pageSize" total="totalCount" page-action="paging1(page, pageSize, total)"></cd-pager>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

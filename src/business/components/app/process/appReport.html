@@ -1,0 +1,150 @@
+<section class="content-header">   
+   <sn-breadcrumb datalist="crumbBaseData"></sn-breadcrumb>
+     <h4><div class="square"></div><strong>{{appName}}应用报告</strong></h4>
+   <div style="height: 5px"></div>
+</section>
+
+<section class="content" >
+   <!-- 应用详情-->
+    <div  class="panel panel-default">
+        <div  class="panel-heading">
+            <h3 class="panel-title h3-inline">基本信息</h3>
+        </div>
+        <div style="padding: 20px">
+            <div class="form-group clearfix">
+                <label class="col-sm-2">应用英文简称</label>
+                <label class="col-sm-2">{{app.appName}} </label>
+                <label class="col-sm-2">应用管理员</label>
+                <label class="col-sm-2"><span ng-repeat="x in appAdmin">{{x.userName}}({{x.userNo}})</span></label>
+            </div>
+            <div class="form-group clearfix">
+            	<label class="col-sm-2">应用创建时间</label>
+                <label class="col-sm-2">{{app.createTime |date:"yyyy-MM-dd HH:mm:ss"}} </label>
+                <label class="col-sm-2 ">应用状态</label>
+                <label class="col-sm-2">{{app.status |appStatusFiler}} </label>
+            </div>
+        </div>
+    </div>
+    
+    
+     <div  class="panel panel-default">
+        <div  class="panel-heading">
+            <h3 class="panel-title h3-inline">部署信息</h3>
+        </div>
+        <div style="padding: 20px">
+           <div class="form-group clearfix">
+                <label class="col-sm-2">本地测试环境</label>
+                <label class="col-sm-2">{{deploy.devDeploy.envNum}} </label>
+                <label class="col-sm-2"> 集成测试部署成功率</label>
+                <label class="col-sm-2">{{deploy.devDeploy.deploySucRate}}</label>
+            </div>
+            <div class="form-group clearfix">
+                <label class="col-sm-2">集成测试环境</label>
+                <label class="col-sm-2">{{deploy.sitDeploy.envNum}}  </label>
+                <label class="col-sm-2">集成测试部署成功率 </label>
+                <label class="col-sm-2">{{deploy.sitDeploy.deploySucRate}}</label>
+            </div>
+            <div class="form-group clearfix">
+                <label class="col-sm-2">预生产测试环境</label>
+                <label class="col-sm-2">{{deploy.preDeploy.envNum}} </label>
+                <label class="col-sm-2"> 预生产测试部署成功率</label>
+                <label class="col-sm-2">{{deploy.preDeploy.deploySucRate}}</label>
+            </div>
+          
+            <div class="form-group clearfix">
+                <label class="col-sm-2">生产环境</label>
+                <label class="col-sm-2">{{deploy.prdDeploy.envNum}} </label>
+                <label class="col-sm-2"> 生产部署成功率</label>
+                <label class="col-sm-2">{{deploy.prdDeploy.deploySucRate}}</label>
+            </div>
+          
+        </div>
+    </div>
+    
+    
+    <div  class="panel panel-default">
+        <div  class="panel-heading">
+            <h3 class="panel-title h3-inline">版本信息</h3>
+        </div>
+        <div style="padding: 20px">
+            <div class="form-group clearfix">
+                <label class="col-sm-2">开发中</label>
+                <label class="col-sm-2">{{version.deploying}} </label>
+                <label class="col-sm-2"> 已封板</label>
+                <label class="col-sm-2">{{version.freezen}}</label>
+            </div>
+            <div class="form-group clearfix">
+                <label class="col-sm-2">已发布</label>
+                <label class="col-sm-2">{{version.deployed}}  </label>
+                <label class="col-sm-2">已归档 </label>
+                <label class="col-sm-2">{{version.archive}}</label>
+            </div>
+            <div class="form-group clearfix">
+                <label class="col-sm-2">已废弃</label>
+                <label class="col-sm-2">{{version.deleted}}</label>
+            </div>
+          
+          
+        </div>
+    </div>
+	
+	
+	
+	<div  class="panel panel-default">
+        <div  class="panel-heading">
+            <h3 class="panel-title h3-inline">当前进行中问题</h3>
+        </div>
+        <div style="padding: 20px">
+            <div class="form-group clearfix">
+                <label class="col-sm-2">需求</label>
+                <label class="col-sm-2">{{currentQuestion.requireMents}} </label>
+                <label class="col-sm-2"> 任务</label>
+                <label class="col-sm-2">{{currentQuestion.tasks}}</label>
+            </div>
+            <div class="form-group clearfix">
+                <label class="col-sm-2">缺陷</label>
+                <label class="col-sm-2">{{currentQuestion.bugs}}  </label>
+                <label class="col-sm-2">版本 </label>
+                <label class="col-sm-2">{{currentQuestion.versions}}</label>
+            </div>
+          
+        </div>
+    </div>
+	
+	
+	<div  class="panel panel-default">
+        <div  class="panel-heading">
+            <h3 class="panel-title h3-inline">已关闭问题</h3>
+        </div>
+        <div style="padding: 20px">
+            <div class="form-group clearfix">
+                <label class="col-sm-2">需求</label>
+                <label class="col-sm-2">{{closedQuestion.requireMents}} </label>
+                <label class="col-sm-2"> 任务</label>
+                <label class="col-sm-2">{{closedQuestion.tasks}}</label>
+            </div>
+            <div class="form-group clearfix">
+                <label class="col-sm-2">缺陷</label>
+                <label class="col-sm-2">{{closedQuestion.bugs}}  </label>
+                <label class="col-sm-2">版本 </label>
+                <label class="col-sm-2">{{closedQuestion.versions}}</label>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+	<div  class="panel panel-default">
+        <div  class="panel-heading ">
+            <h3 class="panel-title h3-inline">质量趋势</h3>
+        </div>
+        <div style="padding: 20px">
+            <div class="form-group clearfix">
+                <div style="width:100%;height:700px;" echarts="option"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+

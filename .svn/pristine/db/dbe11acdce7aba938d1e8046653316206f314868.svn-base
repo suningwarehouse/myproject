@@ -1,0 +1,323 @@
+<div class="modal fade in" ng-controller="editAppPackageCtrl">
+    <div class="modal-dialog">
+        <div class="modal-content" style="min-width: 671px;">
+            <div class="modal-header">
+                 <button type="button" class="close" ng-click="close()"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+        		</button>
+                <h4 class="modal-title">{{titleDesc}}</h4>
+            </div>
+
+	<form class="form-horizontal" name="myForm" ng-show="action=='create'">
+      <div class="form-group">
+          <label class="col-sm-3 control-label"><span class="red">*</span>部署包名称</label>
+          <div class="col-sm-4">
+              <input type="text" class="form-control" placeholder="" name="packageName" ng-model="formData.packageName" required  maxlength="50" ng-maxlength="50"   ng-minlength="4" ng-pattern="/^[a-zA-Z]+[a-zA-Z-]*[.]{1}[a-zA-Z-]*[a-zA-Z]+$/" ng-blur="packageCheck()">
+          </div>
+             <!-- 输入框校验 -->
+          <div class="col-sm-3">
+        	 <span ng-show="myForm.packageName.$dirty && myForm.packageName.$invalid">
+		     <span class="form-control-static error"
+		        ng-show="myForm.packageName.$error.maxlength">
+		         <i class="fu fu-cross-circle" aria-hidden="true">最多50位</i>
+		     </span>
+		     <span class="form-control-static error"
+		        ng-show="myForm.packageName.$error.minlength">
+		         <i class="fu fu-cross-circle" aria-hidden="true">最少4位</i>
+		     </span>
+		     <span class="form-control-static error"
+		        ng-show="myForm.packageName.$error.required ">
+		         <i class="fu fu-cross-circle" aria-hidden="true">不能为空</i>
+		     </span>
+		      <span class="form-control-static error" 
+		      	ng-show="myForm.packageName.$error.pattern">
+		         <i class="fu fu-cross-circle small-i" aria-hidden="true"></i>包名必须包含.前后必须为英文字符,只能英文字符.-
+		     </span>
+		  </span>
+		  <span class="form-control-static error" 
+		     	ng-show="packageNameExist">
+		         <i class="fu fu-cross-circle small-i" aria-hidden="true"></i>该部署名称已存在
+		  </span>
+		  <span class="form-control-static success"
+		        ng-show="!packageNameExist && myForm.packageName.$valid && myForm.packageName.$dirty">
+		         <i class="fu fu-check-circle" aria-hidden="true"></i>
+		  </span>
+			</div>
+		             
+		   </div>
+		   
+		   
+		   <div class="form-group">
+	          <label class="col-sm-3 control-label"><span class="red">*</span>业务类型名称</label> 
+	          <div class="col-sm-4">
+	              <input type="text" class="form-control" placeholder="" name="packageCnName" ng-model="formData.packageCnName" required  maxlength="50" ng-maxlength="50"  ng-pattern=" /^[\u4E00-\u9FA5][\u4E00-\u9FA50-9a-zA-Z]+$/" ng-blur="packageCnNameCheck()">
+	          </div>
+	          <div class="fu fu-question-circle" ng-click="show()"></div>
+	          
+	          
+			
+	         
+             <!-- 输入框校验 -->
+         	 <div class="col-sm-3">
+	        	 <span ng-show="myForm.packageCnName.$dirty && myForm.packageCnName.$invalid">
+			     <span class="form-control-static error"
+			        ng-show="myForm.packageCnName.$error.maxlength">
+			         <i class="fu fu-cross-circle" aria-hidden="true">最多50位</i>
+			     </span>
+			     <span class="form-control-static error"
+			        ng-show="myForm.packageCnName.$error.required ">
+			         <i class="fu fu-cross-circle" aria-hidden="true">不能为空</i>
+			     </span>
+			      <span class="form-control-static error" 
+			      	ng-show="myForm.packageCnName.$error.pattern">
+			         <i class="fu fu-cross-circle small-i" aria-hidden="true"></i>业务类型名称必须以中文开头
+			     </span>
+			  </span>
+			  <span class="form-control-static error" 
+			     	ng-show="packageCnNameExist">
+			         <i class="fu fu-cross-circle small-i" aria-hidden="true"></i>该业务类型名称已存在
+			  </span>
+			  <span class="form-control-static success"
+			        ng-show="!packageCnNameExist && myForm.packageCnName.$valid && myForm.packageCnName.$dirty">
+			         <i class="fu fu-check-circle" aria-hidden="true"></i>
+			  </span>
+		</div>
+		             
+	</div>
+	
+	<div class="form-group" ng-show="typeIndShow">
+	    <div  class="col-sm-10 reposIn">
+					依据某种业务对系统进行分类所产生的类型名称，常见分类结果有：前台，中台，后台
+			</div>
+	</div>
+	 <div class="form-group">
+	    <label  class="col-sm-3 control-label"><span class="red">*</span>关联代码库</label>
+	    <div class="col-sm-4">
+	    	<input type="checkbox" name="relationRepos" ng-model="formData.relationRepos" ng-click="showCommit()">关联代码库</input>
+<!-- 	     	<input type="radio" ng-value="1" ng-model="formData.relationRepos" name="relationRepos" ng-click="showCommit()"/>需要关联 -->
+<!-- 	     	<input type="radio" ng-value="0" ng-model="formData.relationRepos" name="relationRepos"  ng-click="showCommit()"/>不需要关联  -->
+	    </div>
+	    <div  class="fu fu-question-circle"ng-click="showRepos()" ></div>
+	</div>
+
+	<div class="form-group" ng-if="reposIndShow">
+	    <div  class="col-sm-10 reposIn">关联代码库即记录部署单元与代码库的关系，明确代码构建所产出的构件属于那个部署单元，完整记录构件的生命周期，支持自动化部署功能，如无需代码托管,无需构建或无需部署，则可省略关联。</div>
+	</div>
+	
+	
+	 <div class="form-group" ng-if="formData.relationRepos && !hasRepos ">
+	    <label  class="col-sm-6 control-label">暂未创建代码库，请前去<a ui-sref="topHead.overview.repositoryManage()">代码库管理创建</a></label>
+	    
+	</div>
+	 <div class="form-group" ng-if="!formData.relationRepos">
+         <label  class="col-sm-3 control-label"><span class="red">*</span>请选择原因</label>
+	   <div class="col-sm-4">
+	   	<select  style="width:265px" class="form-control" ng-model="formData.reason" name="reason" ng-options="reason.name as reason.name  for reason in reasonList" required >
+	   		<option value="">-- 请选择 --</option>
+	   	</select>
+	   </div>
+    </div>	       
+    
+    <div class="form-group" ng-if="formData.relationRepos && hasRepos">
+         <label  class="col-sm-3 control-label"><span class="red">*</span>选择代码库</label>
+	   <div class="col-sm-4">
+	   	<select  style="width:265px" class="form-control" ng-model="formData.reposRef" name="reposRef" ng-options="repos as repos.reposName  for repos in reposList" required >
+	   		<option value="">-- 请选择 --</option>
+	   	</select>
+	   </div>
+    </div>	         
+		         
+		         
+	  <div class="form-group">
+	        <label  class="col-sm-3 control-label">部署包功能简述</label>
+	          	<div class="col-sm-4">
+	            	<textarea rows="3" cols="30" name="description" ng-model="formData.description"  maxlength="255;"  ></textarea><span>{{formData.description.length || 0}}/255</span>
+	           </div>
+	            
+	              <!-- 输入框校验 -->
+	         <div class="col-sm-3">
+	           <span ng-show="myForm.description.$dirty && myForm.description.$invalid">
+	 		    <span class="form-control-static error"
+			       ng-show="myForm.description.$error.maxlength">
+			        <i class="fu fu-cross-circle" aria-hidden="true">最多255位字符</i>
+			    </span>
+			 
+			   
+			   
+			    
+			    </span>
+			    <span class="form-control-static success"
+			       ng-show="myForm.description.$valid && myForm.description.$dirty">
+			        <i class="fu fu-check-circle" aria-hidden="true"></i>
+			    </span>
+		  </div>
+	 </div>
+</form>
+
+
+
+<form class="form-horizontal" name="myForm1" ng-show="action=='edit'">
+      <div class="form-group" ng-if="isPackageUse">
+          <label class="col-sm-3 control-label">部署包名称</label>
+          <div class="col-sm-4">
+              <span>{{formData.packageName}}</span>
+          </div>
+	 </div>
+		
+		
+		<div class="form-group"  ng-if="!isPackageUse">
+          <label class="col-sm-3 control-label"><span class="red">*</span>部署包名称</label>
+          <div class="col-sm-4">
+              <input type="text" class="form-control" placeholder="" name="packageName" ng-model="formData.packageName" required  maxlength="50" ng-maxlength="50"  ng-minlength="4" ng-pattern="/^[a-zA-Z]+[a-zA-Z-]*[.]{1}[a-zA-Z-]*[a-zA-Z]+$/" ng-blur="packageCheck()">
+          </div>
+             <!-- 输入框校验 -->
+          <div class="col-sm-3">
+        	 <span ng-show="myForm1.packageName.$dirty && myForm1.packageName.$invalid">
+		     <span class="form-control-static error"
+		        ng-show="myForm1.packageName.$error.maxlength">
+		         <i class="fu fu-cross-circle" aria-hidden="true">最多50位</i>
+		     </span>
+		      <span class="form-control-static error"
+		        ng-show="myForm1.packageName.$error.minlength">
+		         <i class="fu fu-cross-circle" aria-hidden="true">最少4位</i>
+		     </span>
+		     <span class="form-control-static error"
+		        ng-show="myForm1.packageName.$error.required ">
+		         <i class="fu fu-cross-circle" aria-hidden="true">不能为空</i>
+		     </span>
+		      <span class="form-control-static error" 
+		      	ng-show="myForm1.packageName.$error.pattern">
+		         <i class="fu fu-cross-circle small-i" aria-hidden="true"></i>包名必须包含.前后必须为英文字符,只能英文字符.-
+		     </span>
+		  </span>
+		  <span class="form-control-static error" 
+		     	ng-show="packageNameExist">
+		         <i class="fu fu-cross-circle small-i" aria-hidden="true"></i>该部署包名称已存在
+		  </span>
+		  <span class="form-control-static success"
+		        ng-show="!packageNameExist && myForm1.packageName.$valid && myForm1.packageName.$dirty">
+		         <i class="fu fu-check-circle" aria-hidden="true"></i>
+		  </span>
+			</div>
+		             
+		   </div>   
+		   
+		   <div class="form-group">
+	          <label class="col-sm-3 control-label"><span class="red">*</span>业务类型名称</label>
+	          <div class="col-sm-4">
+	              <input type="text" class="form-control" placeholder="" name="packageCnName" ng-model="formData.packageCnName" required  maxlength="50" ng-maxlength="50"  ng-pattern=" /^[\u4E00-\u9FA5][\u4E00-\u9FA50-9a-zA-Z]+$/" ng-blur="packageCnNameCheck()">
+	          </div>
+          	 <div  class="fu fu-question-circle" ng-click="show()" style="display: block"> </div>
+	             
+             <!-- 输入框校验 -->
+          <div class="col-sm-3">
+        	 <span ng-show="myForm1.packageCnName.$dirty && myForm1.packageCnName.$invalid">
+		     <span class="form-control-static error"
+		        ng-show="myForm1.packageCnName.$error.maxlength">
+		         <i class="fu fu-cross-circle" aria-hidden="true">最多50位</i>
+		     </span>
+		     <span class="form-control-static error"
+		        ng-show="myForm1.packageCnName.$error.required ">
+		         <i class="fu fu-cross-circle" aria-hidden="true">不能为空</i>
+		     </span>
+		      <span class="form-control-static error" 
+		      	ng-show="myForm1.packageCnName.$error.pattern">
+		         <i class="fu fu-cross-circle small-i" aria-hidden="true"></i>业务类型名称必须以中文开头
+		     </span>
+		  </span>
+		  <span class="form-control-static error" 
+		     	ng-show="packageCnNameExist">
+		         <i class="fu fu-cross-circle small-i" aria-hidden="true"></i>该业务类型名称已存在
+		  </span>
+		  <span class="form-control-static success"
+		        ng-show="!packageCnNameExist && myForm1.packageCnName.$valid && myForm1.packageCnName.$dirty">
+		         <i class="fu fu-check-circle" aria-hidden="true"></i>
+		  </span>
+		</div>
+		             
+	</div>
+	 <div class="form-group" ng-show="typeIndShow">
+		<div  class="col-sm-10 reposIn"> 
+	          	依据某种业务对系统进行分类所产生的类型名称，常见分类结果有：前台，中台，后台
+	        </div>
+	 </div>
+	 <div class="form-group">
+	    <label  class="col-sm-3 control-label"><span class="red">*</span>关联代码库</label>
+	    <div class="col-sm-4">
+	    	<input type="checkbox" name="relationRepos" ng-model="formData.relationRepos" ng-click="showCommit()">关联代码库</input>
+<!-- 	     	<input type="radio" ng-value="1" ng-model="formData.relationRepos" name="relationRepos"  ng-click="showCommit()"/>需要关联 -->
+<!-- 	     	<input type="radio" ng-value="0" ng-model="formData.relationRepos" name="relationRepos"  ng-click="showCommit()"/>不需要关联 -->
+	    </div>
+	    <div  class="fu fu-question-circle" ng-click="showRepos()" ></div>
+	   
+	</div>
+	 <div class="form-group" ng-show="reposIndShow">
+		<div  class="col-sm-10 reposIn">
+	    	关联代码库即记录部署单元与代码库的关系，明确代码构建所产出的构件属于那个部署单元，完整记录构件的生命周期，支持自动化部署功能，如无需代码托管,无需构建或无需部署，则可省略关联  
+	    </div>
+	 </div>
+	 <div class="form-group" ng-if="formData.relationRepos && !hasRepos ">
+	    <label  class="col-sm-4 control-label">暂未创建代码库，请前去<a ui-sref="topHead.overview.repositoryManage()">代码库管理创建</a></label>
+	</div>
+	 <div class="form-group" ng-if="!formData.relationRepos && showReposReason">
+         <label  class="col-sm-3 control-label"><span class="red">*</span>请选择原因</label>
+	   <div class="col-sm-4">
+	   	<select  style="width:265px" class="form-control" ng-model="formData.reason" name="reason" ng-options="reason.name as reason.name  for reason in reasonList" required >
+	   		<option value="">-- 请选择 --</option>
+	   	</select>
+	   </div>
+    </div>	       
+    
+    <div class="form-group" ng-if="formData.relationRepos && hasRepos && showReposReason">
+         <label  class="col-sm-3 control-label"><span class="red">*</span>选择代码库</label>
+	 	 <div class="col-sm-4">
+	   	<select  style="width:265px" class="form-control" ng-model="formData.reposRef" name="reposRef" ng-options="repos as repos.reposName  for repos in reposList" required >
+	   		<option value="">-- 请选择 --</option>
+	   	</select>
+	   </div>
+    </div>	         
+	        
+		         
+		         
+	  <div class="form-group">
+	        <label  class="col-sm-3 control-label">部署包功能简述</label>
+	          	<div class="col-sm-4">
+	            	<textarea rows="3" cols="30" name="description" ng-model="packageInfo.description"  maxlength="255;"  ></textarea><span>{{packageInfo.description.length || 0}}/255</span>
+	           </div>
+	            
+	              <!-- 输入框校验 -->
+	         <div class="col-sm-3">
+	           <span ng-show="myForm1.description.$dirty && myForm1.description.$invalid">
+	 		    <span class="form-control-static error"
+			       ng-show="myForm1.description.$error.maxlength">
+			        <i class="fu fu-cross-circle" aria-hidden="true">最多255位字符</i>
+			    </span>
+			 
+			    
+			   
+			    
+			    </span>
+			    <span class="form-control-static success"
+			       ng-show="myForm1.description.$valid && myForm1.description.$dirty">
+			        <i class="fu fu-check-circle" aria-hidden="true"></i>
+			    </span>
+		  </div>
+	 </div>
+</form>
+
+		<div class="modal-footer">
+               <div class="text-right">
+					<button ng-if="action=='create'" class="btn btn-primary" ng-click="commit()" ng-disabled="myForm.$invalid || !commited" > 确 定</button>
+					<button ng-if="action=='edit'" class="btn btn-primary" ng-click="commit()" ng-disabled="myForm1.$invalid || !commited" > 确 定</button>
+                   <button class="btn btn-primary reverse" ng-click="close()"> 取 消</button>
+               </div>
+           </div>
+        </div>
+    </div>
+</div>
+<style type="text/css">
+.reposIn{
+    margin-left: 30px;
+    text-indent:2em;
+}
+</style>
+

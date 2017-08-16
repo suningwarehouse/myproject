@@ -1,0 +1,186 @@
+<!-- <section class="content-header">
+  <h4 class="text-primary"><strong>构建配置管理</strong></h4>
+  <p>提供用户对于我的系统下各环境实例，可视化的管理界面，支持环境实例分组，策略，视图，按系统活跃度排序</p>
+</section> -->
+<div>
+	<div class="nav-content">
+		<div class="nav-title">
+			<!-- <sn-breadcrumb datalist="crumbBaseData"></sn-breadcrumb> -->
+			<div class="nav-title-decoration-color"></div>
+			<div class="nav-title-name">消息中心</div>	
+		</div>	  
+	</div>
+	<div class="mainbox">
+		<!-- <div class="boxStyle" ng-class="{true: 'boxStyleUncheck', false: 'boxStyle'}[isFirst]" ng-click="changeBox(1)">事件日志</div> -->
+		<div class="boxStyle" ng-class="{true: 'boxStyleUncheck', false: 'boxStyle'}[isSecond]" ng-click="changeBox(2)">系统通知</div>
+	</div>
+
+	<div class="mainContent">
+		<div  ng-if="boxID==1">
+			<div class="table-header" style="margin-bottom: 14px;margin-top: 13px;">
+				<form class="form-inline">
+						<div class="form-group select2height">
+							<select class="form-control sheet-select" select2="select2OperateType" ng-model="operateType"
+								ng-options="operateType for operateType in operateTypeList"
+								type="text" class="form-control"
+								ng-change="onChangeSlelectOperateType(operateType)"
+								name="plat_id" style="width: 175px">
+								<option value="">请选择操作类型</option>
+							</select>
+						</div>
+						<div class="form-group select2height">
+							<select class="form-control sheet-select" select2="select2AppName" ng-model="appName"
+								ng-options="appName for appName in appNameList" type="text"
+								class="form-control" ng-change="onChangeSlelectAppName(appName)"
+								name="plat_id" style="width: 175px">
+								<option value="">请选择所属应用</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<input class="form-control sheet-input" placeholder="请输入操作人姓名或工号" ng-model="form.operator" >
+						</div>
+						<div class="form-group">
+							<input class="form-control input-small" style="background-color:#fff;width:337px;height: 26px;" sn-date-range-picker options="dateOption4" placeholder="输入日期" ng-model="datePicker.date" readonly />
+							<span class="icon-date" style="pointer-events: none;"> <i class="fa fa-calendar glyphicon glyphicon-calendar"></i></span>
+						</div>
+				
+						<div class="form-group">
+							<div class="search-div marginL" ng-click="doSearch()">查询</div>
+							<div class="reset-div marginL" ng-click="doReset()">重置</div>
+						</div>
+				
+					</form>
+		
+			</div>
+				<!--表格主体 -->
+				<div class="table-body" ng-hide="platform_list">
+					<table class="sn-table" style="table-layout: fixed">
+						<tr>
+							<th width="15%">操作类型</th>
+							<th width="35%">操作内容</th>
+							<th width="15%">所属应用</th>
+							<th width="15%">操作人</th>
+							<th width="25%">操作时间</th>
+						</tr>
+						<tr ng-repeat="eventDO in eventDOListRespVO">
+							<td class="text_overflow" style="padding: 10px 20px;"
+								title="{{eventDO.operateType}}">{{eventDO.operateType}}</td>
+							<td class="text_overflow" style="padding: 10px 20px;"
+								title="{{eventDO.body}}">{{eventDO.body}}</td>
+							<td>{{eventDO.appName}}</td>
+							<td>{{eventDO.operator}}</td>
+							<td>{{eventDO.operateTime|date:'yyyy-MM-dd HH:mm:ss'}}</td>
+						</tr>
+					</table>
+				</div>
+		
+			<div class="table-footer" ng-if="eventDOListRespVO">
+				<div class="pull-right sn-table-pager text-right">
+					<cd-pager style="float: right" page="pageIndex" page-size="pageSize" total="total" page-action="paging1(page, pageSize, total)"></cd-pager>
+				</div>
+				<div class="clear"></div>
+			</div>
+	
+		</div>
+
+
+		<div  ng-if="boxID==2">
+			<div class="table-header" style="margin-bottom: 14px;margin-top: 13px;">
+				<form class="form-inline">
+					<div class="form-group select2height">
+						<select class="form-control sheet-select" select2="select2NotificationType" ng-model="notificationType"
+							ng-options="notificationType.name for notificationType in notificationTypeList"
+							type="text" class="form-control"
+							ng-change="onChangeNotificationTypeSlelect(notificationType)"
+							style="width: 175px">
+							<option value="">请选择通知类型</option>
+						</select>
+					</div>
+					<div class="form-group select2height">
+						<select class="form-control sheet-select" select2="select2Emergency" ng-model="emergency"
+							ng-options="emergency.name for emergency in emergencyList"
+							type="text" class="form-control"
+							ng-change="onChangeEmergencySlelect(emergency)" name="plat_id"
+							style="width: 175px">
+							<option value="">请选择重要性</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<input type="text" class="form-control sheet-input"
+							ng-model="search.creator" placeholder="请输入签发人姓名或工号">
+					</div>
+					<div class="form-group">
+						<div class="form-group">
+							<input class="form-control input-small" style="background-color:#fff;width:337px;height: 26px;" sn-date-range-picker options="dateOption4" placeholder="输入签发日期" ng-model="search.datePicker.date" readonly />
+                            <span class="icon-date" style="pointer-events: none;"> <i class="fa fa-calendar glyphicon glyphicon-calendar"></i></span>
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<div class="search-div marginL" ng-click="doSearchNotification()">查询</div>
+						<div class="reset-div marginL" ng-click="doResetNotification()">重置</div>
+						<div class="reset-div marginL"> <a href="javascript:void(0)" ng-href="/#/notificationManage" style="vertical-align: bottom;">管理</a></div>
+					</div>
+				</form>
+		
+		
+			</div>
+				<!--表格主体 -->
+				<div class="table-body" ng-hide="platform_list">
+					<table class="sn-table" style="table-layout: fixed">
+						<tr>
+							<th width="15%">公文号</th>
+							<th width="15%">标题</th>
+							<th width="10%">重要性</th>
+							<th width="15%">通知类型</th>
+							<th width="20%">签发部门</th>
+							<th width="10%">签发人</th>
+							<th width="15%">签发时间</th>
+						</tr>
+						<tr ng-repeat="notificationDO in notificationDOListRespVO">
+							<td class="text_overflow" style="padding: 10px 20px;" title="{{notificationDO.documentNumber}}">{{notificationDO.documentNumber}}</td>
+							<td class="text_overflow" style="padding: 10px 20px;" title="{{notificationDO.title}}">{{notificationDO.title}}</td>
+							<td>
+							    <div ng-if="notificationDO.emergency == 0">一般</div>
+                                <div ng-if="notificationDO.emergency == 1">一般</div>
+                                <div ng-if="notificationDO.emergency == 2">紧急</div>
+                                <div ng-if="notificationDO.emergency == 3">非常紧急</div>
+							</td>
+							<td>
+                                <div ng-if="notificationDO.type == 'notice'">通知</div>
+                                <div ng-if="notificationDO.type == 'announcement'">公告</div>
+                                <div ng-if="notificationDO.type == 'regulation'">规范</div>
+							</td>
+							<td>{{notificationDO.department}}</td>
+							<td class="text_overflow" title="{{notificationDO.creator}}">{{notificationDO.creator}}</td>
+							<td>{{notificationDO.createTime|date:'yyyy-MM-dd HH:mm:ss'}}</td>
+						</tr>
+					</table>
+				</div>
+				
+			<div class="table-footer" ng-if="notificationDOListRespVO">
+				<div class="pull-right sn-table-pager text-right">
+					<cd-pager style="float: right" page="pageIndex2" page-size="pageSize2" total="total2" page-action="paging2(page, pageSize, total)"></cd-pager>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

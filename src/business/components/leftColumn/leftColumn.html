@@ -1,0 +1,32 @@
+<section style="height: 100%;">
+    <div class="phoebus-level2-left" ng-class="{'phoebus-level2-nav-close': closed}" style="height: 100%;">
+        <div style="background-color: #2C3645;text-align: center;height: 30px;font-size: 20px;" ng-click="toggleNav()">
+            <span>
+                    <i class="fa fa-bars" aria-hidden="true"></i>
+                </span>
+        </div>
+        <div class="select-app" ng-class="{'phoebus-level2-nav-close': closed}">
+            <div class="select-app-title" ng-click="$event.stopPropagation();isOptionsShow=!isOptionsShow;">
+                <span>{{appName}}</span>
+                <i class="fa fa-angle-down pull-right" ng-show="isOptionsShow"></i>
+                <i class="fa fa-angle-up pull-right" ng-show="!isOptionsShow"></i>
+            </div>
+            <div class="select-app-options" ng-show="isOptionsShow">
+                <input type="text" ng-model="appNameFilter.appName" ng-click="$event.stopPropagation();" placeholder="请输入应用Id">
+                <div class="appname-wrap">
+                    <div class="appname" ng-repeat="app in apps | filter:appNameFilter" ng-click="onChangeSlelectApp(app); $event.stopPropagation();">
+                        <span>{{app.appName}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <select class="form-control" ng-model="app" ng-options="app as app.appName for app in apps" type="text" class="form-control"
+            ng-change="onChangeSlelectApp(app)" style="width: 200px;height: 35px">
+				<option value="">请选择项目</option>
+			</select> -->
+        <cd-navbar menus="menus" style="width:217px;height: 100%;min-height:100px;overflow-y: scroll;display:inline-block;padding-right: 17px;"></cd-navbar>
+    </div>
+    <div class="phoebus-level2-right" ng-class="{'phoebus-level2-nav-close': closed}">
+        <div ui-view style="height:100%;width: 100%;"></div>
+    </div>
+</section>

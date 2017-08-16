@@ -1,0 +1,96 @@
+<!doctype html><html><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title></title>
+    <script type="text/javascript" src="../internal.js"></script>
+    <style type="text/css">
+        .warp {width: 320px;height: 153px;margin-left:5px;padding: 20px 0 0 15px;position: relative;}
+        #url {width: 290px; margin-bottom: 2px; margin-left: -6px; margin-left: -2px\9;*margin-left:0;_margin-left:0; }
+        .format span{display: inline-block; width: 58px;text-align: center; zoom:1;}
+        table td{padding:5px 0;}
+        #align{width: 65px;height: 23px;line-height: 22px;}
+    </style>
+</head>
+<body sat-id="1470899322859">
+<div class="warp" sat-id="1470899322860">
+        <table width="300" cellpadding="0" cellspacing="0" sat-id="1470899322861">
+            <tbody sat-id="1470899322862"><tr sat-id="1470899322863">
+                <td colspan="2" class="format" sat-id="1470899322864">
+                    <span sat-id="1470899322865"><var id="lang_input_address" sat-id="1470899322866"></var></span>
+                    <input style="width:200px" id="url" type="text" value="" sat-id="1470899322867">
+                </td>
+            </tr>
+            <tr sat-id="1470899322868">
+                <td colspan="2" class="format" sat-id="1470899322869"><span sat-id="1470899322870"><var id="lang_input_width" sat-id="1470899322871"></var></span><input style="width:200px" type="text" id="width" sat-id="1470899322872"> px</td>
+
+            </tr>
+            <tr sat-id="1470899322873">
+                <td colspan="2" class="format" sat-id="1470899322874"><span sat-id="1470899322875"><var id="lang_input_height" sat-id="1470899322876"></var></span><input style="width:200px" type="text" id="height" sat-id="1470899322877"> px</td>
+            </tr>
+            <tr sat-id="1470899322878">
+                <td sat-id="1470899322879"><span sat-id="1470899322880"><var id="lang_input_isScroll" sat-id="1470899322881"></var></span><input type="checkbox" id="scroll" sat-id="1470899322882"> </td>
+                <td sat-id="1470899322883"><span sat-id="1470899322884"><var id="lang_input_frameborder" sat-id="1470899322885"></var></span><input type="checkbox" id="frameborder" sat-id="1470899322886"> </td>
+            </tr>
+
+            <tr sat-id="1470899322887">
+                <td colspan="2" sat-id="1470899322888"><span sat-id="1470899322889"><var id="lang_input_alignMode" sat-id="1470899322890"></var></span>
+                    <select id="align" sat-id="1470899322891">
+                        <option value="" sat-id="1470899322892"></option>
+                        <option value="left" sat-id="1470899322893"></option>
+                        <option value="right" sat-id="1470899322894"></option>
+                    </select>
+                </td>
+            </tr>
+        </tbody></table>
+</div>
+<script type="text/javascript" sat-id="1470899322895">
+    var iframe = editor._iframe;
+    if(iframe){
+        $G("url").value = iframe.getAttribute("src")||"";
+        $G("width").value = iframe.getAttribute("width")||iframe.style.width.replace("px","")||"";
+        $G("height").value = iframe.getAttribute("height") || iframe.style.height.replace("px","") ||"";
+        $G("scroll").checked = (iframe.getAttribute("scrolling") == "yes") ? true : false;
+        $G("frameborder").checked = (iframe.getAttribute("frameborder") == "1") ? true : false;
+        $G("align").value = iframe.align ? iframe.align : "";
+    }
+    function queding(){
+        var  url = $G("url").value.replace(/^\s*|\s*$/ig,""),
+                width = $G("width").value,
+                height = $G("height").value,
+                scroll = $G("scroll"),
+                frameborder = $G("frameborder"),
+                float = $G("align").value,
+                newIframe = editor.document.createElement("iframe"),
+                div;
+        if(!url){
+            alert(lang.enterAddress);
+            return false;
+        }
+        newIframe.setAttribute("src",/http:\/\/|https:\/\//ig.test(url) ? url : "http://"+url);
+        /^[1-9]+[.]?\d*$/g.test( width ) ? newIframe.setAttribute("width",width) : "";
+        /^[1-9]+[.]?\d*$/g.test( height ) ? newIframe.setAttribute("height",height) : "";
+        scroll.checked ?  newIframe.setAttribute("scrolling","yes") : newIframe.setAttribute("scrolling","no");
+        frameborder.checked ?  newIframe.setAttribute("frameborder","1",0) : newIframe.setAttribute("frameborder","0",0);
+        float ? newIframe.setAttribute("align",float) :  newIframe.setAttribute("align","");
+        if(iframe){
+            iframe.parentNode.insertBefore(newIframe,iframe);
+            domUtils.remove(iframe);
+        }else{
+            div = editor.document.createElement("div");
+            div.appendChild(newIframe);
+            editor.execCommand("inserthtml",div.innerHTML);
+        }
+        editor._iframe = null;
+        dialog.close();
+    }
+    dialog.onok = queding;
+    $G("url").onkeydown = function(evt){
+        evt = evt || event;
+        if(evt.keyCode == 13){
+            queding();
+        }
+    };
+    $focus($G( "url" ));
+
+</script>
+
+</body></html>

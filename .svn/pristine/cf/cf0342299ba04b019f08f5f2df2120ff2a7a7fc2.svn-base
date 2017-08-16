@@ -1,0 +1,90 @@
+<div>
+
+	<div class="nav-content">
+		<div class="nav-title">
+			<div class="nav-title-decoration-color"></div>
+			<div class="nav-title-name">持续集成</div>
+			<p>持续集成服务 支持一个项目多个job同时运行，支持90%以上主流语言的构建、打包、单测和质量分析；支持用户自定义构建脚本，拥有多任务、多配置、任务的定时执行或立即执行等特点。</p>
+			<div class="linkName">
+					<!-- <div class="button-div" style="margin-left: 0px;"><a ng-href="{{uranusUrl}}/#/buildjob/" target="_blank">我的持续集成</a></div> -->
+			</div>
+		</div>
+	</div>
+	<div class="mainContent">
+		<div class="table-header" style="margin-top: 13px;">
+					<form class="form-inline">
+						<div class="pull-left margin-right-10">
+						<input ng-model="search.taskName" placeholder="输入任务名称"/>
+						</div>
+						<div class="pull-left margin-right-10">
+						<input ng-model="search.systemName" placeholder="应用名称"/>
+						</div>
+						<div class="search-div marginL" ng-click="doSearch()">查询</div>
+						<!-- <a type="reset" href="javascript:void(0)" ng-click="doReset()" 
+							style="vertical-align: bottom;">重置</a> -->
+					</form>
+				</div>
+				<!--表格主体 -->
+				<div class="table-body">
+					<table class="sn-table" style="table-layout: fixed">
+						<tr>
+							<th width="10%"><span class="tr-style">任务名称</span></th>
+							<th width="10%"><span class="tr-style">创建人</span></th>
+							<th width="10%"><span class="tr-style">应用</span></th>
+							<th width="20%"><span class="tr-style">构建命令</span></th>
+							<!-- <th width="10%">构建包</th> -->
+							<th width="15%"><span class="tr-style">任务开始时间</span></th>
+							<th width="10%"><span class="tr-style">耗时(秒)</span></th>
+							<th width="15%"><span class="tr-style">任务结束时间</span></th>
+							<th width="10%"><span class="tr-style">结果</span></th>
+						</tr>
+						<tr ng-repeat="integrationBO in integrationBOListRespVO">
+							<td class="text_overflow" title="{{integrationBO.taskName}}">{{integrationBO.taskName}}</td>
+							<td>{{integrationBO.createUser}}</td>
+							<td>
+								<a ng-href="/#/integrationManageByStstem" ng-click="setSession(integrationBO.systemId,integrationBO.systemName)">
+								{{integrationBO.systemName}}
+								</a>
+							</td>
+							<td>
+								<span ng-repeat="orderItem in buildOrderList" ng-if="orderItem.itemCode==integrationBO.buildOrder">
+									{{orderItem.itemName}}
+								</span>
+							</td>
+							<!-- <td>{{integrationBO.packageName}}</td> -->
+							<td>{{integrationBO.taskBeginTimeStr| date:'yyyy-MM-dd HH:mm:ss'}}</td>
+							<td>{{integrationBO.taskCosttime}}</td>
+							<td>{{integrationBO.taskEndTimeStr| date:'yyyy-MM-dd HH:mm:ss'}}</td>
+							<td>
+								<div ng-show="integrationBO.taskStatus == 1 " style="position: relative;">
+									<span>成功</span>
+									<div class="circleSuccess circle-position"></div>
+								</div>
+								<div ng-show="integrationBO.taskStatus == 2 " style="position: relative;">
+									<span>失败</span>
+									<div class="circleFailed circle-position"></div>
+								</div>
+							</td>
+						</tr>
+						<tr ng-if="!integrationBOListRespVO||integrationBOListRespVO.length<1">
+							<td colspan="7">暂无数据</td>
+						</tr>
+					</table>
+				</div>
+				<div class="table-footer" style="overflow: hidden;">
+					<div class="pull-right sn-table-pager text-right">
+						<cd-pager page="page" page-size="pageSize" total="total"
+							page-action="paging(page, pageSize, total)"></cd-pager>
+					</div>
+				</div>
+		</div>
+	<!--<div class="relative-div">
+		<div class="absolute-div">我的项目</div>
+		<div class="content-div">
+			
+			
+			
+		</div>
+	</div>-->
+</div>
+

@@ -1,0 +1,101 @@
+<div>
+
+	<div class="nav-content">
+		<div class="nav-title">
+			<div class="nav-title-decoration-color"></div>
+			<div class="nav-title-name">持续部署</div>
+			<p>7*24小时一键式部署服务；可视化的自定义部署步骤及流程；多数据中心架构，并发稳定，与其他平台无缝集成.下面开始体验持续部署。</p>
+			<div class="linkName">
+				<!-- <div class="button-div" style="margin-left: 0px;"><a
+			ng-href="{{odin3Url}}/#/releasesheet/" target="_blank">更多发布单</a></div> -->
+			</div>
+		</div>
+	</div>
+	<div class="mainContent">
+			<!--表格主体 -->
+			<div class="table-header" style="margin-top: 13px;">
+					<form class="form-inline">
+						<div class="pull-left margin-right-10">					
+							<input placeholder="请输入应用名称" ng-model="search.appName"/>
+						</div>
+							<div class="search-div marginL" ng-click="doSearch()">查询</div>
+						<span style="display:inline-block;    position: relative;
+    top: 6px;"> <i class="fa fa-info-circle" style="color:rgb(17, 185, 131)"></i> 列举30天内各系统的发布情况</span>
+					</form>
+			</div>
+			<div class="table-body">
+				<table class="sn-table" style="table-layout: fixed">
+
+					<tr>
+						<th width="15%"><span class="tr-style">应用名称</span></th>
+						<th width="15%"><span class="tr-style">SIT发布</span></th>
+						<th width="15%"><span class="tr-style">PRE发布</span></th>
+						<th width="15%"><span class="tr-style">PRD发布</span></th>
+						<th width="20%"><span class="tr-style">应用管理员</span></th>
+						<th width="20%"><span class="tr-style">操作</span></th>
+					</tr>
+					<tr ng-repeat="deploymentBO in deploymentBOListRespVO">
+						<!-- <td><a ng-href="{{odin3Url}}/#/releasesheet/{{deploymentBO.sysId}}" target="_blank">
+								{{deploymentBO.systemName}} </a></td> -->
+						<td class="text_overflow" title="{{deploymentBO.systemName}}"><a ng-href="/#/deploymentListBySystem" ng-click="setSession(deploymentBO.sysId,deploymentBO.systemName)">
+							{{deploymentBO.systemName}} </a></td>
+						<td>
+							   <div class="number-area">
+                                <span>{{deploymentBO.sit}}</span>
+                                </div>
+                                <div class="color-area">
+                                <sn-color sum="deploymentBO.sit" ratio='10'></sn-color>
+                                </div>
+							
+						</td>
+						<td>
+							<div class="number-area">
+                                <span>{{deploymentBO.pre}}</span>
+                                </div>
+                                <div class="color-area">
+                                <sn-color sum="deploymentBO.pre" ratio='10'></sn-color>
+                            </div>
+							
+						</td>
+						<td>
+							<div class="number-area">
+                                <span>{{deploymentBO.prd}}</span>
+                                </div>
+                                <div class="color-area">
+                                <sn-color sum="deploymentBO.prd" ratio='10'></sn-color>
+                            </div>
+						</td>
+						<td>{{deploymentBO.admin}}</td>
+						<td>
+							<a href="javascript:;"  ui-sref="topHead.leftColumn.deploymentEnvInstance"
+							ng-click="setSession(deploymentBO.sysId,deploymentBO.systemName)"> 环境管理
+							</a>
+							<a href="javascript:;"  ui-sref="topHead.leftColumn.deploymentListBySystem"
+							ng-click="setSession(deploymentBO.sysId,deploymentBO.systemName)"> 发布详情
+							</a>
+						</td>
+					</tr>
+					<tr ng-if="!deploymentBOListRespVO||deploymentBOListRespVO.length<1">
+						<td colspan="6">暂无数据</td>
+					</tr>
+				</table>
+			</div>
+			<div class="table-footer" style="overflow: hidden;">
+				<div class="pull-right sn-table-pager text-right">
+					<cd-pager page="page" page-size="pageSize" total="total"
+						page-action="paging(page, pageSize, total)"></cd-pager>
+				</div>
+			</div>
+		</div>
+	<!--<div class="relative-div">
+		<div class="absolute-div">我的项目</div>
+		<div class="content-div">
+			
+			
+			
+		</div>
+	</div>-->
+</div>
+
+
+

@@ -1,0 +1,111 @@
+<div>
+
+	<div class="nav-content">
+		<div class="nav-title">
+			<div class="nav-title-decoration-color"></div>
+			<div class="nav-title-name">项目管理</div>
+			<p>项目管理服务拥有规范化的需求分解、任务安排、资源分配，以及即时准确的项目进度监控，可使整个团队和项目高效协同，让管理变得更轻松、过程更清晰。欢迎开启以下项目管理服务体验。</p>
+			<div class="linkName">
+				<div class="button-div" style="margin-left: 0px;"><a
+				ng-href="{{eitpUrl}}/itp-web-in/queryProductRequirement/productRequirementList.htm"
+				target="_blank">需求申请</a></div>
+			
+				<div class="button-div"> <a
+				ng-href="{{eitpUrl}}/itp-web-in/processDraftFilter.do?businessTemplateId=NSOA0256"
+				target="_blank">立项申请</a></div>
+			
+				<div class="button-div"> <a
+				ng-href="{{eitpUrl}}/itp-web-in/processStartDraft.do?businessTemplateId=NSOA0339"
+				target="_blank">填写工作日志</a></div>	
+			</div>
+		</div>
+	</div>
+	<div class="mainContent">
+		<div class="table-header" style="margin-top: 13px;">
+					<form class="form-inline">
+						<div class="pull-left margin-right-10">
+						<input placeholder="输入项目名称" ng-model="search.projectKey"/>
+						<input placeholder="输入应用名称" ng-model="search.systemKey"/>
+							
+						</div>
+						<div class="pull-left margin-right-10 marginL select2height">
+							<select class="form-control" select2="select2Status" ng-model="thestatus"
+								ng-options="thestatus.value for thestatus in statusList" type="text"
+								class="form-control" ng-change="onChangeSlelectStatus(thestatus)"
+								style="width: 175px;height: 26px">
+								<option value="">请选择项目状态</option>
+							</select>
+						</div>
+						<div class="search-div marginL" ng-click="doSearch()">查询</div>
+					</form>
+				</div>
+				<!--表格主体 -->
+				<div class="table-body">
+					<table class="sn-table" style="table-layout: fixed">
+						<tr>
+							<th width="15%" ><span class="tr-style">项目编号</span></th>
+							<th width="15%" ><span class="tr-style">项目名称</span></th>
+							<!-- <th width="5%">项目经理</th> -->
+							<th width="15%" ><span class="tr-style">涉及应用</span></th>
+							<th width="15%" ><span class="tr-style">原始需求个数</span></th>
+							<th width="15%" ><span class="tr-style">需求完成率</span></th>
+							<th width="10%" ><span class="tr-style">项目状态</span></th>
+							<!-- <th width="5%">上线时间</th> -->
+							<th width="15%" ><span class="tr-style">操作</span></th>
+						</tr>
+						<tr ng-repeat="projectBO in projectBOListRespVO">
+							<td ng-if="projectBO.rw != null" rowspan="{{projectBO.rw}}"><a
+								ng-href="{{eitpUrl}}/itp-web-in/projectArea/querySoftwarePage.htm?projectNo={{projectBO.projectId}}&projectStatus=active&areaType=me"
+								target="_blank"> {{projectBO.projectId}} </a></td>
+							<td ng-if="projectBO.rw != null" rowspan="{{projectBO.rw}}">{{projectBO.name}}</td>
+							<!-- <td>{{projectBO.leadName}}</td> -->
+							<td>{{projectBO.sysName}}</td>
+							<td>
+								<!-- <a ng-href="{{venusUrl}}/#/epic/{{projectBO.projectId}}/{{projectBO.sysName}}/{{projectBO.name}}/{{projectBO.systemName}}"
+								target="_blank"> -->
+								<a href="javascript:void(0)" ng-click="showDialog(projectBO)" >
+								{{projectBO.epicCount}} 
+								</a>
+							</td>
+							<td>{{projectBO.completionRate}}%</td>
+							<td ng-if="projectBO.status == 0 && projectBO.rw != null" rowspan="{{projectBO.rw}}">删除</td>
+							<td ng-if="projectBO.status == 1 && projectBO.rw != null" rowspan="{{projectBO.rw}}"><sn-dot colortext="statusName[1]"></sn-dot></td>
+							<td ng-if="projectBO.status == 2 && projectBO.rw != null" rowspan="{{projectBO.rw}}">暂停</td>
+							<td ng-if="projectBO.status == 3 && projectBO.rw != null" rowspan="{{projectBO.rw}}">终止</td>
+							<td ng-if="projectBO.status == 4 && projectBO.rw != null" rowspan="{{projectBO.rw}}">关闭</td>
+							<!-- <td>{{projectBO.planTime}}</td> -->
+							<td ng-if="projectBO.rw != null" rowspan="{{projectBO.rw}}">
+								<div ng-if="projectBO.manager">
+									<a target="_blank"
+										href="{{eitpUrl}}/itp-web-in/processDraftFilter.do?businessTemplateId=NSOA9352&projectNo={{projectBO.projectId}}">变更</a>
+									<a target="_blank"
+										href="{{eitpUrl}}/itp-web-in/processDraftFilter.do?businessTemplateId=NSOA5962&projectNo={{projectBO.projectId}}">上线</a>
+									<br />
+									<a target="_blank"
+										href="{{eitpUrl}}/itp-web-in/processDraftFilter.do?businessTemplateId=NSOA9332&projectNo={{projectBO.projectId}}">结项</a>
+									<a target="_blank"
+										href="{{eitpUrl}}/itp-web-in/processDraftFilter.do?businessTemplateId=NSOA6286&itemCode={{projectBO.projectId}}&releaseType=1">发布</a>
+								</div>
+							</td>
+						</tr>
+						<tr ng-if="!projectBOListRespVO||projectBOListRespVO.length<1">
+							<td colspan="7">暂无数据</td>
+						</tr>
+					</table>
+				</div>
+				<div class="table-footer" style="overflow: hidden;">
+					<div class="pull-right sn-table-pager text-right">
+						<cd-pager page="page" page-size="pageSize" total="total"
+							page-action="paging(page, pageSize, total)"></cd-pager>
+					</div>
+				</div>
+		</div>
+	<!--<div class="relative-div">
+		<div class="absolute-div">我的项目</div>
+		<div class="content-div">
+			
+			
+			
+		</div>
+	</div>-->
+</div>

@@ -1,0 +1,16 @@
+.ng-isolate-scope ul li span{
+    color:#11B983;
+}
+.ng-isolate-scope ul li a{
+    color:#686868;
+}
+.ng-isolate-scope ul{
+    padding-left:0;
+    padding-bottom:0;
+}
+
+
+
+
+
+

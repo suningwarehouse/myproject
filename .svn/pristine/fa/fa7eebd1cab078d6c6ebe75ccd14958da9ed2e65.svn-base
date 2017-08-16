@@ -1,0 +1,62 @@
+<div class="modal fade in" ng-controller="viewTaskDetial">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" ng-click="close()">
+					<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+				</button>
+				<h4 class="modal-title">任务详情</h4>
+			</div>
+
+			<div class="form-horizontal">
+				<div class="line-distance" style="padding-left: 42px;margin-top: 26px;">
+					<label class="label-style" style="vertical-align: top;width:14%;">任务类型 :</label>
+					<label class="label-style" style="vertical-align: top;width:14%;">{{task.taskTypeName}}</label>
+				</div>
+				<div class="line-distance" ng-if="task.taskType!=2" style="padding-left: 41px;margin-top: 26px;">
+				    <label class="label-style" style="vertical-align: top;width:14%;">关联任务名称 :</label>
+		            <label class="label-style" style="vertical-align: top;width:14%;">{{task.taskName}}</label>
+		        </div>
+			</div>
+			<div class="form-horizontal" ng-if="task.taskType==2">
+                <div class="line-distance" style="padding-left: 41px;margin-top: 26px;">
+                    <label class="label-style" style="vertical-align: top;width:14%;">环境类型 :</label>
+                    <label class="label-style" style="vertical-align: top;width:14%;">{{odinTask.envTypeName}}</label>
+                </div>
+                <div class="line-distance" style="padding-left: 41px;margin-top: 26px;">
+                    <label class="label-style" style="vertical-align: top;width:14%;">版本 :</label>
+                    <label class="label-style" style="vertical-align: top;width:14%;">{{odinTask.version}}</label>
+                </div>
+                <div class="line-distance" style="padding-left: 41px;margin-top: 26px;">
+                    <label class="label-style" style="vertical-align: top;width:14%;">部署DU包 :</label>
+                    <label class="label-style" style="vertical-align: top;width:14%;">{{odinTask.listPackageName}}</label>
+                </div>
+                <div class="line-distance" style="padding-left: 41px;margin-top: 26px;">
+                    <label class="label-style" style="vertical-align: top;width:14%;">分支名 :</label>
+                    <label class="label-style" style="vertical-align: top;width:14%;">{{odinTask.listBranchName}}</label>
+                </div>
+                <div class="line-distance" style="padding-left: 41px;margin-top: 26px;">
+                    <label class="label-style" style="vertical-align: top;width:14%;">打包配置 :</label>
+                    <label class="label-style" style="vertical-align: top;width:14%;">{{odinTask.listBuildConfigName}}</label>
+                </div>
+                <div class="line-distance" style="padding-left: 41px;margin-top: 26px;">
+                    <label class="label-style" style="vertical-align: top;width:14%;">分支URL:</label>
+                    <label class="label-style" style="vertical-align: top;width:14%;">{{odinTask.listBranchUrl}}</label>
+                </div>
+                <div class="line-distance" style="padding-left: 41px;margin-top: 26px;">
+                    <label class="label-style" style="vertical-align: top;width:14%;">环境实例:</label>
+                    <label class="label-style" style="vertical-align: top;width:14%;">{{odinTask.listEnvName}}</label>
+                </div>
+                <div class="line-distance" style="padding-left: 41px;margin-top: 26px;">
+                    <label class="label-style" style="vertical-align: top;width:14%;">策略名称:</label>
+                    <label class="label-style" style="vertical-align: top;width:14%;">{{odinTask.listStrategyName}}</label>
+                </div>
+            </div>
+			<div class="modal-footer">
+				<div>
+					<button class="btn btn-primary reverse" ng-click="close()">取 消</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,271 @@
+.h3-inline{
+    display: inline;
+}
+
+.red{
+    color: red;
+    padding-right: 5px;
+}
+
+.error {
+    color: #f60;
+}
+
+.success {
+    color: #78be25;
+}
+
+.small-i {
+    margin-top: 3px;
+}
+
+li {list-style-type:none;}
+.oneLine{
+    float:left;
+    margin-bottom: 20px;
+}
+.linetop{
+    overflow: hidden;
+    margin-right: 10px;
+}
+.linetopleft{
+    float: left;
+    overflow: hidden;
+    min-height: 50px;
+    width: 175px;
+    /* border: 1px black solid; */
+    margin-bottom: 10px;
+    padding-left: 40px;
+    background-image: url(/business/images/navigation.png);
+    /* background-color: #595757; */
+    padding-top: 10px;
+    color: white;
+}
+.linetopright{
+    float:left;
+    margin-left: 10px;
+    margin-top: 20px;
+}
+.linecontent{
+    min-height: 200px;
+    width: 156px;
+    border: 1px black solid;
+    margin-left: 16px;
+}
+.topleft{
+    float:left;
+    margin-right: 10px;
+    font-size: x-large;
+}
+.topmiddle{
+    float:left;
+    margin-right: 10px;
+}
+.topimg{
+    float:left;
+    margin-right: 10px; 
+    margin-top: 10px;
+}
+.topright{
+    float:left;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+.listStyle{
+    margin-left: 10px;
+    margin-top: 5px;
+}
+.iconStyle{
+    margin-top: 3px;
+}
+.circle {
+    width: 10px;
+    height: 10px;
+    background: #d09e9e;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    display: inline-block;
+    margin-left: 8px;
+}
+.deleteStyle{
+    margin-top: 3px;
+    float: right;
+    margin-right: 3px;
+}
+.mytabs {
+    float: left;
+    width: 100%;
+    margin: -15px 10px 12px 12px;
+}
+.mytabs ul 
+{
+    list-style: none outside none;
+    margin: 0;
+    padding: 0;
+    color: #666666;
+}
+.mytabs ul li {
+    float: left;
+    line-height: 24px;
+    margin: 0;
+    padding: 3px 15px 3px 15px;
+    border: 1px solid #d3d3d3;
+    font-size: 12px;
+   
+}
+.mytab-nav{
+     background-color: white;
+     cursor:pointer;
+}
+.mytab-nav-action{
+    background-color: #3a8cbb;
+    color: #fff;
+    cursor:pointer;
+}
+.square{
+    width:3px;
+    height:13px;
+    background-color:black;
+    display:inline-block;
+    margin-right:10px;
+}
+.text_overflow {
+    width: 70%;
+    vertical-align: top;
+    display: inline-block;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.text_overflow_task {
+    vertical-align: top;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.text_process_overflow {
+    width: 50px;
+    vertical-align: top;
+    display: inline-block;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+
+/***
+reset css for navbar start
+***/
+
+.content-wrapper,
+.right-side,
+.main-footer {
+	margin-left: 215px;
+}
+
+.nav-content {
+	background: #FFFFFF;
+    margin-top: 20px;
+	/*box-shadow: 0 2px 4px 0 #D8DDE9;*/
+}
+
+sn-breadcrumb>ul>li>a {
+	font-family: MicrosoftYaHeiUILight;
+	font-size: 12px;
+	color: #686868;
+}
+
+sn-breadcrumb>ul>li>a:hover {
+	font-family: MicrosoftYaHeiUILight;
+	font-size: 12px;
+	color: #11B983;
+}
+
+sn-breadcrumb>ul>li>span {
+	font-family: MicrosoftYaHeiUILight;
+	font-size: 12px;
+	color: #11B983;
+}
+
+.nav-title-decoration-color {
+	display: inline-block;
+	height: 28px;
+	width: 6px;
+	background-color: #11B983;
+	float: left;
+	margin-right: 18px;
+}
+
+.nav-title {
+	padding: 13px 0 15px 0;
+	border-bottom: 5px solid #dee3ec;
+}
+
+.nav-title p {
+	margin: 6px 0 0 24px;
+}
+
+.nav-title-name {
+	font-family: MicrosoftYaHeiUILight;
+	font-size: 18px;
+	color: #000000;
+}
+
+
+.name-style{
+    width: 12.666667%;
+    color: #777777;
+    font-size: 14px;
+}
+.input-style{
+    width: 220px;
+}
+.inputselect{
+    float:left;width: 18.666667%
+}
+.top-div{
+    margin-top: 40px;
+}
+.cancelbutton{
+    width: 80px;
+    height: 28px;
+    background-color: #fff;
+    color: #11B983;
+    font-size: 12px;
+}
+.nextupbutton{
+    margin-left: 14px;
+    width: 80px;
+    height: 28px;
+    background-color: #11B983;
+    color: #fff;
+    font-size: 12px;
+}
+/***
+reset css for navbar end
+***/
+
+table.sn-table{
+    padding:0;
+}
+
+.search-div{
+    background-color:#11B983;
+    color: #fff;
+    min-width: 60px;
+    font-size: 14px;
+    padding: 4px 12px;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+    vertical-align: middle;
+    font-size: 12px;
+
+}
+
+.marginL {
+    margin-left: 6px;
+}

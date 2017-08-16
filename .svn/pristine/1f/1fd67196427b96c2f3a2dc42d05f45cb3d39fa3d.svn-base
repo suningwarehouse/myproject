@@ -1,0 +1,262 @@
+<div ng-controller="OdinTaskCtrl">
+    <div class="form-group">
+        <div ng-class="{true: 'active', false: 'inactive'}[isActive]" style="text-align: center;">持续部署配置：第一步</div>
+        <div ng-class="{true: 'inactive', false: 'active'}[isActive]" style="text-align: center;">持续部署配置：第二步</div>
+    </div>
+    <div ng-show="odinStep==1">
+        <form name="odinSubForm" class="form-horizontal" novalidate>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">系统名称</label>
+                <div class="col-sm-8">
+                    <p class="form-control-static" ng-repeat="sys in data.sysList"
+                       ng-if="sys.projectId==data.flow.sysId">
+                        {{sys.projectName}}
+                    </p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label"><span class="required">*</span>版本</label>
+                <div class="col-sm-4">
+                    <select class="form-control" ng-model="odinTask.versionId" name="versionId" required
+                            ng-options="option.id as option.version for option in versionList"
+                            ng-change="versionChange()">
+                        <option value="" style="display: none">请选择版本</option>
+                    </select>
+                </div>
+                <div class="col-sm-5">
+                    <p class="form-control-static error"
+                       ng-if="odinSubForm.versionId.$error.required && odinSubForm.versionId.$invalid && flowForm.versionId.$dirty">
+                        <i class="fu fu-cross-circle" aria-hidden="true">所属版本不能为空</i>
+                    </p>
+                    <p class="form-control-static success"
+                       ng-if="odinSubForm.versionId.$valid && odinSubForm.versionId.$dirty">
+                        <i class="fu fu-check-circle" aria-hidden="true"></i>
+                    </p>
+                </div>
+            </div>
+        </form>
+        <button class="btn btn-default cancelbutton" ng-click="curr(0)">上一步</button>
+        <button class="btn btn-primary" ng-if="odinStep==1" ng-click="nextOdinStep(2)">下一步</button>
+    </div>
+    <div ng-show="odinStep==2">
+        <form name="odinTypeForm" class="form-horizontal" novalidate>
+            <div class="row">
+                <div class="form-group col-xs-6">
+                    <label class="col-sm-4 control-label">系统名称</label>
+                    <div class="col-sm-6">
+                        <p class="form-control-static" ng-repeat="sys in data.sysList"
+                           ng-if="sys.projectId==data.flow.sysId">
+                            {{sys.projectName}}
+                        </p>
+                    </div>
+                </div>
+                <div class="form-group col-xs-6">
+                    <label class="col-sm-4 control-label">申请人</label>
+                    <div class="col-sm-6">
+                        <p class="form-control-static">
+                            {{currentUserFullName}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-xs-6">
+                    <label class="col-sm-4 control-label"><span class="required">*</span>环境类型</label>
+                    <div class="col-sm-6">
+                        <select class="form-control" ng-model="odinTask.envType" name="envType" required
+                                ng-options="option.id as option.name for option in envTypeList"
+                                ng-change="envTypeChange()">
+                            <option value="" style="display: none">请选择环境类型</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group col-xs-6">
+                    <label class="col-sm-4 control-label">版本</label>
+                    <div class="col-sm-4">
+                        <p class="form-control-static" ng-repeat="version in versionList" ng-if="odinTask.versionId==version.id">
+                            {{version.version}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+        <div class="table-body" style="display:table;">
+            <div style="display:table-cell;width:60%;height: 100%;overflow:hidden;">
+                <table class="sn-table branchTable" style="table-layout: fixed;height: 100%;">
+                    <tr>
+                        <th width="35%">可打出部署DU包</th>
+                        <th width="25%">分支名</th>
+                        <th width="10%">打包配置</th>
+                        <th width="25%">分支URL</th>
+                    </tr>
+                    <tr ng-repeat="branch in branchList">
+                        <td >
+                            <!--<label class="checkbox-inline" ng-repeat="package in branch.packagePOList">
+                                <input type="checkbox" value="{{package.packageId}}" ng-model="package.checked"
+                                       ng-change="packageChange(branch,package)"> {{package.packageName}}
+                            </label>-->
+
+                            <div class="ux-checkbox-inline" ng-repeat="package in branch.packagePOList" style="float:left;">
+                                <label>
+                                    <input type="checkbox" value="{{package.packageId}}" ng-model="package.checked" ng-change="packageChange(branch,package)">
+                                    <span class="ux-checkbox-inner text_overflow" title="{{package.packageName}}"> {{package.packageName}}</span>
+                                </label>
+                            </div>
+                        </td>
+                        <td class="word_wrap text_overflow" style="width:100%;border:none;" cd-tip>
+                            {{branch.branchName}}
+                        </td>
+                        <td>
+                            <select class="form-control" style="width: 120px !important;" ng-model="branch.buildConfigId"
+                                    ng-options="option.id as option.configName for option in buildConfigList | buildConfigFilter:branch.reposId">
+                                <option value="" style="display: none">请选择配置</option>
+                            </select>
+                        </td>
+                        <td class="word_wrap text_overflow" style="width:100%;border:none;" cd-tip>
+                            {{branch.branchUrl}}
+                        </td>
+                    </tr>
+                    <tr ng-if="!branchList||branchList.length<1">
+                        <td colspan="4">很抱歉，无分支暂不支持自动化部署！</td>
+                    </tr>
+                </table>
+            </div>
+            <div style="display:table-cell;height: 100%;">
+                <table class="sn-table envTable" style="table-layout: fixed;height: 100%;">
+                    <tr>
+                        <!--<th width="5%"></th>-->
+                        <th width="15%">环境实例名</th>
+                        <th width="15%">策略名称</th>
+                        <!--<th width="65%">可部署系统包</th>-->
+                    </tr>
+                    <tr ng-repeat="env in envList" class="env">
+                        <!--<td>
+                            <input type="checkbox" ng-model="env.checked" data="{{env}}" value="env.evnId">
+                        </td>-->
+                        <td class="word_wrap">
+                            <!--<label class="checkbox-inline" cd-tip="env.html">
+                                <input type="checkbox" ng-model="env.checked" data="{{env}}" value="{{env.envId}}">{{env.envName}}
+                            </label>-->
+                            <div class="ux-checkbox-inline" style="float:left;">
+                                <label>
+                                    <input type="checkbox" ng-model="env.checked" data="{{env}}" value="env.evnId">
+                                    <span class="ux-checkbox-inner text_overflow" title="{{env.envName}}"> {{env.envName}}</span>
+                                </label>
+                            </div>
+                        </td>
+                        <td>
+                            <select class="form-control" style="width: 75%;display: inline-block" ng-model="env.strategyId" ng-change="strategyChange(env)"
+                                    ng-options="option.strategyId as option.strategyName for option in env.strategyList">
+                                <option value="" style="display: none">请选择策略</option>
+                            </select>
+                            <a ng-show="env.strategyId" ng-href="{{odinDomainUrl}}/#/strategyDetails/{{env.strategyId}}/{{data.flow.sysId}}" target="{{env.strategyId}}"
+                               style="float: right"><i class="fa fa-info-circle"></i></a>
+                        </td>
+                        <td ng-show="false" id="packageDiv{{env.envId}}">
+                            <label class="checkbox-inline" ng-repeat="package in env.odinTaskEnvPackagePOList">
+                                <input type="checkbox" ng-disabled="true" data="{{package}}" ng-checked="package.checked"
+                                       ng-value="package.packageId"> {{package.packageName}}
+                            </label>
+                        </td>
+                    </tr>
+                    <tr ng-if="!envList||envList.length<1">
+                        <td colspan="2" ng-if="odinTask.envType">很抱歉，无环境实例暂不支持自动化部署！</td>
+                        <td colspan="2" ng-if="!odinTask.envType">请选择环境类型！</td>
+                    </tr>
+                </table>
+            </div>
+
+
+        </div>
+        <div class="form-group">
+            <button class="btn btn-default cancelbutton" ng-if="odinStep==2" ng-click="nextOdinStep(1)">上一步</button>
+            <button class="btn btn-primary" ng-click="save()" ng-disable="!branchList||branchList.length<1||!envList||envList.length<1">确定</button>
+        </div>
+    </div>
+</div>
+<style>
+    .active {
+        color: #ccc;
+    }
+
+    .inactive {
+        color: black;
+    }
+
+    .word_wrap{
+        word-wrap: break-word;
+    }
+
+    .table-body {
+        padding: 10px 0
+    }
+
+    .sn-table {
+        border: 1px solid #e0e0e0;
+        width: 100%;
+        border-collapse: collapse
+    }
+
+    .sn-table th {
+        font-size: 14px;
+        color: #000;
+        font-weight: 700
+    }
+
+    .sn-table td,
+    .sn-table th {
+        border: 1px solid #e0e0e0;
+        text-align: center
+    }
+
+    .sn-table td {
+        /*font-size: 12px;*/
+        color: #333;
+        padding: 6px 0
+    }
+
+    .sn-table td a {
+        color: #3a8cbb;
+        margin: 0 10px;
+        cursor: pointer
+    }
+
+    .sn-table tr:nth-child(odd) {
+        background-color: #f0f2f5
+    }
+
+    .sn-table tr:first-child {
+        background-color: #eaedf1
+    }
+
+    table tr th{
+        height:38px;
+    }
+    .branchTable td:last-child,.branchTable th:last-child{
+        border-right:none;
+    }
+    .content-header ul li:last-child .ng-binding{
+        color:#11B983;
+    }
+
+    table tr td select.form-control{
+        color:#888;
+        width:150px;
+        height:26px;
+        padding-top:0;
+        padding-bottom:0;
+    }
+    .envTable tr th ,.envTable tr td,.branchTable tr th,.branchTable tr td{
+        padding-left:0;
+
+    }
+
+    .text_overflow {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        width: 100px;
+    }
+</style>

@@ -1,0 +1,206 @@
+<div class="modal fade in" ng-controller="TaskListCtrl">
+    <div class="modal-dialog" style="width:900px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="close()"><span aria-hidden="true">&times;</span><span
+                        class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title">任务</h4>
+            </div>
+            <div class="modal-body">
+                <div class="step-content">
+                    <sn-step step-can-back="true" step-name="name" current-step="cStep" current-fn="curr"></sn-step>
+                    <div ng-show="cStep==0">
+                        <form name="flowSubForm" class="form-horizontal" novalidate>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label"><span class="required">*</span>任务名称</label>
+                                <div class="col-sm-4">
+                                    <input type="input" ng-model="node.taskAlias" class="form-control" name="taskAlias"
+                                         ng-change="isTaskNameRepeat()"  ng-maxlength="50" placeholder="请输入任务名称，最多50位" required ng-change=""/>
+                                </div>
+                                <div class="col-sm-5">
+                                    <p class="form-control-static error"
+                                       ng-if="(flowSubForm.taskAlias.$error.maxlength) && flowSubForm.taskAlias.$touched && !flowSubForm.taskAlias.$error.required">
+                                        <i class="fu fu-cross-circle" aria-hidden="true">最多50位</i>
+                                    </p>
+                                    <p class="form-control-static error"
+                                       ng-if="flowSubForm.taskAlias.$error.required && flowSubForm.taskAlias.$touched">
+                                        <i class="fu fu-cross-circle" aria-hidden="true">不能为空</i>
+                                    </p>
+                                    <p class="form-control-static success"
+                                       ng-if="!taskNameRepeat&&flowSubForm.taskAlias.$valid && flowSubForm.taskAlias.$touched">
+                                        <i class="fu fu-check-circle" aria-hidden="true"></i>
+                                    </p>
+                                    <p class="form-control-static error" ng-if="taskNameRepeat&&!flowSubForm.taskAlias.$error.required && !flowSubForm.taskAlias.$error.maxlength">
+                                        <i class="fu fu-cross-circle small-i" aria-hidden="true"></i>该任务名称已存在
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label"><span class="required">*</span>任务类型</label>
+                                <div class="col-sm-4">
+                                    <select class="form-control" ng-model="query.taskType" name="taskType" required
+                                            ng-options="option.itemCode as option.itemName for option in taskTypeList">
+                                        <option value="">请选择任务类型</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-5">
+                                    <p class="form-control-static error"
+                                       ng-if="flowSubForm.taskType.$error.required && flowSubForm.taskType.$invalid && flowSubForm.taskType.$dirty">
+                                        <i class="fu fu-cross-circle" aria-hidden="true">所属系统不能为空</i>
+                                    </p>
+                                    <p class="form-control-static success"
+                                       ng-if="flowSubForm.taskType.$valid && flowSubForm.taskType.$dirty">
+                                        <i class="fu fu-check-circle" aria-hidden="true"></i>
+                                    </p>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div ng-show="cStep==1">
+                        <span ng-if="query.taskType=='1'" ng-include="'business/components/flow/create/taskList/uranusTask.html'"></span>
+                        <span ng-if="query.taskType=='2'" ng-include="'business/components/flow/create/taskList/odinTask.html'"></span>
+                        <span ng-if="query.taskType=='3'" ng-include="'business/components/flow/create/taskList/sctsTask.html'"></span>
+                        <span ng-if="query.taskType=='4'" ng-include="'business/components/flow/create/taskList/trackerTask.html'"></span>
+                    </div>
+                    <a class="btn btn-primary" ng-if="cStep==0" ng-click="nextStep(1)" ng-disabled="flowSubForm.$invalid||taskNameRepeat">下一步</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style type="text/css">
+    .table-border-mine {
+        border: 1px solid lightgray;
+        text-align: center;
+        margin-top: 20px;
+        width: 100%;
+    }
+
+    .table-border-mine th,
+    td {
+        border: 1px solid lightgray;
+        text-align: center;
+        padding: 7px !important;
+    }
+
+    .info {
+        background-color: #D9EDF7;
+    }
+
+    .margin-right-20 {
+        margin-right: 20px
+    }
+
+    .margin-right-10 {
+        margin-right: 10px
+    }
+
+    .width-180 {
+        width: 180px
+    }
+
+    .table-body {
+        padding: 10px 0
+    }
+
+    .sn-table {
+        border: 1px solid #e0e0e0;
+        width: 100%;
+        border-collapse: collapse
+    }
+
+    .sn-table th {
+        font-size: 14px;
+        color: #000;
+        font-weight: 700
+    }
+
+    .sn-table td,
+    .sn-table th {
+        border: 1px solid #e0e0e0;
+        text-align: center
+    }
+
+    .sn-table td {
+        /*font-size: 12px;*/
+        color: #333;
+        padding: 6px 0
+    }
+
+    .sn-table td a {
+        color: #3a8cbb;
+        margin: 0 10px;
+        cursor: pointer
+    }
+
+    .sn-table th:nth-child(3) {
+        width: 200px
+    }
+
+    .sn-table tr:nth-child(odd) {
+        background-color: #f0f2f5
+    }
+
+    .sn-table tr:first-child {
+        background-color: #eaedf1
+    }
+
+    .sn-table-btn-group {
+        width: 35%
+    }
+
+    .sn-table-pager {
+        width: 65%
+    }
+
+    .sn-table-pager ul {
+        margin: 0
+    }
+
+    .table-text {
+        margin-top: 10px;
+        font-size: 12px;
+        color: #333
+    }
+
+    .table-text a {
+        margin-left: 20px;
+        color: #3a8cbb;
+        cursor: pointer
+    }
+
+    .clear {
+        clear: both
+    }
+
+    .btn{
+        padding: 6px 12px!important;
+    }
+
+    .h3-inline{
+        display: inline;
+    }
+
+    .red{
+        color: red;
+        padding-right: 5px;
+    }
+
+    .error {
+        color: #f60;
+    }
+
+    .success {
+        color: #78be25;
+    }
+
+    .small-i {
+        margin-top: 3px;
+    }
+    .text_overflow {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+</style>

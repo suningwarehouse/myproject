@@ -1,0 +1,154 @@
+<section class="content-header">
+    <h4 class="text-primary"><strong></strong></h4>
+</section>
+<section>
+	<div>
+		<div class="relative-div">
+			<div class="absolute-div">工作项</div>
+			<div class="content-div">	
+				<div class="circleCon">
+							<div class="div-relative"  ng-click="switchEff(1)">
+								<div id="main1" ng-show="clickShow == 1 && option1.title.text!=0"></div>
+								<div class="littleRound" ng-show="clickShow != 1  ||  option1.title.text==0">
+									<div class="circle1">
+										<div class="firstContent"><a style="color:white;" target="_blank"  href="{{jiraUrl}}/issues/?jql=assignee = {{userNo}} and status != Closed">{{option1.title.text}}</a></div>
+										<div>待处理</div>
+									</div>
+									<div class="left">
+										<div><span>需求：</span><span class="secondContent"><a href="{{jiraUrl}}/issues/?jql=assignee = {{userNo}} and status != Closed and issuetype in (原始业务需求,需求)" target="_blank">{{ myWorkItems.pending.requireMents}}</a></span></div>
+										<div><span>任务：</span><span class="secondContent"><a href="{{jiraUrl}}/issues/?jql=assignee = {{userNo}} and status != Closed and issuetype in (任务,子任务)" target="_blank">{{ myWorkItems.pending.tasks}}</a></span></div>
+										<div><span>缺陷：</span><span class="secondContent"><a href="{{jiraUrl}}/issues/?jql=assignee = {{userNo}} and status != Closed and issuetype= 缺陷" target="_blank">{{ myWorkItems.pending.bugs}}</a></span></div>
+									</div>
+								</div>
+							</div>
+
+							<div class="div-relative"  ng-click="switchEff(2)">
+								<div id="main2" ng-show="clickShow == 2 && option2.title.text!=0"></div>
+								<div class="littleRound" ng-show="clickShow != 2 ||  option2.title.text==0">
+									<div class="circle2">
+										<div class="firstContent"><a style="color:white;" target="_blank" href="{{jiraUrl}}/issues/?jql=watcher = {{userNo}} and status != Closed " > {{option2.title.text}}</a></div>
+										<div>我关注</div>
+									</div>
+									<div class="left">
+										<div><span>需求：</span><span class="secondContent"><a href="{{jiraUrl}}/issues/?jql=watcher = {{userNo}} and status != Closed and issuetype in (原始业务需求,需求)" target="_blank"> {{myWorkItems.focus.requireMents}}</a></span></div>
+										<div><span>任务：</span><span class="secondContent"><a href="{{jiraUrl}}/issues/?jql=watcher = {{userNo}} and status != Closed and issuetype in (任务,子任务)" target="_blank"> {{myWorkItems.focus.tasks}}</a></span></div>
+										<div><span>缺陷：</span><span class="secondContent"><a href="{{jiraUrl}}/issues/?jql=watcher = {{userNo}} and status != Closed and issuetype= 缺陷" target="_blank"> {{myWorkItems.focus.bugs}}</a></span></div>
+									</div>
+								</div>
+							</div>
+
+
+							<div class="div-relative" ng-click="switchEff(3)">
+								<div id="main3" ng-show="clickShow == 3  &&  option3.title.text!=0"></div>
+								<div class="littleRound"  ng-show="clickShow != 3  ||  option3.title.text==0">
+									<div class="circle3">
+										<div class="firstContent"> <a style="color:white;" target="_blank"  href="{{jiraUrl}}/issues/?jql=reporter = {{userNo}} and status != Closed">{{option3.title.text}}</a></div>
+										<div>我创建</div>
+									</div>
+									<div class="left">
+										<div><span>需求：</span><span class="secondContent"> <a href="{{jiraUrl}}/issues/?jql=reporter = {{userNo}} and status != Closed and issuetype in (原始业务需求,需求)" target="_blank">{{myWorkItems.created.requireMents}}</a></span></div>
+										<div><span>任务：</span><span class="secondContent"> <a href="{{jiraUrl}}/issues/?jql=reporter = {{userNo}} and status != Closed and issuetype in (任务,子任务)" target="_blank">{{myWorkItems.created.tasks}}</a></span></div>
+										<div><span>缺陷：</span><span class="secondContent"> <a href="{{jiraUrl}}/issues/?jql=reporter = {{userNo}} and status != Closed and issuetype= 缺陷" target="_blank">{{myWorkItems.created.bugs}}</a></span></div>
+									</div>
+								</div>
+							</div>
+						</div>
+				
+			</div>
+		</div>
+		<div class="relative-div-little">
+			<div class="absolute-div-little">黑板报</div>
+			<div class="content-div-little">
+				<div ng-repeat="one in listone" class="systemNotice-little">
+					<span>【{{one.state}}】</span><span>{{one.content}}</span>
+				</div>
+				<a class="lookMore-little" ui-sref="topHead.message">查看更多>></a>
+			</div>
+		</div>
+	</div>
+ 
+
+ 	<div>
+		<div class="relative-div">
+			<div class="absolute-div">我参与</div>
+			<div class="content-div">	
+				  <div class="squareCon" >
+                        <div class="squareFirst">
+                            <div class="square-10"></div>
+                            <div><span ui-sref="topHead.overview.proManage()"> {{projectNum}}</span></div>
+                            <div>我的项目</div>
+                        </div> 
+                        <div class="squareSecond">
+                            <div class="square-4">
+                                <span>进行中：</span><span class="square-4-2" style="cursor: pointer;" ui-sref="topHead.overview.proManage({status:1})">{{project.devloping}}</span>
+                            </div>
+                            <div class="square-4">    
+                                <span>已暂停：</span><span class="square-4-2" style="cursor: pointer;" ui-sref="topHead.overview.proManage({status:2})">{{project.suspend}}</span>
+                            </div>
+                            
+                            <div class="square-4">    
+                                <span>已终止：</span><span class="square-4-2" style="cursor: pointer;" ui-sref="topHead.overview.proManage({status:3})">{{project.finish}}</span>
+                            </div>
+                            <div class="square-4">    
+                                <span>已关闭：</span><span class="square-4-2" style="cursor: pointer;" ui-sref="topHead.overview.proManage({status:4})">{{project.finish}}</span>
+                            </div>
+                        </div> 
+                    </div>
+                    <div class="squareCon" >
+                        <div class="squareFirst">
+                            <div class="square-10"></div>
+                            <div><span ui-sref="topHead.overview.appManage()">{{appNum}}</span></div>
+                            <div>我的应用</div>
+                        </div> 
+                        <div class="squareSecond">
+                            <div class="square-4">
+                                <span>使用中：</span><span class="square-4-2" style="cursor: pointer;" ui-sref="topHead.overview.appManage({status:1})">{{active}}</span>
+                                </div>
+                            <div class="square-4">
+                                <span>已注销：</span><span class="square-4-2" style="cursor: pointer;" ui-sref="topHead.overview.appManage({status:0})">{{offLine}}</span>
+                            </div>
+                        </div> 
+                    </div>  
+                    <div class="squareCon" >  
+                        <div class="squareFirst">
+                            <div class="square-10"></div>
+                             <div><span ui-sref="topHead.overview.versionManage()">{{versionNum}}</span></div>
+                            <div>我的版本</div>
+                        </div> 
+                        <div class="squareSecond">
+                            <div class="square-4">
+                                <span>开发中：</span><span class="square-4-2" style="cursor: pointer;" ui-sref="topHead.overview.versionManage({status:1})">{{version.deploying}}</span>
+                            </div>
+                            <div class="square-4">
+                                <span>已封板：</span><span class="square-4-2" style="cursor: pointer;" ui-sref="topHead.overview.versionManage({status:2})">{{version.freezen}}</span>
+                            </div>   
+              
+                            <div class="square-4">
+                                <span>已发布：</span><span class="square-4-2" style="cursor: pointer;" ui-sref="topHead.overview.versionManage({status:3})">{{version.deployed}}</span>
+                            </div>
+                            <div class="square-4">
+                                <span>已归档：</span><span class="square-4-2" style="cursor: pointer;" ui-sref="topHead.overview.versionManage({status:4})">{{version.archive}}</span>
+                            </div>
+                        </div> 
+                    </div>
+			</div>
+		</div>
+		<div class="relative-div-little">
+			<div class="absolute-div-little">事件日志</div>
+			<div class="content-div-little">
+				<div ng-repeat="one in listone" class="eventNotice">
+					<div class="circle-div"></div>
+					<div>
+						<span>【{{one.operateTime|date:'yyyy-MM-dd'}}】</span><span class="right-div">{{one.operator}}</span>
+					</div>
+					<div class="bottom-div">
+						<span>{{one.body}}</span>
+					</div>
+				</div>
+				<a class="lookMore-little" ui-sref="topHead.message">查看更多>></a>
+			</div>
+		</div>
+	</div>
+
+</section>
+

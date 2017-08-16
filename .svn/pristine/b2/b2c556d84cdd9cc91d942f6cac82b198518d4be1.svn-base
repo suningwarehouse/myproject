@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"><html><head>
+    <title>帮助</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <script type="text/javascript" src="../internal.js"></script>
+    <link rel="stylesheet" type="text/css" href="help.css">
+</head>
+<body sat-id="1470899323216">
+<div class="wrapper" id="helptab" sat-id="1470899323217">
+    <div id="tabHeads" class="tabhead" sat-id="1470899323218">
+        <span class="focus" tabsrc="about" sat-id="1470899323219"><var id="lang_input_about" sat-id="1470899323220"></var></span>
+        <span tabsrc="shortcuts" sat-id="1470899323221"><var id="lang_input_shortcuts" sat-id="1470899323222"></var></span>
+    </div>
+    <div id="tabBodys" class="tabbody" sat-id="1470899323223">
+        <div id="about" class="panel" sat-id="1470899323224">
+            <h1 sat-id="1470899323225">UEditor</h1>
+            <p id="version" sat-id="1470899323226"></p>
+            <p sat-id="1470899323227"><var id="lang_input_introduction" sat-id="1470899323228"></var></p>
+        </div>
+        <div id="shortcuts" class="panel" sat-id="1470899323229">
+            <table sat-id="1470899323230">
+                <thead sat-id="1470899323231">
+                <tr sat-id="1470899323232">
+                    <td sat-id="1470899323233"><var id="lang_Txt_shortcuts" sat-id="1470899323234"></var></td>
+                    <td sat-id="1470899323235"><var id="lang_Txt_func" sat-id="1470899323236"></var></td>
+                </tr>
+                </thead>
+                <tbody sat-id="1470899323237">
+                <tr sat-id="1470899323238">
+                    <td sat-id="1470899323239">ctrl+b</td>
+                    <td sat-id="1470899323240"><var id="lang_Txt_bold" sat-id="1470899323241"></var></td>
+                </tr>
+                <tr sat-id="1470899323242">
+                    <td sat-id="1470899323243">ctrl+c</td>
+                    <td sat-id="1470899323244"><var id="lang_Txt_copy" sat-id="1470899323245"></var></td>
+                </tr>
+                <tr sat-id="1470899323246">
+                    <td sat-id="1470899323247">ctrl+x</td>
+                    <td sat-id="1470899323248"><var id="lang_Txt_cut" sat-id="1470899323249"></var></td>
+                </tr>
+                <tr sat-id="1470899323250">
+                    <td sat-id="1470899323251">ctrl+v</td>
+                    <td sat-id="1470899323252"><var id="lang_Txt_Paste" sat-id="1470899323253"></var></td>
+                </tr>
+                <tr sat-id="1470899323254">
+                    <td sat-id="1470899323255">ctrl+y</td>
+                    <td sat-id="1470899323256"><var id="lang_Txt_undo" sat-id="1470899323257"></var></td>
+                </tr>
+                <tr sat-id="1470899323258">
+                    <td sat-id="1470899323259">ctrl+z</td>
+                    <td sat-id="1470899323260"><var id="lang_Txt_redo" sat-id="1470899323261"></var></td>
+                </tr>
+                <tr sat-id="1470899323262">
+                    <td sat-id="1470899323263">ctrl+i</td>
+                    <td sat-id="1470899323264"><var id="lang_Txt_italic" sat-id="1470899323265"></var></td>
+                </tr>
+                <tr sat-id="1470899323266">
+                    <td sat-id="1470899323267">ctrl+u</td>
+                    <td sat-id="1470899323268"><var id="lang_Txt_underline" sat-id="1470899323269"></var></td>
+                </tr>
+                <tr sat-id="1470899323270">
+                    <td sat-id="1470899323271">ctrl+a</td>
+                    <td sat-id="1470899323272"><var id="lang_Txt_selectAll" sat-id="1470899323273"></var></td>
+                </tr>
+                <tr sat-id="1470899323274">
+                    <td sat-id="1470899323275">shift+enter</td>
+                    <td sat-id="1470899323276"><var id="lang_Txt_visualEnter" sat-id="1470899323277"></var></td>
+                </tr>
+                <tr sat-id="1470899323278">
+                    <td sat-id="1470899323279">alt+z</td>
+                    <td sat-id="1470899323280"><var id="lang_Txt_fullscreen" sat-id="1470899323281"></var></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="help.js" sat-id="1470899323282"></script>
+
+</body></html>

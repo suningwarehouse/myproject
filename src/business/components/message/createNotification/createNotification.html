@@ -1,0 +1,221 @@
+<!--<section class="content-header">
+    <sn-breadcrumb style="font-size:16px;" datalist="crumbBaseData"></sn-breadcrumb>
+</section>-->
+<div style="height: 100%;overflow-y: auto;overflow-x: hidden;">
+	
+		
+	<div class="nav-content">
+		<div class="nav-title">
+			<div class="nav-title-decoration-color"></div>
+			<div class="nav-title-name">创建通知</div>
+	
+		</div>
+	</div>
+	<div>
+        <form class="form-horizontal  form-inline" ng-submit="doSubRequire()" name="commitForm" style="margin-left: 13%">
+            <!-- <div class="form-group form-horizontal">
+                <label for="EmployeeId" class="col-sm-4 control-label">公文号<span class="required">*</span></label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" name="documentNumber" placeholder="" maxlength="32" ng-required="true" ng-model="commit.documentNumber">
+                </div>
+            </div> -->
+            
+            
+            <div class="row">
+	            <div class="form-group form-horizontal col-sm-6">
+	                <label for="EmployeeId" class="col-sm-2 control-label">通知中心<span class="required">*</span></label>
+					<div class="col-sm-4">
+	                <select class="form-control" select2="select2Center" ng-model="theCenter"
+	                    ng-options="theCenter.name for theCenter in centerList" type="text" ng-required="true" 
+	                    class="form-control col-sm-4" ng-change="onChangeSlelectCenter(theCenter)"
+	                    style="width: 175px">
+	                    <option value="">请选择-级中心</option>
+	                </select>
+					</div>
+	            </div>
+	            <div class="form-group form-horizontal col-sm-6">
+                    <label for="EmployeeId" class="col-sm-2 control-label">通知部门<span class="required">*</span></label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" name="department" placeholder="" ng-required="true" maxlength="128" ng-model="commit.department">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+	            <div class="form-group form-horizontal col-sm-6">
+	                <label for="EmployeeId" class="col-sm-2 control-label">重要性<span class="required">*</span></label>
+					<div class="col-sm-8">
+	                <label class="radio-inline">
+					    <input type="radio" name="emergency" ng-required="true" ng-model="commit.emergency" id="inlineRadio1" value="3"> 非常紧急
+					</label>
+					<label class="radio-inline">
+					    <input type="radio" name="emergency" ng-required="true" ng-model="commit.emergency" id="inlineRadio2" value="2"> 紧急
+					</label>
+					<label class="radio-inline">
+					    <input type="radio" name="emergency" ng-required="true" ng-model="commit.emergency" id="inlineRadio3" value="1"> 一般
+					</label>
+					</div>
+	            </div>
+	            <div class="form-group form-horizontal col-sm-6">
+	                <label for="EmployeeId" class="col-sm-2 control-label">通知类型<span class="required">*</span></label>
+					<div class="col-sm-4">
+	                <select class="form-control" select2="select2Type" ng-model="thesType"
+	                    ng-options="thesType.name for thesType in typeList" type="text" ng-required="true" 
+	                    class="form-control" ng-change="onChangeSlelectType(thesType)"
+	                    style="width: 175px">
+	                    <option value="">请选择通知类型</option>
+	                </select>
+					</div>
+	            </div>
+            </div>
+            <div class="row">
+                <div class="form-group form-horizontal col-sm-6">
+                    <label for="EmployeeId" class="col-sm-2 control-label">创建者<span class="required">*</span></label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" name="creator" placeholder="" ng-required="true" maxlength="128" ng-model="commit.creator">
+                    </div>
+                </div>
+                <div class="form-group form-horizontal col-sm-6">
+                     <label for="EmployeeId" class="col-sm-2 control-label">报告人<span class="required">*</span></label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" name="receiver" placeholder="" ng-required="true" maxlength="128" ng-model="commit.receiver">
+                    </div> 
+                    <!-- <div class="col-sm-4" >
+                        <cd-sel-multi sel-data="users" sel-selected="userNoList" sel-eight="getandupdate(num)"></cd-sel-multi>
+                    </div> -->
+                </div>
+            </div>
+            <!-- <div class="row">
+                <div class="form-group form-horizontal col-sm-6">
+                    <label for="EmployeeId" class="col-sm-2 control-label">报告人<span class="required">*</span></label>
+                    <div class="col-sm-4">
+                       <select class="form-control" select2="select2Status" ng-model="user" 
+                                ng-options="user.name for user in users"
+                                type="text" class="form-control"
+                                ng-change="onChangeSlelectStatus(user)"
+                                style="width: 175px">
+                                <option value="">请选择人员</option>
+                       </select>
+                    </div>
+                </div>
+            </div> -->
+            <div  class="row">
+	            <div class="form-group form-horizontal col-sm-6">
+	                <label class="col-sm-2 control-label">标题<span class="required">*</span></label>
+	                <div class="col-sm-4">
+	                    <input type="text"  name="title" placeholder="" ng-required="true" maxlength="128" ng-model="commit.title">
+	                </div>
+                </div>
+            </div>
+            <!--<script type="text/javascript" src="lib/ckeditor/ckeditor.js"></script>-->
+		
+            <div  class="row">
+	            <div class="form-group form-horizontal row col-sm-6">
+	                <label for="EmployeeId" class="col-sm-2 control-label">标签<span class="required">*</span></label>
+	                <div class="col-sm-6">
+	                    <input type="text" class="form-control" name="label" placeholder="" ng-required="true" maxlength="128" ng-model="commit.label">
+	                </div>
+	            </div>
+            </div>
+            <div  class="row">
+	            <div class="form-group form-horizontal col-sm-6">
+	                <label for="EmployeeId" class="col-sm-2 control-label">是否推送<span class="required">*</span></label>
+					 <div class="col-sm-4">
+	                <label class="radio-inline">
+	                    <input type="radio" name="appPush" ng-required="true" ng-model="commit.appPush" id="inlineRadio1" ng-value=false> 否
+	                </label>
+	                <label class="radio-inline">
+	                    <input type="radio" name="appPush" ng-required="true" ng-model="commit.appPush" id="inlineRadio2" ng-value=true> 是
+	                </label>
+					 </div>
+	            </div>
+            </div>
+			<div  class="row">
+	            <div class="form-group form-horizontal col-sm-6" ng-if="commit.appPush">
+	                <label for="EmployeeId" class="col-sm-2 control-label">选择应用等级<span class="required">*</span></label>
+					<div class="col-sm-4">
+	                <select class="form-control" select2="select2AppLevel" ng-model="theAppLevel"
+	                    ng-options="theAppLevel.name for theAppLevel in appLevelList" type="text" ng-required="true" 
+	                    class="form-control" ng-change="onChangeSlelectAppLevel(theAppLevel)"
+	                    style="width: 175px">
+	                    <option value="">-请选择应用等级-</option>
+	                </select>
+					</div>
+	            </div>
+            </div>
+			<div  class="row">
+	            <div class="form-group form-horizontal col-sm-6" ng-if="commit.appPush">
+	                <label for="EmployeeId" class="col-sm-2 control-label">输入应用名称<span class="required">*</span></label>
+	                <div class="col-sm-6">
+	                    <input type="text" class="form-control" style="width: 175px" name="appName" placeholder="" ng-required="true" maxlength="128" ng-model="commit.appName">
+	                </div>
+	            </div>
+            </div>
+			<div  class="row">
+	            <div class="form-group form-horizontal col-sm-6">
+	                <label for="EmployeeId" class="col-sm-2 control-label">是否置顶<span class="required">*</span></label>
+					 <div class="col-sm-4">
+	                <label class="radio-inline">
+	                    <input type="radio" name="stick" ng-required="true" ng-model="commit.stick" id="inlineRadio1"  ng-value=false> 否
+	                </label>
+	                <label class="radio-inline">
+	                    <input type="radio" name="stick" ng-required="true" ng-model="commit.stick" id="inlineRadio2"  ng-value=true> 是
+	                </label>
+					 </div>
+	            </div>
+
+            </div>
+            <div class="row">
+                <div class="form-group form-horizontal col-sm-6">
+                    <label for="EmployeeId" class="col-sm-2 control-label">附件<span class="required"></span></label>
+                    <div class="col-sm-4">
+	                   <div class="upload">
+	                                                                   上传
+	                       <input class="uploadInput" type="file" id="file" name="file" onchange="angular.element(this).scope().printFileInfo(this)"  multiple=false  />
+	                   </div>
+	               </div>
+                </div>
+            </div>
+            <div class="row" ng-repeat="fileinfo in fileInfoList">
+                  <div class="form-group form-horizontal col-sm-6">
+                    <label for="EmployeeId" class="col-sm-2 control-label"><span class="required"></span></label>
+                     <div class="col-sm-6">
+                          <div  style="display: inline-block">
+						             文件名称：{{fileinfo.name}} 文件大小：{{fileinfo.size}}字节
+						  </div>
+                     </div>
+                 </div>
+
+            </div>
+            
+            
+			<div class="row">
+				<div class="form-group form-horizontal col-sm-12">
+					<!--<label for="EmployeeId" class="col-sm-2 control-label">正文<span class="required">*</span></label>-->
+					<div class="col-sm-9"  >
+						<!--<input type="text" class="form-control" name="body" placeholder="" ng-required="true"
+							   maxlength="128" ng-model="commit.body">-->
+						<!-- <textarea id="TextArea1"  class="ckeditor">
+                            <script type="text/javascript">
+                                CKEDITOR.replace('TextArea1');
+
+                            </script>
+                        </textarea> -->
+						 <script style="height:200px;" id="serviceDetailEditor" ueditor ng-model="detail" option="{{serviceDetailEditorOptions}}" type="text/plain"
+                             sat-id="1470710504453"></script>
+					</div>
+				</div>
+			</div>
+			<div  class="row">
+				<div class="form-group form-horizontal col-sm-6">
+					<!--<label for="EmployeeId" class="col-sm-2 control-label"></label>-->
+					<div class="col-sm-6">
+						<button class="btn  btn-primary" type="button" ng-disabled = "!commitForm.$valid" ng-click="click_commit()">提交</button>
+						<!-- <button type="button" class="btn btn-default " ng-click="reset_way()">重写</button> -->
+					</div>
+				</div>
+			</div>
+        </form>
+    </div>
+</div>
+

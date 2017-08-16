@@ -1,0 +1,97 @@
+<section class="content-header">   
+   <sn-breadcrumb datalist="crumbBaseData"></sn-breadcrumb>
+      <h4><div ></div><strong>
+      <a  ui-sref="topHead.leftColumn.appReport()">{{appName}}应用报告</a>
+      </strong></h4>
+   <div style="height: 5px"></div>
+</section>
+
+<section class="content" >
+  
+  <div class="main">
+      <!--<div class="left">
+            <div class="demo">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="main-timeline">
+                                <div class="timeline" ng-repeat="version in versionList">
+                                    <div class="timeline-content">
+                                        <span class="date">
+                                            <span class="day">{{version.createTime|date:"dd"}}</span>
+                                            <span class="month">{{version.createTime|date:"MM"}}</span>
+                                            <span class="year">{{version.year|date:"yyyy"}}</span>
+                                        </span>
+                                        <h2 class="title {{version.status}}">{{version.name}}</h2>
+                                        <p class="description1">
+                                            <span>状态：{{version.status | versionStatusFilter}}</span> </br>
+                                            <span ng-click="changeReport(version.id)">版本名称：{{version.name}}</span> </br>
+                                            <span>创建时间：{{version.createTime|date:"yyyy-MM-dd HH:mm:ss"}}</span></br>
+                                        </p>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+      </div>-->
+         <div >
+            <div class="demo">
+                <!--<div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="main-timeline">
+                                <div class="timeline" ng-repeat="version in versionList">
+                                    <div class="timeline-content">
+                                        <span class="date">
+                                            <span class="day">{{version.createTime|date:"dd"}}</span>
+                                            <span class="month">{{version.createTime|date:"MM"}}</span>
+                                            <span class="year">{{version.year|date:"yyyy"}}</span>
+                                        </span>
+                                        <h2 class="title {{version.status}}">{{version.name}}</h2>
+                                        <p class="description1">
+                                            <span>状态：{{version.status | versionStatusFilter}}</span> </br>
+                                            <span ng-click="changeReport(version.id)">版本名称：{{version.name}}</span> </br>
+                                            <span>创建时间：{{version.createTime|date:"yyyy-MM-dd HH:mm:ss"}}</span></br>
+                                        </p>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>-->
+                <div class="mainmove" ng-click="goleft()">
+                    <div class="toLeft"></div>
+                    <div class="toLeft"></div>
+                </div>
+                <div class="container">  
+                    <ul class="time-horizontal">
+                        <li ng-repeat="version in versionListshow">
+                            <b></b>
+                            <span>创建时间：{{version.createTime |date:"yyyy-MM-dd HH:mm:ss"}}</span>
+                            <div class="topInfo">
+                                <div>版本名称：{{version.name}}</div>
+                                <div>状态：{{version.status |versionStatusFilter}}</div>
+                                <div><a href="javascript:void();" ng-click="changeReport(version.id)">查看版本报告</a></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="mainmove" ng-click="goright()">
+                    <div class="toRight"></div>
+                    <div class="toRight"></div>
+                 </div>
+            </div>
+      </div>
+      <div>
+          <iframe src="{{versionReport}}" width="100%"  scrolling="no" onload="resizeIframe(this)" style="border: 0"></iframe>
+      </div>
+  </div>
+	
+</section>
+
+
+

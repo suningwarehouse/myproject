@@ -1,0 +1,92 @@
+<!doctype html><html><head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="robots" content="noindex, nofollow">
+    <script type="text/javascript" src="../internal.js"></script>
+    <link rel="stylesheet" type="text/css" href="scrawl.css">
+</head>
+<body sat-id="1470899322789">
+<div class="main" id="J_wrap" sat-id="1470899322790">
+    <div class="hot" sat-id="1470899322791">
+        <div class="drawBoard border_style1" sat-id="1470899322792">
+            <canvas id="J_brushBoard" class="brushBorad" width="360" height="300" sat-id="1470899322793"></canvas>
+            <div id="J_picBoard" class="picBoard" style="width: 360px;height: 300px" sat-id="1470899322794"></div>
+        </div>
+        <div id="J_operateBar" class="operateBar" sat-id="1470899322795">
+            <span id="J_previousStep" class="previousStep" sat-id="1470899322796">
+                <em class="icon" sat-id="1470899322797"></em>
+                <em class="text" sat-id="1470899322798"><var id="lang_input_previousStep" sat-id="1470899322799"></var></em>
+            </span>
+            <span id="J_nextStep" class="nextStep" sat-id="1470899322800">
+                <em class="icon" sat-id="1470899322801"></em>
+                <em class="text" sat-id="1470899322802"><var id="lang_input_nextsStep" sat-id="1470899322803"></var></em>
+            </span>
+            <span id="J_clearBoard" class="clearBoard" sat-id="1470899322804">
+                <em class="icon" sat-id="1470899322805"></em>
+                <em class="text" sat-id="1470899322806"><var id="lang_input_clear" sat-id="1470899322807"></var></em>
+            </span>
+            <span id="J_sacleBoard" class="scaleBoard" sat-id="1470899322808">
+                <em class="icon" sat-id="1470899322809"></em>
+                <em class="text" sat-id="1470899322810"><var id="lang_input_ScalePic" sat-id="1470899322811"></var></em>
+            </span>
+        </div>
+    </div>
+    <div class="drawToolbar border_style1" sat-id="1470899322812">
+        <div id="J_colorBar" class="colorBar" sat-id="1470899322813"></div>
+        <div id="J_brushBar" class="sectionBar" sat-id="1470899322814">
+            <em class="brushIcon" sat-id="1470899322815"></em>
+            <a href="javascript:void(0)" class="size1" sat-id="1470899322816">1</a>
+            <a href="javascript:void(0)" class="size2" sat-id="1470899322817">3</a>
+            <a href="javascript:void(0)" class="size3" sat-id="1470899322818">5</a>
+            <a href="javascript:void(0)" class="size4" sat-id="1470899322819">7</a>
+        </div>
+        <div id="J_eraserBar" class="sectionBar" sat-id="1470899322820">
+            <em class="eraserIcon" sat-id="1470899322821"></em>
+            <a href="javascript:void(0)" class="size1" sat-id="1470899322822">1</a>
+            <a href="javascript:void(0)" class="size2" sat-id="1470899322823">3</a>
+            <a href="javascript:void(0)" class="size3" sat-id="1470899322824">5</a>
+            <a href="javascript:void(0)" class="size4" sat-id="1470899322825">7</a>
+        </div>
+        <div class="sectionBar" sat-id="1470899322826">
+            <div id="J_addImg" class="addImgH" sat-id="1470899322827">
+                <em class="icon" sat-id="1470899322828"></em>
+                <em class="text" sat-id="1470899322829"><var id="lang_input_addPic" sat-id="1470899322830"></var></em>
+                <form method="post" id="fileForm" enctype="multipart/form-data" class="addImgH_form" target="up" sat-id="1470899322831">
+                    <input type="file" name="upfile" id="J_imgTxt" accept="image/gif,image/jpeg,image/png,image/jpg,image/bmp" sat-id="1470899322832">
+                </form>
+                <iframe name="up" style="display: none" sat-id="1470899322833"></iframe>
+            </div>
+        </div>
+        <div class="sectionBar" sat-id="1470899322834">
+            <span id="J_removeImg" class="removeImg" sat-id="1470899322835">
+                <em class="icon" sat-id="1470899322836"></em>
+                <em class="text" sat-id="1470899322837"><var id="lang_input_removePic" sat-id="1470899322838"></var></em>
+            </span>
+        </div>
+    </div>
+</div>
+<div id="J_maskLayer" class="maskLayerNull" sat-id="1470899322839"></div>
+
+<script type="text/javascript" src="scrawl.js" sat-id="1470899322840"></script>
+<script type="text/javascript" sat-id="1470899322841">
+    var settings = {
+        drawBrushSize:3, //画笔初始大小
+        drawBrushColor:"#4bacc6", //画笔初始颜色
+        colorList:['c00000', 'ff0000', 'ffc000', 'ffff00', '92d050', '00b050', '00b0f0', '0070c0', '002060', '7030a0', 'ffffff',
+            '000000', 'eeece1', '1f497d', '4f81bd', 'c0504d', '9bbb59', '8064a2', '4bacc6', 'f79646'], //画笔选择颜色
+        saveNum:10  //撤销次数
+    };
+
+    var scrawlObj = new scrawl( settings );
+    scrawlObj.isCancelScrawl = false;
+
+    dialog.onok = function () {
+        exec( scrawlObj );
+        return false;
+    };
+    dialog.oncancel = function () {
+        scrawlObj.isCancelScrawl = true;
+    };
+</script>
+
+</body></html>

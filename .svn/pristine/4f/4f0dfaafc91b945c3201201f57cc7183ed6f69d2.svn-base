@@ -1,0 +1,70 @@
+<div>
+
+	<div class="nav-content">
+		<div class="nav-title">
+			<div class="nav-title-decoration-color"></div>
+			<div class="nav-title-name">过程改进</div>
+			<p>对产品开发过程中的数据进行采集和分析，形成端到端的质量视图。并根据多维度的质量数据分析驱动各过程的持续改进。</p>
+			<div class="linkName">
+					<!-- <div>
+				<div class="button-div" style="margin-left: 0px;" ng-click="showDialog()"><a ng-href="{{newNeptuneUrl}}" target="_blank">我的持续过程改进</a></div>
+		</div> -->
+			</div>
+		</div>
+	</div>
+	<div class="mainContent">
+			<div class="table-header" style="margin-top: 13px;">
+						<form class="form-inline">
+							<div class="pull-left margin-right-10">
+							<input placeholder="应用名称 " ng-model="search.appName"/>
+							</div>
+							<div class="search-div marginL" ng-click="doSearch()">查询</div>
+							<!-- <a type="reset" href="javascript:void(0)" ng-click="doReset()" 
+								style="vertical-align: bottom;">重置</a> -->
+						</form>
+			</div>
+			<!--表格主体 -->
+			<div class="table-body">
+				<table class="sn-table" style="table-layout: fixed">
+					<tr>
+						<th style="width: 20%"><span class="tr-style">应用名称</span></th>
+						<th style="width: 25%"><span class="tr-style">质量标准</span></th>
+						<th style="width: 10%"><span class="tr-style">符合标准</span></th>
+						<th style="width: 10%"><span class="tr-style">检查日期</span></th>
+					</tr>
+					<tr ng-repeat="improvementBO in improvementBOListRespVO">
+						<td class="text_overflow" title="{{improvementBO.systemName}}"><a ng-href="/#/checkHisReport" ng-click="setSession(improvementBO.systemCode,improvementBO.systemName)">
+								{{improvementBO.systemName}} </a></td>
+						<td>{{improvementBO.qualityStandardName}}</td>
+						<td ng-if="improvementBO.isPassed == 1">是</td>
+						<td ng-if="improvementBO.isPassed == 0">否</td>
+						<td ng-if="improvementBO.isPassed == null">--</td>
+						<td>{{improvementBO.dateStr}}</td>
+					</tr>
+					<tr ng-if="!improvementBOListRespVO||improvementBOListRespVO.length<1">
+						<td colspan="4">暂无数据</td>
+					</tr>
+				</table>
+			</div>
+			<div class="table-footer" style="overflow: hidden;">
+				<div class="pull-right sn-table-pager text-right">
+					<cd-pager page="page" page-size="pageSize" total="total"
+						page-action="paging(page, pageSize, total)"></cd-pager>
+				</div>
+			</div>
+		</div>
+	<!--<div class="relative-div">
+		<div class="absolute-div">我的项目</div>
+		<div class="content-div">
+			
+			
+			
+		</div>
+	</div>-->
+</div>
+
+
+
+
+
+

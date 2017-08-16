@@ -1,0 +1,126 @@
+<section class="content-header">
+<sn-breadcrumb style="font-size:16px;" datalist="crumbBaseData"></sn-breadcrumb>
+</section>
+<section class="content">
+    <div class="table-header" ng-model="notificationDO">
+        <div class="form-group">
+            <label for="EmployeeId" class="col-sm-1 control-label partCol1">创建者</label>
+            <div class="col-sm-2  control-label partCol2" style="text-align: left;">
+                <span>{{notificationDO.creator}}</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="EmployeeId" class="col-sm-1 control-label partCol1">标题</label>
+            <div class="col-sm-2  control-label partCol2" style="text-align: left;">
+                <span>{{notificationDO.title}}</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="EmployeeId" class="col-sm-1 control-label partCol1">通知正文，包含富媒体</label>
+            <div class="col-sm-2  control-label partCol2" style="text-align: left;">
+                <span>{{notificationDO.body}}</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="EmployeeId" class="col-sm-1 control-label partCol1">颜色卡，一般，紧急，非常紧急</label>
+            <div class="col-sm-2  control-label partCol2" style="text-align: left;">
+                <span>{{notificationDO.emergency}}</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="EmployeeId" class="col-sm-1 control-label partCol1">通知类型 规范、通知，可新增</label>
+            <div class="col-sm-2  control-label partCol2" style="text-align: left;">
+                <span>{{notificationDO.type}}</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="EmployeeId" class="col-sm-1 control-label partCol1">是否置顶</label>
+            <div class="col-sm-2  control-label partCol2" style="text-align: left;">
+                <span>{{notificationDO.stick}}</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="EmployeeId" class="col-sm-1 control-label partCol1">是否推送应用 1推</label>
+            <div class="col-sm-2  control-label partCol2" style="text-align: left;">
+                <span>{{notificationDO.appPush}}</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="EmployeeId" class="col-sm-1 control-label partCol1">应用级别 一级，二级，三级</label>
+            <div class="col-sm-2  control-label partCol2" style="text-align: left;">
+                <span>{{notificationDO.appLevel}}</span>
+            </div>
+        </div>
+        
+        
+        <div class="form-group">
+            <label for="EmployeeId" class="col-sm-1 control-label partCol1">应用名称</label>
+            <div class="col-sm-2  control-label partCol2" style="text-align: left;">
+                <span>{{notificationDO.appName}}</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="EmployeeId" class="col-sm-1 control-label partCol1">标签 项目类，发布类等</label>
+            <div class="col-sm-2  control-label partCol2" style="text-align: left;">
+                <span>{{notificationDO.label}}</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="EmployeeId" class="col-sm-1 control-label partCol1">公文号 字符编号，自动生成</label>
+            <div class="col-sm-2  control-label partCol2" style="text-align: left;">
+                <span>{{notificationDO.documentNumber}}</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="EmployeeId" class="col-sm-1 control-label partCol1">附件链接 链接，包含图片，文件等</label>
+            <div class="col-sm-2  control-label partCol2" style="text-align: left;">
+                <span>{{notificationDO.attachmentLink}}</span>
+            </div>
+        </div>
+        
+        
+        <div class="form-group">
+            <label for="EmployeeId" class="col-sm-1 control-label partCol1">通知报告人 申请需要通知的用户</label>
+            <div class="col-sm-2  control-label partCol2" style="text-align: left;">
+                <span>{{notificationDO.receiver}}</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="EmployeeId" class="col-sm-1 control-label partCol1">通知中心 一级中心</label>
+            <div class="col-sm-2  control-label partCol2" style="text-align: left;">
+                <span>{{notificationDO.center}}</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="EmployeeId" class="col-sm-1 control-label partCol1">部门</label>
+            <div class="col-sm-2  control-label partCol2" style="text-align: left;">
+                <span>{{notificationDO.department}}</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="EmployeeId" class="col-sm-1 control-label partCol1">状态 开启或者关闭</label>
+            <div class="col-sm-2  control-label partCol2" style="text-align: left;">
+                <span>{{notificationDO.state}}</span>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="EmployeeId" class="col-sm-1 control-label partCol1">创建时间</label>
+            <div class="col-sm-2  control-label partCol2" style="text-align: left;">
+                <span>{{notificationDO.createTime}}</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="EmployeeId" class="col-sm-1 control-label partCol1">更新时间</label>
+            <div class="col-sm-2  control-label partCol2" style="text-align: left;">
+                <span>{{notificationDO.updateTime}}</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="EmployeeId" class="col-sm-1 control-label partCol1">推送方式 平台，邮件，豆芽，短信，微信，QQ等</label>
+            <div class="col-sm-2  control-label partCol2" style="text-align: left;">
+                <span>{{notificationDO.pushStyle}}</span>
+            </div>
+        </div>
+    </div>
+</section>

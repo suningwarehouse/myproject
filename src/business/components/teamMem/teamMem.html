@@ -1,0 +1,60 @@
+<section class="content-header" style="padding-left:0;padding-top:10px;">
+	<h4>
+		<div class="square"></div>
+		<strong style="position:relative;top:-9px;">系统团队</strong>
+	</h4>
+</section>
+<section class="content" style="padding-left:0;padding-right:0;background:#F3F5F7;border-top:5px solid #DFE3EB;">
+	<div class="mem-top">
+		<!-- <div class="pull-left margin-right-10">
+			<select class="form-control" select2="select2Status"
+				ng-model="thestatus"
+				ng-options="thestatus.value as thestatus.text for thestatus in statusList"
+				type="text" class="form-control"
+				ng-change="onChangeSlelectStatus(thestatus)" style="width: 175px">
+				<option value="">筛选角色：全部</option>
+			</select>
+		</div> -->
+        <div class="pull-left margin-right-10" >
+            <select class="form-control" select2="select2roleDO" ng-model="roleDO"
+                ng-options="roleDO.roleName for roleDO in roleDOList"
+                type="text" class="form-control" ng-change="onChangeRoleDOSlelect(roleDO)"
+                ng-required="true" style="width:175px">
+                <option value="">筛选角色：全部</option>
+            </select>
+        </div>
+		<div class="mem-top-right">
+			<button class="btn btn-primary" type="button" ng-click="addMember()" perm-code="phoebus_application_team_add">添加成员</button>
+			<!-- <button class="btn btn-primary" type="button" ng-click="test()">测试</button> -->
+		</div>
+	</div>
+
+	<div class="team-main" ng-repeat="roleVO in listRoleVO">
+		<div>					
+			   <span class="down_"><div class="down"></div></span>
+		<div>
+			<span class="team-top1" style="    padding-left: 47px;">{{roleVO.roleName}}</span> <span
+				class="team-top2">职责:{{roleVO.roleDescription}}</span>	
+		</div>
+		<div class="team-content">
+			<div style="    padding-left: 24px;
+    padding-bottom: 9px;">
+				<div class="team-content-up1">成员姓名</div>
+				<div class="team-content-up2">成员工号</div>
+				<div class="team-content-up3">成员邮箱</div>
+			</div>
+			<hr style="margin-top: 0px; margin-bottom: 0px;" />
+			<div ng-repeat="userMemberDO in roleVO.listUserMemberDO" style="margin-top:10px;padding-left:24px">
+				<div class="team-content-down1">{{userMemberDO.userName}}</div>
+				<div class="team-content-down2">{{userMemberDO.userNo}}</div>
+				<div class="team-content-down3">{{userMemberDO.userEmail}}</div>
+				<!-- <div class="team-content-down4">删除</div> -->
+				<div class="team-content-down4">
+				    <a href="javascript:void(0)" perm-code="phoebus_application_team_delete" ng-click="doDelete(roleVO.roleId,userMemberDO.userNo)" style="color:#D05202;"><i class="fu fu-delete" style="    position: relative;top: 3px;"></i> 删除</a>
+				</div>
+			</div>
+		</div>
+		</div>
+	</div>
+
+</section>

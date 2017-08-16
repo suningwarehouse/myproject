@@ -1,0 +1,80 @@
+<section class="content-header" style="padding-top:0;padding-left:0;padding-right:0;">   
+ <p style="padding-top:15px;padding-left:15px;"><a style="color:#555;" href="#/overview/homePage">首页</a> > <a style="color:#555;" href="#/overview/appManage/">应用管理</a> > <a style="color: #11b983">基本信息</a></p>
+      <h4><div class="square"></div><strong style="position: relative;
+    top: -8px;
+    font-weight: normal;
+    font-size: 18px;
+    color: #000;">基本信息</strong></h4>
+   <div style="height: 5px;background: #dee3ec;"></div>
+</section>
+<section class="content" style="padding-left:0;padding-right:0;">
+
+    <!-- 应用详情-->
+    <div  class="panel panel-default" style="padding-left:15px;padding-right:15px;border:none;box-shadow:none;">
+        <div style="padding: 20px 0 0 55px;float: left;width: 50%;">
+            <div class="form-group clearfix">
+                <label class="col-sm-2 label-name" style="">应用英文简称 :</label>
+                <label class="col-sm-2 label-answer" style="color:#555;padding-left:0;">{{app.appName}} </label>
+            </div>
+            <div class="form-group clearfix">
+                <label class="col-sm-2 label-name" style="color:#777;">应用描述 :</label>
+                <label class="col-sm-2 label-answer" style="color:#555;padding-left:0;">{{app.description}} </label>
+            </div>
+            <div class="form-group clearfix">
+                <label class="col-sm-2 label-name" style="color:#777;">应用归属一级中心 :</label>
+                <label class="col-sm-2  label-answer" style="color:#555;padding-left:0;">{{app.firstOrgId}} </label>
+            </div>
+            <div class="form-group clearfix">
+                <label class="col-sm-2 label-name" style="color:#777;">技术总监 :</label>
+                <label class="col-sm-2 label-answer" style="color:#555;padding-left:0;"> <span ng-repeat="x in techChief">{{x.userName}}({{x.userNo}})</span></label>
+            </div>
+            
+            <div class="form-group clearfix">
+                <label class="col-sm-2 label-name" style="color:#777;padding-left: 3%;">应用创建时间 :</label>
+                <label class="col-sm-2 label-answer" style="color:#555;padding-left:0;">{{app.createTime |date:"yyyy-MM-dd HH:mm:ss"}} </label>
+            </div>
+            <div class="form-group clearfix">
+                <label class="col-sm-2 label-name" style="color:#777;padding-left:3%;">应用管理员 :</label>
+                <label class="col-sm-2 label-answer" style="color:#555;padding-left:0;"><span ng-repeat="x in appAdmin">{{x.userName}}({{x.userNo}})</span></label>
+            </div>
+        </div>
+        <div style="padding: 20px 0 0 55px;float: left;width: 50%;">
+            <div class="form-group clearfix">
+                <label class="col-sm-2 label-name" style="color:#777;padding-left:3%;    margin-left: 5%;">应用中文名称 :</label>
+                <label class="col-sm-2 label-answer" style="color:#555;padding-left:0;">{{app.appCnName}}</label>
+            </div>
+            <div class="form-group clearfix">
+                <label class="col-sm-2 label-name" style="color:#777;margin-left: 5%;">应用等级 :</label>
+                <label class="col-sm-2 label-answer" style="color:#555;padding-left:0;">{{app.appGrade | appGradeFiler}} </label>
+            </div>
+            <div class="form-group clearfix">
+                <label class="col-sm-2 label-name" style="color:#777;padding-left:3%;    margin-left: 5%;">应用归属二级中心 :</label>
+                <label class="col-sm-2 label-answer " style="color:#555;padding-left:0;">{{app.orgId}} </label>
+            </div>
+            
+            
+           
+            
+            <div class="form-group clearfix">
+                <label class="col-sm-2 label-name" style="color:#777;padding-left:3%;    margin-left: 5%;">应用状态 :</label>
+                <label class="col-sm-2 label-answer" style="color:#555;padding-left:0;">{{app.status |appStatusFiler}}</label>
+            </div>
+              
+            <div class="form-group clearfix">
+                <label class="col-sm-2 label-name" style="color:#777;padding-left:3%;    margin-left: 5%;">应用更新时间 :</label>
+                <label class="col-sm-2 label-answer" style="color:#555;padding-left:0;">{{app.updateTime |date:"yyyy-MM-dd HH:mm:ss"}}</label>
+            </div>
+            <div class="form-group clearfix">
+                <label class="col-sm-2 label-name" style="color:#777;padding-left:3%;    margin-left: 5%;">技术负责人 :</label>
+                <label class="col-sm-2 label-answer" style="color:#555;padding-left:0;"><span ng-repeat="x in techManager">{{x.userName}}({{x.userNo}}) </label>
+            </div>
+        </div>
+    </div>
+   
+</section>
+    <div class="form-group">
+        <div class="col-sm-offset-1 col-sm-8" style="margin-left:69px;" >
+          <input  type="button" class="btn btn-primary" ng-click="showDialog()" value="修改应用"/>
+          <input  type="button" class="btn btn-primary reverse" ng-click="showDialog()" value="注销应用"/>
+        </div>
+    </div>

@@ -1,0 +1,61 @@
+/***
+reset css for navbar start
+***/
+
+.content-wrapper,
+.right-side,
+.main-footer {
+	margin-left: 215px;
+}
+
+.nav-content {
+	background: #FFFFFF;
+	margin-top: 20px;
+}
+
+sn-breadcrumb>ul>li>a {
+	font-family: MicrosoftYaHeiUILight;
+	font-size: 12px;
+	color: #686868;
+}
+
+sn-breadcrumb>ul>li>a:hover {
+	font-family: MicrosoftYaHeiUILight;
+	font-size: 12px;
+	color: #11B983;
+}
+
+sn-breadcrumb>ul>li>span {
+	font-family: MicrosoftYaHeiUILight;
+	font-size: 12px;
+	color: #11B983;
+}
+
+.nav-title-decoration-color {
+	display: inline-block;
+	height: 28px;
+	width: 6px;
+	background-color: #11B983;
+	float: left;
+	margin-right: 18px;
+}
+
+.nav-title {
+	padding: 13px 0 15px 0;
+	border-bottom: 5px solid #dee3ec;
+}
+
+.nav-title p {
+	margin: 6px 0 0 24px;
+}
+
+.nav-title-name {
+	font-family: MicrosoftYaHeiUILight;
+	font-size: 18px;
+	color: #000000;
+}
+
+
+/***
+reset css for navbar end
+***/

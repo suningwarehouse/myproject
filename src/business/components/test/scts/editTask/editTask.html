@@ -1,0 +1,159 @@
+
+<section class="content-header" style="padding-top:0;padding-left:0;padding-right:0;">   
+	<p style="padding-top:15px;padding-left:15px;"><a style="color:#555;" href="#/">首页</a> > <a style="color:#555;" href="/#/overview/appManage/">应用管理</a>
+	 > <a style="color: #555" href="/#/testTask">蛙测</a>> <a style="color: #11b983">{{titleDesc}}</a></p>
+		<h4><div class="square"></div><strong style="position: relative;top: -8px;font-weight: normal;font-size: 18px;color: #000;">蛙测:{{task.taskName}}{{titleDesc}}</strong></h4>
+	<div style="height: 5px;background: #dee3ec;"></div>
+</section>
+<section class="content">
+                <form class="form-horizontal" name="myForm" ng-show="action=='create'">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label"><span class="red">*</span>任务名称:</label>
+                        <div class="col-sm-5">
+                            <input type="text" style="width:265px" class="form-control" placeholder="{{defaultTaskName}}" name="taskName" ng-model="taskName" required  maxlength="32" ng-maxlength="32"  ng-pattern="/^[a-zA-Z_0-9.]+$/" ng-blur="taskCheck()">
+                        </div>
+                        <!-- 输入框校验 -->
+	                    <div class="col-sm-3">
+	                    <span ng-show="myForm.taskName.$dirty && myForm.taskName.$invalid">
+				            <span class="form-control-static error"
+				               ng-show="myForm.taskName.$error.maxlength">
+				                <i class="fu fu-cross-circle" aria-hidden="true">最多32位</i>
+				            </span>
+				            <span class="form-control-static error"
+				               ng-show="myForm.taskName.$error.required ">
+				                <i class="fu fu-cross-circle" aria-hidden="true">不能为空</i>
+				            </span>
+				             <span class="form-control-static error" 
+				             	ng-show="myForm.taskName.$error.pattern">
+				                <i class="fu fu-cross-circle small-i" aria-hidden="true"></i>该分支名称只能输入英文字符、数字、下划线、点
+				            </span>
+				         </span>
+				         <span class="form-control-static error" 
+				            	ng-show="taskNameExist">
+				                <i class="fu fu-cross-circle small-i" aria-hidden="true"></i>该任务名称已存在
+				         </span>
+				         <span class="form-control-static success"
+				               ng-show="!taskNameExist && myForm.taskName.$valid && myForm.taskName.$dirty">
+				                <i class="fu fu-check-circle" aria-hidden="true"></i>
+				         </span>
+			        	</div>
+                        
+                    </div>
+                    <div class="form-group">
+                        <label  class="col-sm-3 control-label"><span class="red">*</span>蛙测执行计划:</label>
+                        <div class="col-sm-5">
+                        	<select  style="width:265px" class="form-control" ng-model="formData.task" name="taskRef" ng-options="task as task.sctsTaskName  for task in tasks" required >
+                        		<option value="">-- 请选择 --</option>
+                        	</select>
+                        </div>
+                        
+                        <div class="col-sm-3">
+				            <p class="form-control-static error"
+				               ng-if="myForm.taskRef.$error.required && myForm.taskRef.$invalid && myForm.taskRef.$dirty">
+				                <i class="fu fu-cross-circle" aria-hidden="true">来源任务不能为空</i>
+				            </p>
+				            <p class="form-control-static success"
+				               ng-if="myForm.taskRef.$valid && myForm.taskRef.$dirty">
+				                <i class="fu fu-check-circle" aria-hidden="true"></i>
+				            </p>
+				        </div>
+                        
+                    </div>
+                    
+                    
+                     <div class="form-group">
+                        <label  class="col-sm-3 control-label">环境名称:</label>
+                        <div class="col-sm-5"><input type="text" disabled=true value="{{formData.task.envName}}" style="width:265px"></input> </div>
+                     </div>  
+                     
+                     
+                   <div class="form-group">
+                        <label  class="col-sm-3 control-label">描述:</label>
+                        <div class="col-sm-5">
+                        	<textarea style="width:265px" rows="3" cols="30" name="formData.description" ng-model="formData.description"  maxlength="265;"  ></textarea><span>{{formData.description.length || 0}}/255</span>
+                        </div>
+                        
+                          <!-- 输入框校验 -->
+	                    <div class="col-sm-3">
+	                      <span ng-show="myForm.formData.description.$dirty && myForm.formData.description.$invalid">
+				            <span class="form-control-static error"
+				               ng-show="(myForm.formData.description.$error.maxlength) && myForm.formData.description.$touched && !myForm.formData.description.$error.required">
+				                <i class="fu fu-cross-circle" aria-hidden="true">最多255位字符</i>
+				            </span>
+				         
+				           
+				           
+				            
+				            </span>
+				            <span class="form-control-static success"
+				               ng-show="myForm.description.$valid && myForm.description.$dirty">
+				                <i class="fu fu-check-circle" aria-hidden="true"></i>
+				            </span>
+			        	</div>
+                    </div>
+                </form>
+            
+            
+              <form class="form-horizontal" name="myForm1" ng-show="action!='create' ">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">任务名称:</label>
+                        <div class="col-sm-5">
+                           {{task.taskName}}
+                        </div>
+                      
+                        
+                    </div>
+                    <div class="form-group">
+                        <label  class="col-sm-3 control-label">蛙测执行计划:</label>
+                        <div class="col-sm-5">
+	                        {{task.sctsTaskName}}
+                        </div>
+                        
+                    </div>
+                    
+                     <div class="form-group">
+                        <label  class="col-sm-3 control-label">环境名称:</label>
+                        <div class="col-sm-5">{{task.envName}} </div>
+                     </div>  
+                     
+                    
+                    <div class="form-group" ng-if="action=='detail'">
+                        <label  class="col-sm-3 control-label">描述:</label>
+                        <div class="col-sm-5">{{task.description}}</div>
+                     </div> 
+                     
+                   <div class="form-group" ng-if="action=='edit'">
+                        <label  class="col-sm-3 control-label">描述:</label>
+                        <div class="col-sm-5">
+                        	<textarea rows="3" cols="30" name="description" ng-model="formData.description"  maxlength="255;"  ></textarea><span>{{formData.description.length || 0}}/255</span>
+                        </div>
+                        
+                          <!-- 输入框校验 -->
+	                    <div class="col-sm-3" >
+	                      <span ng-show="myForm1.description.$dirty && myForm1.description.$invalid">
+				            <span class="form-control-static error"
+				               ng-show="(myForm1.description.$error.maxlength) && myForm1.description.$touched && !myForm1.description.$error.required">
+				                <i class="fu fu-cross-circle" aria-hidden="true">最多255位字符</i>
+				            </span>
+				         
+				           
+				            
+				            </span>
+				            <span class="form-control-static success"
+				               ng-show="myForm1.description.$valid && myForm1.description.$dirty">
+				                <i class="fu fu-check-circle" aria-hidden="true"></i>
+				            </span>
+			        	</div>
+                    </div>
+                </form>
+          
+
+		     <div class="form-group">
+                        <label  class="col-sm-3 control-label"></label>
+                        <div class="col-sm-5">
+							 <button ng-if="action=='create'" class="btn btn-primary" ng-click="commit()" ng-disabled="myForm.$invalid || !commited" >{{commitDesc}}</button>
+							 <button ng-if="action=='edit'" class="btn btn-primary" ng-click="commit()" ng-disabled="myForm1.$invalid || !commited" > {{commitDesc}}</button>
+							<button class="btn btn-primary reverse" ng-click="close()"> 关闭</button>
+				        </div>
+            </div>  
+      </section>

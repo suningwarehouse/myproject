@@ -1,0 +1,103 @@
+<div class="modal fade in" ng-controller="FlowCronCtrl">
+    <div class="modal-dialog" style="width:700px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="close()"><span aria-hidden="true">&times;</span><span
+                        class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title">定时执行计划设置</h4>
+            </div>
+            <div class="modal-body">
+                <form name="flowSetForm" class="form-horizontal" novalidate>
+                    <div class="form-group">
+                        <div class="col-sm-3">
+                        </div>
+                        <div class="col-sm-4">
+                            <label class="radio-inline">
+                                <input type="radio" required ng-model="flow.executeType" ng-click="executeTypeChange(0)"
+                                       name="executeType" value="0"> 不定时
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" required ng-model="flow.executeType" ng-click="executeTypeChange(1)"
+                                       name="executeType" value="1"> 定时
+                            </label>
+                        </div>
+                        <div class="col-sm-4">
+                            <p class="form-control-static error"
+                               ng-if="flowSetForm.executeType.$error.required && flowSetForm.executeType.$dirty">
+                                <i class="fu fu-cross-circle" aria-hidden="true">类型不能为空</i>
+                            </p>
+                            <p class="form-control-static success"
+                               ng-if="flowSetForm.executeType.$valid && flowSetForm.executeType.$dirty">
+                                <i class="fu fu-check-circle" aria-hidden="true"></i>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="form-group" ng-if="flow.executeType==1">
+                        <label class="col-sm-3 control-label"><span class="required">*</span>Cron表达式</label>
+                        <div class="col-sm-4">
+                            <input type="input" ng-model="flow.executeCron" class="form-control" name="executeCron"
+                                   ng-maxlength="50" required ng-change="validExpression()"/>
+                        </div>
+                        <div class="col-sm-4">
+                            <p class="form-control-static error"
+                               ng-if="(flowSetForm.executeCron.$error.maxlength) && flowSetForm.executeCron.$touched && !flowSetForm.executeCron.$error.required">
+                                <i class="fu fu-cross-circle" aria-hidden="true">最多50位</i>
+                            </p>
+                            <p class="form-control-static error"
+                               ng-if="flowSetForm.executeCron.$error.required && flowSetForm.executeCron.$touched">
+                                <i class="fu fu-cross-circle" aria-hidden="true">不能为空</i>
+                            </p>
+                            <p class="form-control-static error"
+                               ng-if="!isValidExpression&&!flowSetForm.executeCron.$error.required && !flowSetForm.executeCron.$error.maxlength">
+                                <i class="fu fu-cross-circle small-i" aria-hidden="true"></i>表达式语法错误
+                            </p>
+                            <p class="form-control-static success"
+                               ng-if="isValidExpression &&flowSetForm.executeCron.$valid && flowSetForm.executeCron.$touched">
+                                <i class="fu fu-check-circle" aria-hidden="true"></i>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="button" class="btn btn-primary" ng-disabled="flowSetForm.$invalid"
+                                    ng-click="saveExpression()">保存
+                            </button>
+                            <a ng-if="flow.executeType==1" href="http://cron.qqe2.com" target="cron" class="sn-a-img"><span>生成Cron表达</span></a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<style type="text/css">
+    .clear {
+        clear: both
+    }
+
+    .btn {
+        padding: 6px 12px !important;
+    }
+
+    .h3-inline {
+        display: inline;
+    }
+
+    .red {
+        color: red;
+        padding-right: 5px;
+    }
+
+    .error {
+        color: #f60;
+    }
+
+    .success {
+        color: #78be25;
+    }
+
+    .small-i {
+        margin-top: 3px;
+    }
+</style>

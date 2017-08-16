@@ -1,0 +1,119 @@
+
+
+<div class="modal fade in" ng-controller="FlowHistoryDetailCtrl">
+    <div class="modal-dialog" style="width:900px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="close()"><span aria-hidden="true">&times;</span><span
+                        class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title">流水线</h4>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <h3 class="toptext">
+                        <span style="font-size: 12px;">流水线名称：{{flow.flowName}}</span>
+                        <span style="margin-left:30px;font-size: 12px;">
+                            归属项目：{{flow.sysName}}
+                        </span>
+                    </h3>
+                </div>
+                <div>
+                    <sapn>
+                        <span style="margin-left:30px;font-size: 12px;">执行结果：</span>
+                        <span style="margin-left:20px;font-size: 12px;">
+                            <span ng-if="history.executeStatus==1">执行中</span>
+                            <span ng-if="history.executeStatus==2">成功</span>
+                            <span ng-if="history.executeStatus==4">失败</span>
+                            <span ng-if="history.executeStatus==8">停止</span>
+                        </span>
+                        <span style="margin-left:30px;font-size: 12px;">执行时间：</span><span style="margin-left:20px;font-size: 12px;">{{history.beginTime}}</span>
+                    </sapn>
+                </div>
+
+                <div class="panel-body">
+                    <div  ng-repeat="oneProcess in nodeGroupList" ng-class="{oneLineFirst:0 === $index, oneLine:!(0 === $index)}">
+                        <div class="linetop">
+                            <div ng-class="{linetopleftFirst:0 === $index, linetopleft1:!(0 === $index)}">
+                                <div class="topleft">{{$index+1}}</div>
+                                <div class="topmiddle">
+                                    <div class="topmiddleStep text_process_overflow" title="{{oneProcess.groupName}}">{{oneProcess.groupName}}</div>
+                                    <!--<div class="topmiddleNum" ng-show="oneProcess.flowNodeList.length>0"><span>{{oneProcess.flowNodeList.length}}</span>任务
+                                    </div>-->
+                                </div>
+                                <div class="topimg">
+                                    <!--未执行-->
+                                    <span class="fu fu-ellipsis" ng-show="oneProcess.executeStatus == 1"></span>
+                                    <!--成功-->
+                                    <span class="fu fu-check-circle stateCode2"
+                                          ng-show="oneProcess.executeStatus == 2"></span>
+                                    <!--失败-->
+                                    <span class="fu fu-cross-circle stateCode2"
+                                          ng-show="oneProcess.executeStatus == 4 || oneProcess.executeStatus == 8"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="linecontent">
+                            <div class="listStyle">
+                                <!--未执行-->
+                                <span class="circleBig" ng-show="oneProcess.executeStatus == 1"></span>
+                                <!--成功-->
+                                <span class="fu fu-check-circle stateCode2"
+                                      ng-show="oneProcess.groupType==1 && oneProcess.executeStatus == 2"></span>
+                                <!--失败-->
+                                <span class="fu fu-cross-circle stateCode2"
+                                      ng-show="oneProcess.executeStatus == 3"></span>
+                                <span ng-show="oneProcess.groupType==1" style="color: #6DD4B3;">任务列表</span>
+                                <span ng-show="oneProcess.groupType==-1" style="color: #6DD4B3;">流水线现有{{nodeGroupList.length}}个阶段</span>
+                            </div>
+
+                            <div class="listStyle" ng-repeat="oneList in oneProcess.flowNodeList">
+                                <!--未执行-->
+                                <div class="fa fa-circle-o" ng-show="!oneList.executeStatus" ></div>
+                                <!--执行中-->
+                                <div class="fa fa-refresh fa-spin" ng-show="oneList.executeStatus == 1" ></div>
+                                <!--成功-->
+                                <div class="fu fu-check-circle stateCode2" ng-show="oneList.executeStatus == 2" ></div>
+                                <!--失败-->
+                                <div class="fu fu-cross-circle stateCode2"
+                                     ng-show="oneList.executeStatus == 4 || oneProcess.executeStatus == 8"></div>
+                                <span class="text_overflow" title="{{oneList.taskAlias}}">{{oneList.taskAlias}}</span>
+                                <a ng-show="oneList.executeStatus > 0" title="{{oneList.remark}}" ng-href="{{oneList.logUrl}}"
+                                   target="{{oneList.id}}" style="float: right"><i class="fa fa-info-circle"></i></a>
+                            </div>
+                            <div class="listStyle">
+                                <div ng-if="oneProcess.groupType==0"><span>进度</span><span class="progrepercent">100%</span></div>
+                                <div ng-if="oneProcess.groupType==1"><span>进度</span><span class="progrepercent">{{(oneProcess.finishNum/oneProcess.flowNodeList.length).toFixed(2)*100}}%</span></div>
+                                <div ng-if="oneProcess.groupType==-1"><span>进度</span><span class="progrepercent">{{(oneProcess.finishNum/1).toFixed(2)*100}}%</span></div>
+                            </div>
+                            <div class="listStyle">
+                                <progress ng-if="oneProcess.groupType==0" class="progress-bar-success" value="1"
+                                          max="1"></progress>
+                                <progress ng-if="oneProcess.groupType==1" class="progress-bar-success"
+                                          value="{{oneProcess.finishNum}}"
+                                          max="{{oneProcess.flowNodeList.length}}"></progress>
+                                <progress ng-if="oneProcess.groupType==-1" class="progress-bar-success"
+                                          value="{{oneProcess.finishNum}}" max="1"></progress>
+                            </div>
+
+                            <div class="listStyle" ng-if="oneProcess.groupType==1">
+                                <span>任务总数：{{oneProcess.flowNodeList.length}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+	
+
+<style>
+    progress::-webkit-progress-bar { 
+        background-color: #fff;
+        border: 1px solid #ccc;
+    }
+    progress::-webkit-progress-value { 
+        background-color: #7ED321
+    }
+</style>

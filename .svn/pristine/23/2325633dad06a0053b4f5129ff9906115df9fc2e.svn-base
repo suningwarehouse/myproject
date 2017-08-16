@@ -1,0 +1,205 @@
+<div style="height:100%;background-color: #f3f5f7;">
+	<section id="wrapH" class="clearfix">
+		<div class="leftItem">
+			<!--echarts start-->
+			<article class="echartsOut itemH">
+				<h2 class="titH">
+					
+					<span>工作项</span>
+				</h2>
+				<ul class="innerNav">
+					<li>
+						<p class="fl circle" ng-click="changeChart(1)"><span ng-click="changeTitle(1)">{{items[1].bugs+items[1].tasks+items[1].requireMents}}</span> <br>{{items[1].name}}</p>
+						<div class="info">
+							<p>需求：<a href="{{items[1].src0}}" target="_blank">{{items[1].requireMents}}</a></p>
+							<p>任务：<a href="{{items[1].src1}}" target="_blank">{{items[1].tasks}}</a></p>
+							<p>缺陷：<a href="{{items[1].src2}}" target="_blank">{{items[1].bugs}}</a></p>
+						</div>
+					</li>
+					<li>
+						<p class="fl circle" ng-click="changeChart(2)"><span ng-click="changeTitle(2)">{{items[2].bugs+items[2].tasks+items[2].requireMents}}</span> <br>{{items[2].name}}</p>
+						<div class="info">
+							<p>需求：<a href="{{items[2].src0}}" target="_blank">{{items[2].requireMents}}</a></p>
+							<p>任务：<a href="{{items[2].src1}}" target="_blank">{{items[2].tasks}}</a></p>
+							<p>缺陷：<a href="{{items[2].src2}}" target="_blank">{{items[2].bugs}}</a></p>
+						</div>
+					</li>
+				</ul>
+				<div class="echartsBox" id="homePageEchartBox"></div>
+			</article>
+			<!--echarts end-->
+
+			<!--罗列框 start-->
+			<article class="listBox">
+				<ul class="clearfix">
+					<li class="list">
+						<div class="innerCon itemH">
+							<div class="leftH">
+								<img src="data:image/png;base64,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"
+								    alt="">
+								<p class="name">我的项目</p>
+							</div>
+							<div class="rightH">
+								<p>进行中：<a href="javascript:;" ui-sref="topHead.overview.proManage({status:1})">{{project.devloping}}</a></p>
+								<p>已暂停：<a href="javascript:;" ui-sref="topHead.overview.proManage({status:2})">{{project.suspend}}</a></p>
+								<p>已终止：<a href="javascript:;" ui-sref="topHead.overview.proManage({status:3})">{{project.finish}}</a></p>
+								<p>已关闭：<a href="javascript:;" ui-sref="topHead.overview.proManage({status:4})">{{project.finish}}</a></p>
+							</div>
+						</div>
+					</li>
+					<li class="list">
+						<div class="innerCon itemH">
+							<div class="leftH">
+								<img src="data:image/png;base64,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"
+								    alt="">
+								<p class="name">我的版本</p>
+							</div>
+							<div class="rightH">
+								<p>开发中：<a href="javascript:;" ui-sref="topHead.overview.versionManage({status:1})">{{version.deploying}}</a></p>
+								<p>已封板：<a href="javascript:;" ui-sref="topHead.overview.versionManage({status:2})">{{version.freezen}}</a></p>
+								<p>已发布：<a href="javascript:;" ui-sref="topHead.overview.versionManage({status:3})">{{version.deployed}}</a></p>
+								<p>已归档：<a href="javascript:;" ui-sref="topHead.overview.versionManage({status:4})">{{version.archive}}</a></p>
+							</div>
+						</div>
+					</li>
+					<li class="list">
+						<div class="innerCon itemH">
+							<div class="leftH">
+								<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFMAAABMCAYAAAARMotOAAAABGdBTUEAALGPC/xhBQAAC3FJREFUeAHtXAlwFFUa/l93z5FjYAwYuZYjQ9wgeMCyIqJCSAKyimEBh7AKruhCuV5UrUdZa7noSpWl7i6lsUpK2EVEdxIkCtkAAoEEvFAoAZXA5gA5QiKQkEkymavf279n8mYmySSZzHQgut1Vyfv77/997+9v/nd2vyag8rH6ANMJpHx0f6P5tHVscpPK8KrDsWqIBw+MhOFQSQi4YimAxJK5fd41Xx8d52VQxBgMR8eaCRMeXDYpbWN7u2jOM84UDJCd7sFAyCDKBIdeJ9R4aVJ1yah0ZzR4Sh52EmaBDP9GsT8QqMG/OWQU7I8WT1Uy395f9gkDNiPoDLEPuDktyUqIHNRFLk0tz5+MeFb8m425LGFyepDcUgGgUDLq3i8eNvdiGJtOVawSzuDFoQEDAl+TFLg5cN5DQW0yD+GN38h9IISwxKsk8/2pqXauiyS9vdw2AUlaCYzdGYl9q41dEIS/ERP8vSTZ2m3zgrVHhCpoxryGkDJOEwtW+CgP/FHVO5C8f7ZBY/BhT4m8oyLvT4jzVUciSSPqv0OSd+HfZwTICUxZSHn9KKUvynZ68I6TBWNC9GFFbIZkrNbvtrkowNo25z08UTUylbLf/qoMqySZzgg7ljYxbW06Id5IfFrBmFBcmbcOGCzi9kiYknc93vgGYkneV0LS22BlVG2+xgOuu4GyJxlj1/N8WH6jKMDcEsuCXUFdRwmjU4CTsBgo3ITEfoZVPKb2XXUyO7ocmQYj8jUk5ClujUTuFQh5qGS0tYLrOksxH5lambcIk1zsVkytdnaRwJSS0TnfdZZPbX2fIHNahS1HZr5e1Xd/WJ1XC5bkx9pHYnc3r1Rv5nVvw+ge4QeCH+ISrxq7Y9BMpW3s9UPVNjMab2dXF8ZTRl4P5iUfllqsj/SUSCX/3pFzy4ikn4U/xiUfHpLa0lj/TBC7d6UrTqa92bEcRwC+4QlW7bPmhPgHkIzQjqVHDCiECgI8HshEyFMzKgqSA+e9KFxxMpHIQIeDncCfC4fMdsR6v3tGWd/HTuuAD4exeBdxz48VM5L8V5RMXxsHkOZ3lDQmWEy2SJzuzkaJbALCO9yOMpjL5VjSzxmL21TNRmw6zwbvYUxqj9VB0d6gV8+p91aOj5G0bRv5TUxzY46lpJJg2OyWW1b7dWRy6LVo5E017Jaai/ArkHA4hY1QXS20bLnEiu8x43i39biikckoG8IdwWHFcS6rkRanZNdihDb4sLCqZ1bm948W9/VV32YVTlz7/o9fVg8IYAgQ57joumdhQm7eAnHVvYo+LJnKuC09w/bitExbFaYHMzLyezKtC5TXrcDY4IANIecCsloCYwFMtygFfriewidPHTHSlDawPG6oqSU0r85koDM+mvcupfDWAv0/xoQlM32mbQl2DC/glG4UphNkoAXT784PLgiEIsYgYzTqeXZs5NxcVisNxdRRqosGVwmsxKEm/bQPsosw7bBCZRo/SMSOczeTYXLYNpPIRFmtCSmbxTEnTrkAzoYoIxLvX7p9cIsT5slUHo3Vuk1Vayp33upO9c8QDbulB7N/95/bIgKN0Kj+kmMY60991sa1upcQv953QohTlISzepO43ZY7w9/rd4KpdGa5H54EkyXJGI5MHIZdwFnXt8CIJTyZAitlFB4K4pOmOD0cDJ53L/3+idLUC+cuvXmm6lImRrgYLgf9EbWp/kmY+5R7iqfWNSWcXbQ61oTYrT9f82lHNtR2QPprxqyNRxIS9c9u2Zi9vcPVVsXBZ0oGGMyGWVnbcz4ItUGOnHovHMbx8WIG5FjYar5758L3QBCeQqPD2MuWCiK5a+tWa00oUFdyzpId95w6Xnuwqc4xszMiu8p/Oa/Jbu8N9rqWrdMz857vrNym0/Vb6g7VXt9YWe+vRmiI04qz1AOb1qfkXoMLJvdDnJTnD4vOUKLQ3/fIzlvOVdbtpjKN49mNicYfDIn6sqYLjs+plwYcok/Db6mF/VqxIyVQINpIl1WO40Wael/FmVA/fycnrSZvwDe4mu47mBnb0wnYkmFNYAE/cWz65J7iBW+Ew79XWPUY2q+ITzHPvDXvgSPLJhLPQn3uWK/HoywLPr6RLs9VlUylsb4z+6PjrmZXquKQpBPtv5xiee+mO8eV9I/Xb7GOJW06mTvKbWuwZfY1J0QUHt6bYo1pPbE9CbdX2A4jATcoer0o3VicMv9IqM30WTYL9TBl2Y+31R5BT8bs3pZTGWrHZRwCLaaUvYY1FoMRsP1leiIIL+XLT76r2ISt5jxzT9P5D+9YzInEhptOnD3uzfGzrjskivrS9kT2FLs37BXSRg4blIW98bFWfB1zw3OdlZUnL1+fMMI8Qh8XN16QhBy4bugYTqSSR1Uy3Xa3b/CqAA/4RVLJ6EmjTmIVOLNkAjmv6PrisW5dulMUhT9y33AUk71iBeuUl3UnH3RucCw7l+d54vDG761talqnmTh4T1K3y3Mttx9kGXhUkYkEgekWv9bX0tsnJ+9Dn/gYcuD+/QVDovFRVTKpRzZzJ5JTrvaNSYlsqOO6vpquWJHuxXYwMJ11UU9US3aqkul7ptLKmE4vyIrIHBf4Lx7kUllxKbNf62LGBK50sXgDl2NOT2MP/d/GMRSXOzhWvZjU5QwIn1l5uK1Ig/m4LpI0UFgkxtHY6EwD/VMQnhl7fDhm3weMHi+jN+V4mB4cLBG+8Ux6A8oaY18qq2hMhkZ7FXjlo5XetHEUn+jW06vhG8eE3QrB3I3eSMPOgHqjoABmFfTDgfwtyrmdmuFLOp1fEkGgGXhSwBVRpTLBp5RskJK3hg7z/bXi9AOZTUK5rPVc9eTyk2nBZbFj9mcxMu/D+WywfMJqQAerYr7DaxNK4XjDGqC+NczgOJqw74GYNsWM3wVA8Ga6MFL9Ulq/VxFT+VP/8D+n/4P6wN0j9nqb2b0LPx8LjUwVf0uNTI1MFRlQEUqLTI1MFRlQEUqLTI1MFRlQEUqLTI1MFRlQEUqLTI1MFRlQEUqLTI1MFRlQEUqLTI1MFRlQEUqLTI1MFRlQEUqLTI1MFRlQEUqLzJ8EmfjW/P/boWpkChIJ7C6rO9eQpJDZKOELez+BA50cHuKmf8tLiCISUVUyJb1UzQv98VTdSEU2y/hqQR8/MjPzh+N7Uq0vaxGv0WjwvXTWU7dVJdOQYNzFHag+WpvVfMltaHI7TVzXV1MZ5L+E+LavsDC6/ZuqkpkQB28JouDb2+1xewcUr9m3xHm+ITXE0T4nTs+0PYJRuYQ7hhsi8AMA0R2qt2fzFm198WJ1wwvcHZ1Bdx77opfB4/0CX8f+geuvZCrLbjO+HDdBpuwBfJ89sPsOXx3fsWdXzsxofVOdTMWR2QsK8xsvNAVeyY7WucuZD4k4Em80TSsqutu/8SqKwlWt5rz8wrzZ1qQh5pdFSQz07vxa30txOzUh6wcmiVNiIVK5r16JTE5YzpJPh7jcDcudze4Mr1seLHtkA6PBfUDc7vKnxIlbT6rx5vcJkrSheHvbLS2X3x+tRI0BjQGNAY0BjQGNAY0BjQGNAY0BjQGNAY0BjQGNgT7GAJkz5yNzQ6PrOVxF8T0A8/mHm0Lx2xUrlU8uKOeZmbYxMmOP4rd71NsT3geIEEVSVLxjwcdLlx7QlVdWPI8cdPkFBFyvbEiIT3gFH2vgh6EAsrI2D/GwlqdxF7ERP1f0jtTQ5JqK36V4ps29Ieqp6pptqPtc0XuB4LI+exT/2pj91E9kqnyKBz4+caJqLHIQeDrQ2X0pD68dTschTDYoNl7aMgc5Wa7IuLBolKbedk1R6ae18/DZR0hkktriT6xfELJQsQNzon4lkv4t2uh9ip/JPyYKyrc5YOdO66H0rLy7CAS/mtjJLTYkmclmfm1gkvCvugZah58gMhokoeh/td/VsOq+cnYAAAAASUVORK5CYII="
+								    alt="">
+								<p class="name">我的应用</p>
+							</div>
+							<div class="rightH">
+								<p>运行中：<a href="javascript:;" ui-sref="topHead.overview.appManage({status:1})">{{active}}</a></p>
+								<p>已注销：<a href="javascript:;" ui-sref="topHead.overview.appManage({status:0})">{{offLine}}</a></p>
+							</div>
+						</div>
+					</li>
+					<li class="list">
+						<div class="innerCon itemH">
+							<div class="leftH">
+								<img src=" data:image/png;base64,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"
+								    alt="">
+								<p class="name">我的服务</p>
+							</div>
+							<div class="rightH">
+								<!--<p>立项中：<a href="javascript:;" ui-sref="topHead.overview.appManage({status:1})">{{'0'}}</a></p>
+								<p>运行中：<a href="javascript:;" ui-sref="topHead.overview.appManage({status:0})">{{'0'}}</a></p>
+								<p>已上线：<a href="javascript:;" ui-sref="topHead.overview.appManage({status:1})">{{'0'}}</a></p>
+								<p>已结项：<a href="javascript:;" ui-sref="topHead.overview.appManage({status:0})">{{'0'}}</a></p>-->
+							</div>
+						</div>
+						<div class="disable">
+							<p>尚未开放</p>
+						</div>
+					</li>
+				</ul>
+			</article>
+			<!--罗列框 end-->
+		</div>
+		<div class="rightItem">
+			<!--系统消息 start-->
+			<article class="systemMsg itemH">
+				<h2 class="titH">
+					<a href="javascript:;" class="btn-more" ui-sref="topHead.leftColumn.message" ng-click="goMore(2)">查看更多</a>
+					<span>黑板报</span>
+				</h2>
+				<ul class="msg">
+					<li ng-repeat="notificationDO in notificationDOListRespVO">
+						<!-- <a title="[{{notificationDO.stick}}] 【{{notificationDO.type}}}】" ng-href="/#/notificationDetail/{{notificationDO.id}}">
+				            [{{notificationDO.stick}}] 【{{notificationDO.type}}】[{{notificationDO.body}}]
+				        </a> -->
+				        <a href="javascript:;" ng-click="boardShow(notificationDO.id)">
+                            <div>【{{notificationDO.typeName}}】  {{notificationDO.title}}</div>
+                        </a>
+						<!--ng-href="/#/overview/notificationDetail/{{notificationDO.id}}"-->
+					</li>
+				</ul>
+			</article>
+			<!--系统消息 end
+                ui-sref="topHead.notificationDetail({id:notificationDO.id})"-->
+
+		<!--时间通知 start-->
+			<article class="timeNotice itemH">
+				<h2 class="titH">
+					<a href="{{tyrUrl}}" target="_blank"class="btn-more" ui-sref="topHead.leftColumn.message" ng-click="goMore(1)">查看更多</a>
+					<span>事件日志</span>
+				</h2>
+				<ul class="timeBox">
+					<li ng-repeat="one in listone">
+						<p class="fl">{{one.startTime|date:'yyyy-MM-dd '}}</p>
+						<div class="timeInfo">
+							<div class="name">{{one.userName}}({{one.userNo}})</div>
+							<div class="content1 wordH msg"><span>{{one.message}}</span></div>
+						</div>
+					</li>
+					<!--<li>
+					<p class="fl">2017-04-20</p>
+					<div class="timeInfo">
+						<p class="name">张小芳(<a href="javascript:;">15081786</a>)</p>
+						<p class="wordH">在应用NG打包发布专用中发布了版本：javamng_V1.0.0的任务</p>
+					</div>
+				</li>-->
+				</ul>
+			</article>
+			<!--时间通知 end-->
+		</div>
+	</section>
+</div>
+<!--黑板报弹框-->
+<div class="board-pop" ng-show="popShow">	
+	<b ng-click = "popHide()">&times;</b>	
+	<p class="title">{{notificationDO.title}}</p>
+	<h1 class="h1"></h1>
+	<div class="pop-head">
+				<div>
+					<p>
+						<a>公文号 :</a>
+						<a>
+							{{notificationDO.documentNumber}}
+						</a>
+					</p>
+					<p>
+						<a>部门 :</a>
+						<a>
+							{{notificationDO.department}}
+						</a>
+					</p>
+				</div>
+				<div>
+					<p>
+						<a>通知报告 :</a>
+						<a>
+							 {{notificationDO.receiver}}
+						</a>
+					</p>
+					<p>
+						<a>创建时间 :</a>
+						<a>
+							{{notificationDO.createTime|date:'yyyy-MM-dd HH:mm:ss'}}
+						</a>
+					</p>
+				</div>
+				
+	</div>
+	
+		 <!-- <script style="width:90%;margin-left:5%;" id="serviceDetailEditor" ueditor ng-model="notificationDO.body" option="{{serviceDetailEditorOptions}}" type="text/plain"
+                             sat-id="1470710504453" ng-disabled="true"></script> -->
+                <p style="width:90%;margin-left:5%;" class="contentwen" ><a>正文 :</a></p>
+                <p style="width:90%;margin-left:5%;" class="contentwen" ng-bind-html="notificationDO.body"></p>
+
+	<div class="footer">
+           <div class="footer-left" >
+              <button ng-click="previousStep()" ng-disabled="up_notification" ng-class="{true: 'stepactive', false: 'stepinactive'}[up_notification]"><上一条</button>
+           </div>
+           <div class="footer-right" >
+              <button ng-click="nextStep()" ng-disabled="down_notification" ng-class="{true: 'stepactive', false: 'stepinactive'}[down_notification]">下一条></button>
+           </div>
+           <p>附件 : 
+	           <a href="{{notificationDO.attachmentLink}}" target="_blank">
+	            {{notificationDO.fileName}}
+	           </a>
+           </p>
+       </div>
+</div>
+

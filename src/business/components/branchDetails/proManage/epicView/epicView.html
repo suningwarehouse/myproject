@@ -1,0 +1,31 @@
+  <script>
+  function resizeIframe(obj) {
+	  setTimeout(function(){
+          obj.style.height = obj.contentWindow&&obj.contentWindow.document.body.scrollHeight + 'px';
+          },500)
+      setTimeout(function(){
+          obj.style.height = obj.contentWindow&&obj.contentWindow.document.body.scrollHeight + 'px';
+          },1000)
+    setTimeout(function(){
+          obj.style.height = obj.contentWindow&&obj.contentWindow.document.body.scrollHeight + 'px';
+          },3000)
+          setTimeout(function(){
+          obj.style.height = obj.contentWindow&&obj.contentWindow.document.body.scrollHeight + 'px';
+          },5000)
+  }
+</script>
+<div class="modal fade in" ng-controller="epicView">
+	<div class="modal-dialog" style="width: 80%;">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" ng-click="close()">
+					<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+				</button>
+				<h4 class="modal-title">原始需求</h4>
+			</div>
+			<div class="modal-body">
+				<iframe src="{{url}}" width="100%"  onload="resizeIframe(this)" scrolling="no" style="border: 0;"> </iframe>
+			</div>
+		</div>
+	</div>
+</div>

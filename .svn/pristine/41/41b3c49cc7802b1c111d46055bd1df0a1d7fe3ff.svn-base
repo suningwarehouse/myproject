@@ -1,0 +1,86 @@
+<!-- <section class="content-header">
+  <h4 class="text-primary"><strong>构建配置管理</strong></h4>
+  <p>提供用户对于我的系统下各环境实例，可视化的管理界面，支持环境实例分组，策略，视图，按系统活跃度排序</p>
+</section> -->
+<div>
+	<div class="nav-content">
+		<div class="nav-title">
+			<sn-breadcrumb datalist="crumbBaseData"></sn-breadcrumb>
+			<div class="nav-title-decoration-color"></div>
+			<div class="nav-title-name">安全扫描</div>	
+		</div>	  
+	</div>
+	<div class="mainContent">
+		<div class="table-header" style="margin-bottom: 14px;margin-top: 13px;">
+			   <form class="form-inline">
+					<div class="form-group">
+						<input type="text" class="form-control sheet-input" placeholder="请输入任务名称" ng-model="taskName">
+					</div>
+					<div class="form-group select2height">
+						<select class="form-control sheet-select" ng-model="status" ng-options="status.value as status.name for status in statusList">
+							<option value="">请选择状态</option>
+						</select>
+					</div>
+     				<div class="form-group">
+                        <div class="search-div marginL" ng-click="search()">查询</div>
+                        <div class="reset-div marginL" ng-click="reset()">重置</div>
+                    </div>
+					<div class="pull-right">
+						<a href="javascript:void(0)" class="text-primary"  ui-sref="topHead.leftColumn.editTask({type:'create'})" style="margin-right: 20px;"><i class="fu fu-plus" style="color: #65B113"><span style="color: #11B983;font-size: 12px">创建任务<span></i></a>
+					</div>
+				</form>
+		</div>
+			<!--表格主体 -->
+		<div class="table-body">
+					<table class="sn-table" style="table-layout: fixed">
+			<tr>
+				<th width="10%">任务名称</th>
+				<th width="10%">状态</th>
+				<th width="10%">描述</th>
+				<th width="10%">url</th>
+				<th width="10%">延迟时间</th>
+				<th width="10%">检查项</th>
+				<th width="10%">创建时间</th>
+				<th width="30%">操作</th>
+			</tr>
+			<tr ng-repeat="task in taskList">
+				<td  class="text_overflow" title="{{task.taskName}}">{{task.taskName}}</td>
+				<td>{{task.status |commonStatusFiler}}</td>
+				<td  class="text_overflow" title="{{task.description}}">{{task.description}}</td>
+				<td  class="text_overflow" title="{{task.url}}">{{task.url}}</td>
+				<td>{{task.delay}}</td>
+				<td ng-if="task.checkType==1">所有</td>
+				<td ng-if="task.checkType==0">默认</td>
+				<td class="text_overflow" title="{{task.createTime}}">{{task.createTime }}</td>
+				<td>
+					<a ui-sref="topHead.leftColumn.taskRecord({taskId:task.taskId,type:4,taskName:task.taskName})">执行历史</a>
+					<a ui-sref="topHead.leftColumn.editTask({type:'detail',taskId:task.taskId})">任务详情</a>
+					<a ng-if="task.status!=0" ui-sref="topHead.leftColumn.editTask({type:'edit',taskId:task.taskId})">修改</a>
+					<a ng-if="task.status!=0" ng-click="delete(task)">删除</a>
+				</td>
+			</tr>
+		</table>
+    </div>
+    <div class="table-footer">
+        <div class="pull-right sn-table-pager text-right">
+            <cd-pager style="float: right" page="pageIndex" page-size="pageSize" total="totalCount" page-action="paging1(page, pageSize, total)"></cd-pager>
+        </div>
+        <div class="clear"></div>
+    </div>
+	
+	<!--<div class="relative-div">
+		<div class="absolute-div">我的项目</div>
+		<div class="content-div">
+					
+		</div>
+	</div>-->
+</div>
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"><html><head>
+    <title></title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <script type="text/javascript" src="../internal.js"></script>
+    <style type="text/css">
+        .warpper{ position:relative;width: 380px; height: 100%; margin: 10px auto;}
+        .tabbody{height: 160px;}
+        .tabbody table{width:100%;border-collapse: separate;border-spacing: 3px;}
+        .tabbody .panel{width:373px;height:100%;padding-left: 5px;position: absolute;background-color: #fff;}
+        .tabbody input.int{ width:190px;height:21px;border:1px solid #d7d7d7;line-height:21px;}
+        .tabbody input.btn{padding: 0 5px; text-align:center;line-height:24px; text-decoration: none;height:24px;background:url("../../themes/default/images/dialog-title-bg.png") repeat-x;border:1px solid #ccc; }
+    </style>
+</head>
+<body sat-id="1470899323028">
+<div class="warpper" id="searchtab" sat-id="1470899323029">
+    <div id="head" class="tabhead" sat-id="1470899323030">
+        <span tabsrc="find" class="focus" sat-id="1470899323031"><var id="lang_tab_search" sat-id="1470899323032"></var></span>
+        <span tabsrc="replace" sat-id="1470899323033"><var id="lang_tab_replace" sat-id="1470899323034"></var></span>
+    </div>
+    <div class="tabbody" sat-id="1470899323035">
+        <div class="panel" id="find" sat-id="1470899323036">
+            <table sat-id="1470899323037">
+                <tbody sat-id="1470899323038"><tr sat-id="1470899323039">
+                    <td width="80" sat-id="1470899323040"><var id="lang_search1" sat-id="1470899323041"></var>: </td>
+                    <td sat-id="1470899323042"><input id="findtxt" type="text" class="int" sat-id="1470899323043"></td>
+                </tr>
+                <!--<tr>-->
+
+                    <!--<td colspan="2"><span style="color:red"><var id="lang_searchReg"></var></span></td>-->
+                <!--</tr>-->
+                <tr sat-id="1470899323044">
+                    <td sat-id="1470899323045"><var id="lang_case_sensitive1" sat-id="1470899323046"></var></td>
+                    <td sat-id="1470899323047">
+                        <input id="matchCase" type="checkbox" sat-id="1470899323048">
+                    </td>
+                </tr>
+                <tr sat-id="1470899323049">
+                    <td colspan="2" sat-id="1470899323050">
+                        <input id="nextFindBtn" type="button" class="btn" sat-id="1470899323051">
+                        <input id="preFindBtn" type="button" class="btn" sat-id="1470899323052">
+                    </td>
+                </tr>
+                <tr sat-id="1470899323053">
+                    <td colspan="2" sat-id="1470899323054">
+                        &nbsp;
+                    </td>
+                </tr>
+                <tr sat-id="1470899323055">
+                    <td colspan="2" sat-id="1470899323056">
+                        <span id="search-msg" style="color:red" sat-id="1470899323057"></span>
+                    </td>
+                </tr>
+            </tbody></table>
+        </div>
+        <div class="panel" id="replace" sat-id="1470899323058">
+            <table sat-id="1470899323059">
+                <tbody sat-id="1470899323060"><tr sat-id="1470899323061">
+                    <td width="80" sat-id="1470899323062"><var id="lang_search2" sat-id="1470899323063"></var>: </td>
+                    <td sat-id="1470899323064"><input id="findtxt1" type="text" class="int" sat-id="1470899323065"></td>
+                </tr>
+                <!--<tr>-->
+
+                    <!--<td colspan="2"><span style="color:red"><var id="lang_searchReg1"></var></span></td>-->
+                <!--</tr>-->
+                <tr sat-id="1470899323066">
+                    <td sat-id="1470899323067"><var id="lang_replace" sat-id="1470899323068"></var>: </td>
+                    <td sat-id="1470899323069"><input id="replacetxt" type="text" class="int" sat-id="1470899323070"></td>
+                </tr>
+                <tr sat-id="1470899323071">
+                    <td sat-id="1470899323072"><var id="lang_case_sensitive2" sat-id="1470899323073"></var></td>
+                    <td sat-id="1470899323074">
+                        <input id="matchCase1" type="checkbox" sat-id="1470899323075">
+                    </td>
+                </tr>
+                <tr sat-id="1470899323076">
+                    <td colspan="2" sat-id="1470899323077">
+                        <input id="nextReplaceBtn" type="button" class="btn" sat-id="1470899323078">
+                        <input id="preReplaceBtn" type="button" class="btn" sat-id="1470899323079">
+                        <input id="repalceBtn" type="button" class="btn" sat-id="1470899323080">
+                        <input id="repalceAllBtn" type="button" class="btn" sat-id="1470899323081">
+                    </td>
+                </tr>
+                <tr sat-id="1470899323082">
+                    <td colspan="2" sat-id="1470899323083">
+                        &nbsp;
+                    </td>
+                </tr>
+                <tr sat-id="1470899323084">
+                    <td colspan="2" sat-id="1470899323085">
+                        <span id="replace-msg" style="color:red" sat-id="1470899323086"></span>
+                    </td>
+                </tr>
+            </tbody></table>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="searchreplace.js" sat-id="1470899323087"></script>
+
+</body></html>

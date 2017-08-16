@@ -1,0 +1,41 @@
+<div ng-controller="FlowNotifyCtrl">
+    <div class="table-body">
+        <table class="sn-table">
+            <tr>
+                <th>事件类型</th>
+                <th>邮件</th>
+                <th>豆芽</th>
+                <th>通知人员</th>
+            </tr>
+            <tr ng-repeat="notify in notifyList">
+                <td>
+                    <span ng-repeat="dictItem in eventTypeList" ng-if="dictItem.itemCode==notify.eventType">{{dictItem.itemName}}</span>
+                </td>
+                <td>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" ng-true-value="1" ng-false-value="0" ng-model="notify.email" value="1" aria-label="...">
+                        </label>
+                    </div>
+                </td>
+                <td>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" ng-true-value="1" ng-false-value="0" ng-model="notify.sprout" value="1" aria-label="...">
+                        </label>
+                    </div>
+                </td>
+                <td>
+                    <a href="javascript:;" ng-click="showNotifyUser(notify);">设置</a>
+                </td>
+            </tr>
+            <tr ng-if="!notifyList||notifyList.length<1">
+                <td colspan="4">暂无数据</td>
+            </tr>
+        </table>
+        <div class="form-group" style="margin-top: 10px;">
+            <button type="button" class="btn btn-primary" ng-disabled="!notifyList||notifyList.length<1" ng-click="save()">保存
+            </button>
+        </div>
+    </div>
+</div>

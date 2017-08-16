@@ -1,0 +1,100 @@
+.h3-inline {
+    display: inline;
+}
+
+.error {
+    color: red;
+}
+
+.red {
+    color: red;
+    padding-right: 5px;
+}
+
+.line-distance {
+    margin-bottom: 10px;
+}
+
+.label-style {
+    width: 9%;
+    text-align: right;
+}
+
+.square {
+    width: 3px;
+    height: 13px;
+    background-color: black;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+textarea {
+    resize: none;
+}
+
+.error {
+    color: #f60;
+}
+
+.success {
+    color: #78be25;
+}
+
+.small-i {
+    margin-top: 3px;
+}
+
+button {
+    position: absolute;
+    top: 0;
+    right: 300px;
+    width: 80px;
+    height: 30px;
+}
+.divfullname1 {
+    display:inline-block;margin-right:15px;vertical-align: middle;
+}
+.divfullname2{
+    display:inline-block;vertical-align: middle; 
+}
+.divfullname3{
+    width:600px;border:1px solid #d2d6de;overflow: hidden;min-height: 40px;
+}
+.divfullname {
+    float: left;
+    margin: 6px 6px 7px 6px;
+    background-color: #3a8cbb;
+    color: #fff;
+    padding: 1px 10px;
+    border-radius: 4px;
+    border: 1px solid #aaa;
+}
+.divfullname4 {
+        margin-bottom: 10px;
+}
+.text_overflow {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 400px;
+}
+
+
+/* Clearfix hack by Nicolas Gallagher: http://nicolasgallagher.com/micro-clearfix-hack/ */
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.iframe-wrap{
+}
+
+.iframe-wrap iframe{
+    width: 100%;
+    border: 0;
+}

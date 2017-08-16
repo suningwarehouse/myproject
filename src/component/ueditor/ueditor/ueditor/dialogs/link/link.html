@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"><html><head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <script type="text/javascript" src="../internal.js"></script>
+    <style type="text/css">
+        *{margin:0;padding:0;color: #838383;}
+        table{font-size: 12px;margin: 10px;line-height: 30px}
+        .txt{width:300px;height:21px;line-height:21px;border:1px solid #d7d7d7;}
+    </style>
+</head>
+<body sat-id="1470899322896">
+    <table sat-id="1470899322897">
+        <tbody sat-id="1470899322898"><tr sat-id="1470899322899">
+            <td sat-id="1470899322900"><label for="text" sat-id="1470899322901"> <var id="lang_input_text" sat-id="1470899322902"></var></label></td>
+            <td sat-id="1470899322903"><input class="txt" id="text" type="text" disabled="true" sat-id="1470899322904"></td>
+        </tr>
+        <tr sat-id="1470899322905">
+            <td sat-id="1470899322906"><label for="href" sat-id="1470899322907"> <var id="lang_input_url" sat-id="1470899322908"></var></label></td>
+            <td sat-id="1470899322909"><input class="txt" id="href" type="text" sat-id="1470899322910"></td>
+        </tr>
+        <tr sat-id="1470899322911">
+            <td sat-id="1470899322912"><label for="title" sat-id="1470899322913"> <var id="lang_input_title" sat-id="1470899322914"></var></label></td>
+            <td sat-id="1470899322915"><input class="txt" id="title" type="text" sat-id="1470899322916"></td>
+        </tr>
+        <tr sat-id="1470899322917">
+             <td colspan="2" sat-id="1470899322918">
+                 <label for="target" sat-id="1470899322919"><var id="lang_input_target" sat-id="1470899322920"></var></label>
+                 <input id="target" type="checkbox" sat-id="1470899322921">
+             </td>
+        </tr>
+        <tr sat-id="1470899322922">
+            <td colspan="2" id="msg" sat-id="1470899322923"></td>
+        </tr>
+    </tbody></table>
+<script type="text/javascript" sat-id="1470899322924">
+    var range = editor.selection.getRange(),
+        link = range.collapsed ? editor.queryCommandValue( "link" ) : editor.selection.getStart(),
+        url,
+        text = $G('text'),
+        rangeLink = domUtils.findParentByTagName(range.getCommonAncestor(),'a',true),
+        orgText;
+    link = domUtils.findParentByTagName( link, "a", true );
+    if(link){
+        url = utils.html(link.getAttribute( '_href' ) || link.getAttribute( 'href', 2 ));
+
+        if(rangeLink === link && !link.getElementsByTagName('img').length){
+            text.removeAttribute('disabled');
+            orgText = text.value = link[browser.ie ? 'innerText':'textContent'];
+        }else{
+            text.setAttribute('disabled','true');
+            text.value = lang.validLink;
+        }
+
+    }else{
+        if(range.collapsed){
+            text.removeAttribute('disabled');
+            text.value = '';
+        }else{
+            text.setAttribute('disabled','true');
+            text.value = lang.validLink;
+        }
+
+    }
+    $G("title").value = url ? link.title : "";
+    $G("href").value = url ? url: '';
+    $G("target").checked = url && link.target == "_blank" ? true :  false;
+    $focus($G("href"));
+
+    function handleDialogOk(){
+        var href =$G('href').value.replace(/^\s+|\s+$/g, '');
+        if(href){
+            if(!hrefStartWith(href,["http","/","ftp://",'#'])) {
+                href  = "http://" + href;
+            }
+            var obj = {
+                'href' : href,
+                'target' : $G("target").checked ? "_blank" : '_self',
+                'title' : $G("title").value.replace(/^\s+|\s+$/g, ''),
+                '_href':href
+            };
+            //修改链接内容的情况太特殊了，所以先做到这里了
+            //todo:情况多的时候，做到command里
+            if(orgText && text.value != orgText){
+                link[browser.ie ? 'innerText' : 'textContent'] =  obj.textValue = text.value;
+                range.selectNode(link).select()
+            }
+            if(range.collapsed){
+                obj.textValue = text.value;
+            }
+            editor.execCommand('link',utils.clearEmptyAttrs(obj) );
+            dialog.close();
+        }
+    }
+    dialog.onok = handleDialogOk;
+    $G('href').onkeydown = $G('title').onkeydown = function(evt){
+        evt = evt || window.event;
+        if (evt.keyCode == 13) {
+            handleDialogOk();
+            return false;
+        }
+    };
+    $G('href').onblur = function(){
+        if(!hrefStartWith(this.value,["http","/","ftp://",'#'])){
+            $G("msg").innerHTML = "<span style='color: red'>"+lang.httpPrompt+"</span>";
+        }else{
+            $G("msg").innerHTML = "";
+        }
+    };
+
+    function hrefStartWith(href,arr){
+        href = href.replace(/^\s+|\s+$/g, '');
+        for(var i=0,ai;ai=arr[i++];){
+            if(href.indexOf(ai)==0){
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+</script>
+
+
+</body></html>

@@ -1,0 +1,60 @@
+.h3-inline{
+    display: inline;
+}
+
+.error{
+    color: red;
+}
+.red{
+    color: red;
+    padding-right: 5px;
+}
+.line-distance{
+    margin-bottom: 10px;
+}
+.label-style{
+    vertical-align: top;
+    width: 11%;
+    text-align: right;
+}
+.square{
+    width:3px;
+    height:13px;
+    background-color:black;
+    display:inline-block;
+    margin-right:10px;
+}
+textarea{
+    resize:none;
+}
+.error {
+color: #f60;
+}
+
+
+.success {
+color: #78be25;
+}
+
+
+.small-i {
+margin-top: 3px;
+}
+.upload{
+   display: inline-block;
+   width:120px;height:32px;
+   color:#fff;
+   line-height:32px;
+   text-align:center;
+   background:#948484;
+   position:relative; 
+}
+.uploadInput{
+    display: inline-block;
+    width:120px;
+    height:32px;
+    position:absolute;
+    left:0;
+    top:0;
+    opacity:0;
+}

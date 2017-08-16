@@ -1,0 +1,31 @@
+<!doctype html><html><head>
+    <title>表格删除提示</title>
+    <script type="text/javascript" src="../internal.js"></script>
+    <style type="text/css">
+        .section {
+            width: 200px;
+            margin: 10px auto 0;
+            font-size: 14px;
+        }
+
+        .item {
+            text-align: center;
+        }
+    </style>
+</head>
+<body sat-id="1470899323289">
+<div class="section" sat-id="1470899323290">
+    <div class="item" sat-id="1470899323291">
+        <label sat-id="1470899323292"><input type="radio" id="J_delRow" name="cmd" checked sat-id="1470899323293"><var id="lang_delRow" sat-id="1470899323294"></var></label>
+    </div>
+    <div class="item" sat-id="1470899323295">
+        <label sat-id="1470899323296"><input type="radio" id="J_delCol" name="cmd" sat-id="1470899323297"><var id="lang_delCol" sat-id="1470899323298"></var></label>
+    </div>
+</div>
+<script type="text/javascript" sat-id="1470899323299">
+    dialog.onok = function () {
+        $G("J_delRow").checked ? editor.execCommand("deleterow") : editor.execCommand("deletecol");
+    };
+</script>
+
+</body></html>

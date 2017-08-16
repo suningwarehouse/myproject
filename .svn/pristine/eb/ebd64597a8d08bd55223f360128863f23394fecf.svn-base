@@ -1,0 +1,49 @@
+<div class="main-header" ng-controller="topHead" style="top:0;left:0px;right:0px;position:fixed">
+    <!-- Logo -->
+    <a href="#" class="logo headcolor" style="height:60px;">
+        <!-- mini logo for sidebar mini 50x50 pixels -->
+        <span class="logo-mini" style="position:relative;top:6px;left:-18px"><b style="color:#fff;font-size:26px;font-weight:600;">SNCD <i class="ball"></i> </b><small style="color:#3DDBA8;margin-left:10px;position:relative;top:-2px;font-size:18px;">苏宁开发云</small></span>
+        <!-- logo for regular state and mobile devices -->
+        <span class="logo-lg" style="position:relative;top:4px;left:-10px;"><b style="color:#fff;font-size:26px;font-weight:600;">SNCD <i class="ball"></i> </b><small style="color:#3DDBA8;margin-left:14px;position:relative;top:-1px;font-size:17px;">苏宁开发云</small></span>
+    </a>
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top navcolor" role="navigation" style="min-height:60px;">
+        <!-- Sidebar toggle button-->
+       	<div class="navbar-header" style="position:absolute;left:-1%;top:5px;">
+		    <a class="navbar-brand" href="#"><small>首页</small></a>
+             <a class="navbar-brand" href="#"><small>服务导航</small></a>
+             <a class="navbar-brand" href="#"><small>帮助中心</small></a>
+	    </div>
+       <!--  <div class="navbar-header">
+		    <a class="navbar-brand" href="#"><small>产品导航</small></a>
+	    </div>
+        <div class="navbar-header">
+		    <a class="navbar-brand" href="#"><small>帮助中心</small></a>
+	    </div> -->
+        <div class="navbar-custom-menu" style="margin-top:6px;" >
+            <ul class="nav navbar-nav">
+                <li class="dropdown user user-menu" sn-dropdown >
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <img src="business/images/user_logo.png" class="user-image" alt="User Image"/>
+                        <span class="hidden-xs" style="color:#ddd;">{{username}}</span>
+                    </a>
+
+                    
+                    <ul class="dropdown-menu">
+                        <!-- User image -->
+                        <li class="user-header">
+                            <img src="business/images/user_logo.png" class="img-circle" alt="User Image" />
+                            <p>{{username}}</p>
+                        </li>
+                        <li class="user-footer">
+                            <div class="pull-right">
+                                <a href="javascript:void(0)" title="点击退出" ng-click="doLogout()">注销</a> </p> 
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+<div ui-view style="padding-top:60px;overflow:hidden;height: 100%;"></div>

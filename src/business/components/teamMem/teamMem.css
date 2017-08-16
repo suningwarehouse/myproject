@@ -1,0 +1,97 @@
+.square {
+    width: 6px;
+    height: 28px;
+    background-color: #11B983;
+    display: inline-block;
+    margin-right: 10px;
+}
+div.team-main{
+    margin-top: 20px;
+    width: 98%;
+    margin: 50px auto 0;
+     background: #fff;
+     padding-top: 16px;
+     box-shadow: 0 2px 4px 0  #888888;
+}
+div.team-main:nth-child(2){
+       margin-top: 50px;
+    width: 98%;
+    margin: 50px auto 0;
+}
+.team-top1{
+    color:#444;
+    font-size:18px;
+}
+.team-top2{
+    margin-left: 60px;
+}
+.team-content{
+    padding: 10px 10px 10px 10px;
+    background-color: #fff;
+}
+.team-content-up1{
+    width:20%;
+    display: inline-block;
+}
+.team-content-up2{
+     width:20%;
+    display: inline-block;
+}
+.team-content-up3{
+     width:20%;
+    display: inline-block;
+}
+.team-content-down1{
+     width:20%;
+    display: inline-block;
+}
+.team-content-down2{
+    width:20%;
+    display: inline-block;
+}
+.team-content-down3{
+    width:30%;
+    display: inline-block;
+}
+.team-content-down4{
+    float: right;
+    margin-right: 7%;
+   
+}
+.mem-top{
+    width:98%;
+    margin:0 auto;
+}
+.mem-top-right{
+    float: right;
+        margin-top: 6px;
+}
+.down_ {
+    float: right;
+    display: inline-block;
+    width: 41px;
+    height: 35px;
+    margin-top: 0px;
+    margin-right: 7%;
+}
+.down {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-top: 2px solid #777;
+    border-right: 2px solid #777;
+    transform: rotate(135deg);
+    margin-top: 7px;
+    margin-right: -10px;
+    position: relative;
+    left: 11px;
+    cursor: pointer;
+}
+.topTop {
+    transform: rotate(45deg);
+}
+.csshiden {
+    overflow: hidden;
+}
+
+

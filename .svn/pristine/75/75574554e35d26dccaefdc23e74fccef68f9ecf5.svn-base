@@ -1,0 +1,79 @@
+			<div class="table-header" style="margin-top: 13px;">
+					    <form class="form-inline">
+                            <div class="form-group">
+                                <select ng-disabled="sysCombboxDiabled" class="form-control" ng-model="query.sysId" name="sysId" ng-options="option.projectId as option.projectName for option in sysList">
+                                    <option value="">请选择所属应用</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" ng-model="query.flowName" name="flowName" placeholder="请输入名称">
+                            </div>
+                            <div class="form-group">
+                                <div class="search-div marginL" ng-click="paginationSearch(0,pagination.pageSize)">查询</div>
+                                 <div class="search-div marginL" ng-click="reset()">重置</div>
+                            </div>
+                            <div class="pull-right">
+                                <a href="javascript:void(0)" perm-code="flow_add" class="text-primary" style="color:#11B983" perm-code="buildconfig_add" ui-sref="topHead.leftColumn.createFlow({sysId:tmpSysId})" style="margin-right: 20px;"><i class="fu fu-plus">新增流水线</i></a>
+                                <!-- <a href="javascript:void(0)" class="text-primary" perm-code="flow_add" ui-sref="topHead.leftColumn.createFlow({sysId:tmpSysId})" style="margin-right: 20px;">新增流水线</a> -->
+                            </div>
+                        </form>
+				</div>
+				<!--表格主体 -->
+				  <div class="table-body">
+                        <table class="sn-table" style="table-layout: fixed">
+                            <tr>
+                                <th width="20%" class="tr-style">名称</th>
+                                <th width="15%" class="tr-style">所属应用</th>
+                                <th width="10%" class="tr-style">执行总次数</th>
+                                <th width="10%" class="tr-style">最近执行结果</th>
+                                <th width="10%" class="tr-style">最近执行时间</th>
+                                <th width="15%" class="tr-style">创建者</th>
+                                <th width="20%" class="tr-style">操作</th>
+                            </tr>
+                            <tr ng-repeat="flowItem in pagination.data">
+                                <td class="text_overflow" title="{{flowItem.flowName}}">
+                                    <a href="javascript:;" ui-sref="topHead.leftColumn.detailFlow({flowId: flowItem.id,sysId:tmpSysId})">{{flowItem.flowName}}</a>
+                                </td>
+                                <td>
+                                    <span ng-repeat="sys in sysList">
+                                        <span ng-if="sys.projectId==flowItem.sysId">
+                                            {{sys.projectName}}
+                                        </span>
+                                    </span>
+                                </td>
+                                <td>
+                                    {{flowItem.executeTotal}}
+                                </td>
+                                <td>
+                                    <span ng-if="flowItem.executeStatus==1" >执行中</span>
+                                    <span ng-if="flowItem.executeStatus==2">成功</span>
+                                    <span ng-if="flowItem.executeStatus==4">失败</span>
+                                    <span ng-if="flowItem.executeStatus==8">停止</span>
+                                </td>
+                                <td>
+                                    {{flowItem.beginTime}}
+                                </td>
+                                <td>
+                                    {{flowItem.createUser}}
+                                </td>
+                                <td>
+                                    <a href="javascript:;" perm-data="flowItem" perm-code="flow_execute" ng-click="executeFlow(flowItem.id)">执行</a>
+                                    <a href="javascript:;" perm-data="flowItem" perm-code="flow_update" ui-sref="topHead.leftColumn.editFlow({flowId: flowItem.id,sysId:tmpSysId})">修改</a>
+                                    <a href="javascript:;" perm-data="flowItem" perm-code="flow_delete" ng-click="delete(flowItem.id,flowItem.flowName);">删除</a>
+                                </td>
+                            </tr>
+                            <tr ng-if="!pagination.data||pagination.data.length<1">
+                                <td colspan="7">暂无数据</td>
+                            </tr>
+                        </table>
+                </div>
+				<div class="table-footer" style="overflow: hidden;">
+					<div class="pull-right sn-table-pager text-right">
+                        <cd-pager style="float: right" page="pagination.page" page-size="pagination.pageSize"
+                            total="pagination.totalCount" page-action="paginationSearch(page, pageSize, total)"></cd-pager>
+	
+					</div>
+				</div>
+			
+
+
